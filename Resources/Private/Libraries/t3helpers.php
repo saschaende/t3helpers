@@ -104,6 +104,10 @@ function t3h_querySettings($setRespectStoragePage = false, $setIgnoreEnableField
     return \SaschaEnde\T3helpers\Utilities\Database::querySettings($setRespectStoragePage, $setIgnoreEnableFields, $setIncludeDeleted);
 }
 
+function t3h_truncateTable($table){
+    \SaschaEnde\T3helpers\Utilities\Database::truncateTable($table);
+}
+
 // ---------------------------------------------------------------------------------
 // LINK
 // ---------------------------------------------------------------------------------
@@ -114,4 +118,20 @@ function t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true){
 
 function t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true){
     \SaschaEnde\T3helpers\Utilities\Uri::getByAction($pid, $extension, $controller, $action, $extraParameters, $typeNum, $useCacheHash, $forceAbsoluteUrl);
+}
+
+// ---------------------------------------------------------------------------------
+// INJECTIONS
+// ---------------------------------------------------------------------------------
+
+function t3h_injectPhpFile($extension,$path){
+    \SaschaEnde\T3helpers\Utilities\Injections::phpFile($extension,$path);
+}
+
+// ---------------------------------------------------------------------------------
+// GOOGLE
+// ---------------------------------------------------------------------------------
+
+function t3h_getGoogleGeoCoordinates($googleApiKey,$address){
+    \SaschaEnde\T3helpers\Utilities\Google::getGeoCoordinates($googleApiKey,$address);
 }

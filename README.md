@@ -1,13 +1,14 @@
 # T3Helpers - Helpers for TYPO3
 
-* **Version**: v0.0.4
+* **Version**: v0.0.5
 * **Last update**: 07.03.2018
 * **CMS**: TYPO3
 * **Type**: plugin
-* **Description**: Small and leightweight helper functions
+* **Description**: Simple and easy functions that make your TYPO3 life a little easier.
 
 ## Changelog
 
+**07.03.2018, v0.0.5:**  Injections added, Google added, t3h_truncateTable() added
 **07.03.2018, v0.0.4:**  Link helpers added
 
 ## Functions
@@ -20,6 +21,11 @@
 ### Database
 
 * t3h_querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
+
+```
+$query->setDefaultQuerySettings(t3h_querySettings(false,true,true));
+```
+* t3h_truncateTable($table)
 
 ### Data
 
@@ -66,3 +72,15 @@ $arr = t3h_sortArray(
 
 * t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
 * t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
+
+### Injections
+
+* t3h_injectPhpFile($extension,$path)
+
+```
+t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
+```
+
+### GOOGLE
+
+* t3h_getGoogleGeoCoordinates($googleApiKey,$address)
