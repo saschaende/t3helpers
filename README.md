@@ -51,3 +51,8 @@ $arr = t3h_sortArray(
 ## Language
 
 * t3h_language()
+
+## Link
+
+* t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
+* t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
