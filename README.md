@@ -15,6 +15,8 @@
 
 ## Functions
 
+A list of short functions you can use within your extensions:
+
 ### File System
 
 * t3h_getFilesByFolder($folder)
