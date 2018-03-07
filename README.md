@@ -1,17 +1,27 @@
 # T3Helpers - Helpers for TYPO3
 
-Small and leightweight helper functions
+* **Version**: v0.0.4
+* **Last update**: 07.03.2018
+* **CMS**: TYPO3
+* **Type**: plugin
+* **Description**: Small and leightweight helper functions
 
-## File System
+## Changelog
+
+**07.03.2018, v0.0.4:**  Link helpers added
+
+## Functions
+
+### File System
 
 * t3h_getFilesByFolder($folder)
 * t3h_getFileByID($id)
 
-## Database
+### Database
 
 * t3h_querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
 
-## Data
+### Data
 
 * t3h_sortArray($arr, $fields)
 
@@ -24,35 +34,35 @@ $arr = t3h_sortArray(
 
 * t3h_arrayToObject($array)
 
-## Configuration (from EXT_CONF_TEMPLATE)
+### Configuration (from EXT_CONF_TEMPLATE)
 
 * t3h_getExtensionConfiguration($ext)
 * t3h_getExtensionConfigurationByKey($ext,$key)
 
-## Settings (from TYPOSCRIPT)
+### Settings (from TYPOSCRIPT)
 
 * t3h_getPluginSettings($extensionName, $pluginName)
 
-## Session
+### Session
 
 * t3h_getSession($extension,$key)
 * t3h_setSession($extension,$key,$value)
 * t3h_isSession($extension,$key)
 
-## Session
+### Session
 
 * t3h_debug($data)
 * t3h_debugMail($fromEmail,$recipientEmail,$data)
 
-## Email
+### Email
 
 * t3h_mail($recipient, $senderEmail, $senderName, $subject, $emailBody)
 
-## Language
+### Language
 
 * t3h_language()
 
-## Link
+### Link
 
 * t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
 * t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
