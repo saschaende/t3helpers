@@ -20,7 +20,7 @@ class Settings {
         /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
         $configurationManager = $objectManager->get(ConfigurationManagerInterface::class);
         $settings = $configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             $extensionName,
             $pluginName
         );

@@ -22,7 +22,7 @@ class Uri {
             $extension => $extraParameters
         ];
 
-        if($typeNum){
+        if ($typeNum) {
             $params['type'] = $typeNum;
         }
 

@@ -2,11 +2,14 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 class Mail {
 
     public static function sendMail($recipient, $senderEmail, $senderName, $subject, $emailBody) {
         // set email settings
-        $message = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Mail\MailMessage');
+        $message = GeneralUtility::makeInstance(MailMessage::class);
 
         $message->setTo($recipient)
             ->setFrom([$senderEmail => $senderName])

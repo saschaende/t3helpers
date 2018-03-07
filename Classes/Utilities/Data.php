@@ -33,9 +33,9 @@ class Data {
         return $arr;
     }
 
-    public static function arrayToObject($array){
+    public static function arrayToObject($array) {
         $obj = new \stdClass();
-        foreach($array as $key=>$value){
+        foreach ($array as $key => $value) {
             $obj->{$key} = $value;
         }
         return $obj;

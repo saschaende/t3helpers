@@ -1,6 +1,6 @@
 # T3Helpers - Helpers for TYPO3
 
-* **Version**: v0.0.6
+* **Version**: v0.0.7
 * **Last update**: 07.03.2018
 * **CMS**: TYPO3
 * **Type**: plugin
@@ -8,6 +8,7 @@
 
 ## Changelog
 
+* **v0.0.7:**  Bugfixes
 * **v0.0.6:**  Password functions added, Bugfixes
 * **v0.0.5:**  Injections added, Google added, t3h_truncateTable() added
 * **v0.0.4:**  Link helpers added

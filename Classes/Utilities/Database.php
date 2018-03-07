@@ -20,7 +20,7 @@ class Database {
         return $querySettings;
     }
 
-    public static function truncateTable($table){
+    public static function truncateTable($table) {
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
         $connection->truncate($table);
     }
