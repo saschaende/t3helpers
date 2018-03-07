@@ -9,7 +9,7 @@ function t3h_getFilesByFolder($folder) {
 }
 
 function t3h_getFileByID($id) {
-    \SaschaEnde\T3helpers\Utilities\Filesystem::getFileByID($id);
+    return \SaschaEnde\T3helpers\Utilities\Filesystem::getFileByID($id);
 }
 
 // ---------------------------------------------------------------------------------
@@ -45,11 +45,11 @@ function t3h_getPluginSettings($extensionName, $pluginName){
 // ---------------------------------------------------------------------------------
 
 function t3h_sortArray($arr, $fields) {
-    \SaschaEnde\T3helpers\Utilities\Data::sortArray($arr, $fields);
+    return \SaschaEnde\T3helpers\Utilities\Data::sortArray($arr, $fields);
 }
 
 function t3h_arrayToObject($array){
-    \SaschaEnde\T3helpers\Utilities\Data::arrayToObject($array);
+    return \SaschaEnde\T3helpers\Utilities\Data::arrayToObject($array);
 }
 
 // ---------------------------------------------------------------------------------
@@ -113,11 +113,11 @@ function t3h_truncateTable($table){
 // ---------------------------------------------------------------------------------
 
 function t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true){
-    \SaschaEnde\T3helpers\Utilities\Uri::getByPid($pid, $useCacheHash, $forceAbsoluteUrl);
+    return \SaschaEnde\T3helpers\Utilities\Uri::getByPid($pid, $useCacheHash, $forceAbsoluteUrl);
 }
 
 function t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true){
-    \SaschaEnde\T3helpers\Utilities\Uri::getByAction($pid, $extension, $controller, $action, $extraParameters, $typeNum, $useCacheHash, $forceAbsoluteUrl);
+    return \SaschaEnde\T3helpers\Utilities\Uri::getByAction($pid, $extension, $controller, $action, $extraParameters, $typeNum, $useCacheHash, $forceAbsoluteUrl);
 }
 
 // ---------------------------------------------------------------------------------
@@ -134,4 +134,16 @@ function t3h_injectPhpFile($extension,$path){
 
 function t3h_getGoogleGeoCoordinates($googleApiKey,$address){
     \SaschaEnde\T3helpers\Utilities\Google::getGeoCoordinates($googleApiKey,$address);
+}
+
+// ---------------------------------------------------------------------------------
+// PASSWORDS
+// ---------------------------------------------------------------------------------
+
+function t3h_encryptPassword($password){
+    return \SaschaEnde\T3helpers\Utilities\Password::getHashedPassword($password);
+}
+
+function t3h_getReadablePassword($letters = 8, $length = false){
+    return \SaschaEnde\T3helpers\Utilities\Password::createReadablePassword($letters, $length);
 }

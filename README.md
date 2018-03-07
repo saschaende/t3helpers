@@ -1,6 +1,6 @@
 # T3Helpers - Helpers for TYPO3
 
-* **Version**: v0.0.5
+* **Version**: v0.0.6
 * **Last update**: 07.03.2018
 * **CMS**: TYPO3
 * **Type**: plugin
@@ -8,8 +8,9 @@
 
 ## Changelog
 
-**07.03.2018, v0.0.5:**  Injections added, Google added, t3h_truncateTable() added
-**07.03.2018, v0.0.4:**  Link helpers added
+* **v0.0.6:**  Password functions added, Bugfixes
+* **v0.0.5:**  Injections added, Google added, t3h_truncateTable() added
+* **v0.0.4:**  Link helpers added
 
 ## Functions
 
@@ -84,3 +85,8 @@ t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 ### GOOGLE
 
 * t3h_getGoogleGeoCoordinates($googleApiKey,$address)
+
+### Passwords
+
+* t3h_encryptPassword($password)
+* t3h_getReadablePassword($letters = 8, $length = false)
