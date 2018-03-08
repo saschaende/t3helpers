@@ -17,13 +17,19 @@ function t3h_getFileByID($id) {
 // ---------------------------------------------------------------------------------
 
 function t3h_getExtensionConfiguration($ext){
-    \SaschaEnde\T3helpers\Utilities\Configuration::setExtension($ext);
-    return \SaschaEnde\T3helpers\Utilities\Configuration::getAll();
+    $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+    /** @var \SaschaEnde\T3helpers\Utilities\ConfigurationInterface $configuration */
+    $configuration = $objectManager->get(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
+    $configuration->setExtension($ext);
+    return $configuration->getAll();
 }
 
 function t3h_getExtensionConfigurationByKey($ext,$key){
-    \SaschaEnde\T3helpers\Utilities\Configuration::setExtension($ext);
-    return \SaschaEnde\T3helpers\Utilities\Configuration::get($key);
+    $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+    /** @var \SaschaEnde\T3helpers\Utilities\ConfigurationInterface $configuration */
+    $configuration = $objectManager->get(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
+    $configuration->setExtension($ext);
+    return $configuration->get($key);
 }
 
 // ---------------------------------------------------------------------------------
