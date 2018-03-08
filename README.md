@@ -8,9 +8,10 @@
 
 ## TODO
 
-* DEBUG: Full Typoscript
-* TEMPLATES: Render some Template with Variables
-* SETTINGS: Get Template Root Paths for extension
+* [OPTIMIZE] Convert static helper classes to abstractable normal classes
+* [FEATURE] DEBUG: Full Typoscript
+* [FEATURE] TEMPLATES: Render some Template with Variables
+* [FEATURE] SETTINGS: Get Template Root Paths for extension
 
 ## Changelog
 
