@@ -2,19 +2,21 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-class Session {
+use TYPO3\CMS\Core\SingletonInterface;
 
-    public static function get($extension, $key) {
+class Session implements SingletonInterface {
+
+    public function get($extension, $key) {
         $res = $GLOBALS['TSFE']->fe_user->getKey('ses', $extension);
-        if (self::is($extension, $key)) {
+        if ($this->is($extension, $key)) {
             return $res[$key];
         } else {
             return false;
         }
     }
 
-    public static function set($extension, $key, $value) {
-        $res = self::get($extension, $key);
+    public function set($extension, $key, $value) {
+        $res = $this->get($extension, $key);
         if (!$res) {
             $res = [];
         }
@@ -23,8 +25,8 @@ class Session {
         return true;
     }
 
-    public static function is($extension, $key) {
-        $res = self::get($extension, $key);
+    public function is($extension, $key) {
+        $res = $this->get($extension, $key);
         if (isset($res[$key])) {
             return true;
         } else {

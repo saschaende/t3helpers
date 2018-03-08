@@ -26,6 +26,10 @@
 
 A list of short functions you can use within your extensions:
 
+### Extbase
+
+* t3h_getObjectManager($interface)
+
 ### File System
 
 * t3h_getFilesByFolder($folder)

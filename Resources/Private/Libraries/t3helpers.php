@@ -1,12 +1,17 @@
 <?php
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
+use SaschaEnde\T3helpers\Utilities\SessionInterface;
+
 /**
  * Get Object for use in functions
  * @param $interface
  * @return object
  */
 function t3h_getObjectManager($interface){
-    $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
     return $objectManager->get($interface);
 }
 
@@ -28,14 +33,14 @@ function t3h_getFileByID($id) {
 
 function t3h_getExtensionConfiguration($ext){
     /** @var \SaschaEnde\T3helpers\Utilities\ConfigurationInterface $configuration */
-    $configuration = t3h_getObjectManager(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
+    $configuration = t3h_getObjectManager(ConfigurationInterface::class);
     $configuration->setExtension($ext);
     return $configuration->getAll();
 }
 
 function t3h_getExtensionConfigurationByKey($ext,$key){
     /** @var \SaschaEnde\T3helpers\Utilities\ConfigurationInterface $configuration */
-    $configuration = t3h_getObjectManager(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
+    $configuration = t3h_getObjectManager(ConfigurationInterface::class);
     $configuration->setExtension($ext);
     return $configuration->get($key);
 }
@@ -71,15 +76,21 @@ function t3h_arrayToObject($array){
 // ---------------------------------------------------------------------------------
 
 function t3h_getSession($extension,$key){
-    return \SaschaEnde\T3helpers\Utilities\Session::get($extension,$key);
+    /** @var SessionInterface $session */
+    $session = t3h_getObjectManager(SessionInterface::class);
+    return $session->get($extension,$key);
 }
 
 function t3h_setSession($extension,$key,$value){
-    return \SaschaEnde\T3helpers\Utilities\Session::set($extension,$key,$value);
+    /** @var SessionInterface $session */
+    $session = t3h_getObjectManager(SessionInterface::class);
+    return $session->set($extension,$key,$value);
 }
 
 function t3h_isSession($extension,$key){
-    return \SaschaEnde\T3helpers\Utilities\Session::is($extension,$key);
+    /** @var SessionInterface $session */
+    $session = t3h_getObjectManager(SessionInterface::class);
+    return $session->is($extension,$key);
 }
 
 // ---------------------------------------------------------------------------------
