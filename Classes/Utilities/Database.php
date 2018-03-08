@@ -3,15 +3,16 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
-class Database {
+class Database implements SingletonInterface {
 
-    public static function querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $querySettings = $objectManager->get(Typo3QuerySettings::class);
+    public function querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
+
+        /** @var Typo3QuerySettings $querySettings */
+        $querySettings = t3h_injectClass(Typo3QuerySettings::class);
 
         $querySettings->setRespectStoragePage($setRespectStoragePage);
         $querySettings->setIgnoreEnableFields($setIgnoreEnableFields);
@@ -20,7 +21,7 @@ class Database {
         return $querySettings;
     }
 
-    public static function truncateTable($table) {
+    public function truncateTable($table) {
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
         $connection->truncate($table);
     }

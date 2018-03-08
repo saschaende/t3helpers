@@ -2,10 +2,12 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-class Injections {
+use TYPO3\CMS\Core\SingletonInterface;
 
-    public static function phpFile($extension, $path) {
-        $filePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($extension) . $path;
+class Injections implements SingletonInterface {
+
+    public function phpFile($extension, $path) {
+        $filePath = t3h_getFileExtPath($extension, $path);
         require_once($filePath);
     }
 

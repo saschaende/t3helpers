@@ -2,9 +2,11 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-class Uri {
+use TYPO3\CMS\Core\SingletonInterface;
 
-    public static function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true) {
+class Uri implements SingletonInterface {
+
+    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true) {
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
             'parameter' => $pid,
             'useCacheHash' => $useCacheHash,
@@ -13,7 +15,7 @@ class Uri {
         ]);
     }
 
-    public static function getByAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true) {
+    public function getByAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true) {
 
         $extraParameters['controller'] = $controller;
         $extraParameters['action'] = $action;

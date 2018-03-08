@@ -2,12 +2,14 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-class Language {
+use TYPO3\CMS\Core\SingletonInterface;
+
+class Language implements SingletonInterface {
 
     /**
      * Get the current language
      */
-    public static function current() {
+    public function current() {
         if (TYPO3_MODE === 'FE') {
             if (isset($GLOBALS['TSFE']->config['config']['language'])) {
                 return $GLOBALS['TSFE']->config['config']['language'];

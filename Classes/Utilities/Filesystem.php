@@ -4,10 +4,12 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\Exception;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-class Filesystem {
+class Filesystem implements SingletonInterface {
 
-    public static function getFileByID($id) {
+    public function getFileByID($id) {
 
         $resourceFactory = ResourceFactory::getInstance();
 
@@ -26,7 +28,7 @@ class Filesystem {
         return $props;
     }
 
-    public static function getFilesByFolder($folder) {
+    public function getFilesByFolder($folder) {
 
         $filesResult = [];
 
@@ -41,6 +43,11 @@ class Filesystem {
 
         return $filesResult;
 
+    }
+
+    public function getFileExtPath($extension, $path) {
+        $filePath = ExtensionManagementUtility::extPath($extension) . $path;
+        require_once($filePath);
     }
 
 }

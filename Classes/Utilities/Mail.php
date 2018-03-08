@@ -3,11 +3,12 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Mail {
+class Mail implements SingletonInterface {
 
-    public static function sendMail($recipient, $senderEmail, $senderName, $subject, $emailBody) {
+    public function sendMail($recipient, $senderEmail, $senderName, $subject, $emailBody) {
         // set email settings
         $message = GeneralUtility::makeInstance(MailMessage::class);
 

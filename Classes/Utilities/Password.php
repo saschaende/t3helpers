@@ -2,16 +2,17 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
 use TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility;
 
-class Password {
+class Password implements SingletonInterface {
 
     /**
      * Get the hashed password
      * @return null|string
      */
-    public static function getHashedPassword($password) {
+    public function getHashedPassword($password) {
         if (SaltedPasswordsUtility::isUsageEnabled('FE')) {
             $objSalt = SaltFactory::getSaltingInstance(NULL);
             if (is_object($objSalt)) {
@@ -27,7 +28,7 @@ class Password {
      * @param bool $length
      * @return string
      */
-    public static function createReadablePassword($letters = 8, $length = false) {
+    public function createReadablePassword($letters = 8, $length = false) {
         $A = explode(',', 'a,e,i,o,u');
         if ($length) {
             $B = explode(',', 'b,d,f,g,h,k,l,m,n,p,r,s,t,w,z');

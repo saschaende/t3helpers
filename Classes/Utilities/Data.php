@@ -2,9 +2,11 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-class Data {
+use TYPO3\CMS\Core\SingletonInterface;
 
-    public static function sortArray($arr, $fields) {
+class Data implements SingletonInterface {
+
+    public function sortArray($arr, $fields) {
         $sortFields = array();
         $args = array();
 
@@ -33,7 +35,7 @@ class Data {
         return $arr;
     }
 
-    public static function arrayToObject($array) {
+    public function arrayToObject($array) {
         $obj = new \stdClass();
         foreach ($array as $key => $value) {
             $obj->{$key} = $value;

@@ -1,7 +1,7 @@
 # T3Helpers - Helpers for TYPO3
 
-* **Version**: v0.0.7
-* **Last update**: 07.03.2018
+* **Version**: v0.9.0
+* **Last update**: 08.03.2018
 * **CMS**: TYPO3
 * **Type**: plugin
 * **Description**: Simple and easy functions that make your TYPO3 life a little easier.
@@ -9,31 +9,23 @@
 
 ## TODO
 
-* [OPTIMIZE] (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces
-* [OPTIMIZE] (Max Schröter) Convert static helper classes to abstractable normal classes
-* [FEATURE] DEBUG: Full Typoscript
 * [FEATURE] TEMPLATES: Render some Template with Variables
 * [FEATURE] SETTINGS: Get Template Root Paths for extension
 
 ## Changelog
 
-* **v0.0.7:**  Bugfixes
-* **v0.0.6:**  Password functions added, Bugfixes
-* **v0.0.5:**  Injections added, Google added, t3h_truncateTable() added
-* **v0.0.4:**  Link helpers added
+* **08.03.2017** - DEBUG: Full Typoscript, (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces, (Max Schröter) Convert static helper classes to abstractable normal classes 
+* **07.03.2017** - Bugfixes, Password functions added, Bugfixes, Injections added, Google added, t3h_truncateTable() added, Link helpers added
 
 ## Functions
 
 A list of short functions you can use within your extensions:
 
-### Extbase
-
-* t3h_getObjectManager($interface)
-
 ### File System
 
 * t3h_getFilesByFolder($folder)
 * t3h_getFileByID($id)
+* t3h_getFileExtPath($extension, $path)
 
 ### Database
 
@@ -72,10 +64,11 @@ $arr = t3h_sortArray(
 * t3h_setSession($extension,$key,$value)
 * t3h_isSession($extension,$key)
 
-### Session
+### Debug
 
 * t3h_debug($data)
 * t3h_debugMail($fromEmail,$recipientEmail,$data)
+* t3h_debugFullTyposcript()
 
 ### Email
 
@@ -83,7 +76,7 @@ $arr = t3h_sortArray(
 
 ### Language
 
-* t3h_language()
+* t3h_currentLanguage()
 
 ### Link
 
@@ -92,6 +85,7 @@ $arr = t3h_sortArray(
 
 ### Injections
 
+* t3h_injectClass($class)
 * t3h_injectPhpFile($extension,$path)
 
 ```
