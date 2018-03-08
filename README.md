@@ -9,12 +9,13 @@
 
 ## TODO
 
-* [FEATURE] TEMPLATES: Render some Template with Variables
+* [DOCS] Code examples and explainations for every function
+* [TESTING] Test all functions for stable 1.0 release
 * [FEATURE] SETTINGS: Get Template Root Paths for extension
 
 ## Changelog
 
-* **08.03.2017** - DEBUG: Full Typoscript, (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces, (Max Schröter) Convert static helper classes to abstractable normal classes 
+* **08.03.2017** - DEBUG: Full Typoscript, (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces, (Max Schröter) Convert static helper classes to abstractable normal classes, TEMPLATES: Render some Template with Variables
 * **07.03.2017** - Bugfixes, Password functions added, Bugfixes, Injections added, Google added, t3h_truncateTable() added, Link helpers added
 
 ## Functions
@@ -76,12 +77,12 @@ $arr = t3h_sortArray(
 
 ### Language
 
-* t3h_currentLanguage()
+* t3h_getCurrentLanguage()
 
 ### Link
 
-* t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
-* t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
+* t3h_getLinkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
+* t3h_getLinkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
 
 ### Injections
 
@@ -98,5 +99,13 @@ t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 
 ### Passwords
 
-* t3h_encryptPassword($password)
+* t3h_getEncryptedPassword($password)
 * t3h_getReadablePassword($letters = 8, $length = false)
+
+### Template
+
+* t3h_getTemplate($extension, $path, $variables = [])
+
+```
+$html = t3h_getTemplate('t3helpers','Resources/Private/Templates/Mail.html');
+```

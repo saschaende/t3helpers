@@ -12,6 +12,7 @@ use SaschaEnde\T3helpers\Utilities\MailInterface;
 use SaschaEnde\T3helpers\Utilities\PasswordInterface;
 use SaschaEnde\T3helpers\Utilities\SessionInterface;
 use SaschaEnde\T3helpers\Utilities\SettingsInterface;
+use SaschaEnde\T3helpers\Utilities\TemplateInterface;
 use SaschaEnde\T3helpers\Utilities\UriInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -146,7 +147,7 @@ function t3h_mail($recipient, $senderEmail, $senderName, $subject, $emailBody) {
 // LANGUAGE
 // ---------------------------------------------------------------------------------
 
-function t3h_currentLanguage() {
+function t3h_getCurrentLanguage() {
     /** @var LanguageInterface $language */
     $language = t3h_injectClass(LanguageInterface::class);
     return $language->current();
@@ -156,7 +157,7 @@ function t3h_currentLanguage() {
 // DATABASE
 // ---------------------------------------------------------------------------------
 
-function t3h_querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
+function t3h_getQuerySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
     /** @var DatabaseInterface $database */
     $database = t3h_injectClass(DatabaseInterface::class);
     return $database->querySettings($setRespectStoragePage, $setIgnoreEnableFields, $setIncludeDeleted);
@@ -172,13 +173,13 @@ function t3h_truncateTable($table) {
 // LINK
 // ---------------------------------------------------------------------------------
 
-function t3h_linkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true) {
+function t3h_getLinkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true) {
     /** @var UriInterface $uri */
     $uri = t3h_injectClass(UriInterface::class);
     return $uri->getByPid($pid, $useCacheHash, $forceAbsoluteUrl);
 }
 
-function t3h_linkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true) {
+function t3h_getLinkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true) {
     /** @var UriInterface $uri */
     $uri = t3h_injectClass(UriInterface::class);
     return $uri->getByAction($pid, $extension, $controller, $action, $extraParameters, $typeNum, $useCacheHash, $forceAbsoluteUrl);
@@ -213,7 +214,7 @@ function t3h_getGoogleGeoCoordinates($googleApiKey, $address) {
 // PASSWORDS
 // ---------------------------------------------------------------------------------
 
-function t3h_encryptPassword($str) {
+function t3h_getEncryptedPassword($str) {
     /** @var PasswordInterface $password */
     $password = t3h_injectClass(PasswordInterface::class);
     return $password->getHashedPassword($str);
@@ -223,4 +224,14 @@ function t3h_getReadablePassword($letters = 8, $length = false) {
     /** @var PasswordInterface $password */
     $password = t3h_injectClass(PasswordInterface::class);
     return $password->createReadablePassword($letters, $length);
+}
+
+// ---------------------------------------------------------------------------------
+// TEMPLATE
+// ---------------------------------------------------------------------------------
+
+function t3h_getTemplate($extension, $path, $variables = []){
+    /** @var TemplateInterface $template */
+    $template = t3h_injectClass(TemplateInterface::class);
+    return $template->renderTemplate($extension, $path, $variables);
 }
