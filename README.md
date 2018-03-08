@@ -8,7 +8,8 @@
 
 ## TODO
 
-* [OPTIMIZE] (MAx Schröter) Convert static helper classes to abstractable normal classes
+* [OPTIMIZE] (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces
+* [OPTIMIZE] (Max Schröter) Convert static helper classes to abstractable normal classes
 * [FEATURE] DEBUG: Full Typoscript
 * [FEATURE] TEMPLATES: Render some Template with Variables
 * [FEATURE] SETTINGS: Get Template Root Paths for extension
