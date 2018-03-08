@@ -6,6 +6,12 @@
 * **Type**: plugin
 * **Description**: Simple and easy functions that make your TYPO3 life a little easier.
 
+## TODO
+
+* DEBUG: Full Typoscript
+* TEMPLATES: Render some Template with Variables
+* SETTINGS: Get Template Root Paths for extension
+
 ## Changelog
 
 * **v0.0.7:**  Bugfixes
