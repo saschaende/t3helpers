@@ -6,6 +6,7 @@
 * **Type**: plugin
 * **Description**: Simple and easy functions that make your TYPO3 life a little easier.
 
+
 ## TODO
 
 * [OPTIMIZE] (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces
