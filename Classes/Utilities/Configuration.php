@@ -2,7 +2,9 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-class Configuration {
+use TYPO3\CMS\Core\SingletonInterface;
+
+class Configuration implements SingletonInterface {
 
     private $configurationManager;
     private $extensionConfiguration;

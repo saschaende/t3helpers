@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Get Object for use in functions
+ * @param $interface
+ * @return object
+ */
+function t3h_getObjectManager($interface){
+    $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+    return $objectManager->get($interface);
+}
+
 // ---------------------------------------------------------------------------------
 // FILESYSTEM
 // ---------------------------------------------------------------------------------
@@ -17,17 +27,15 @@ function t3h_getFileByID($id) {
 // ---------------------------------------------------------------------------------
 
 function t3h_getExtensionConfiguration($ext){
-    $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
     /** @var \SaschaEnde\T3helpers\Utilities\ConfigurationInterface $configuration */
-    $configuration = $objectManager->get(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
+    $configuration = t3h_getObjectManager(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
     $configuration->setExtension($ext);
     return $configuration->getAll();
 }
 
 function t3h_getExtensionConfigurationByKey($ext,$key){
-    $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
     /** @var \SaschaEnde\T3helpers\Utilities\ConfigurationInterface $configuration */
-    $configuration = $objectManager->get(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
+    $configuration = t3h_getObjectManager(\SaschaEnde\T3helpers\Utilities\ConfigurationInterface::class);
     $configuration->setExtension($ext);
     return $configuration->get($key);
 }
