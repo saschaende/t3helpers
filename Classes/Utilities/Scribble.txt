@@ -1,0 +1,13 @@
+    private function renderTemplate($templatePathAndFilename, $variables = []) {
+
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $this->configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $emailView = $this->objectManager->get(StandaloneView::class);
+        $emailView->setFormat('html');
+
+
+        $emailView->setTemplatePathAndFilename($templatePathAndFilename);
+        $emailView->assignMultiple($variables);
+        return $emailView->render();
+    }
