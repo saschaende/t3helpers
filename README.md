@@ -4,7 +4,7 @@
 * **Last update**: 08.03.2018
 * **CMS**: TYPO3
 * **Type**: plugin
-* **Description**: Simple and easy functions that make your TYPO3 life a little easier.
+* **Description**: Helpers like in LARAVEL: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier.
 
 
 ## TODO
