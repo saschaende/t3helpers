@@ -9,7 +9,7 @@
 * **Description**: Helpers like in LARAVEL: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier.
 
 
-# TODO
+# TODO FOR FINAL STABLE RELEASE
 
 * [BIG CHANGE] Remove functions, use Shortcuts like T3hSessions()->get() or T3hDatabase()->truncateTable($table)
 * [DOCS] Code examples and explainations for every function
