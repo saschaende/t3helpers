@@ -2,6 +2,11 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+/**
+ * Interface ConfigurationInterface
+ * @package SaschaEnde\T3helpers\Utilities
+ * @ignore
+ */
 interface ConfigurationInterface {
 
     /**

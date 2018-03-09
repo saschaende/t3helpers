@@ -5,6 +5,11 @@ namespace SaschaEnde\T3helpers\Utilities;
 use TYPO3\CMS\Core\Configuration\ConfigurationManager;
 use TYPO3\CMS\Core\SingletonInterface;
 
+/**
+ * Class Configuration
+ * @package SaschaEnde\T3helpers\Utilities
+ * @ignore
+ */
 class Configuration implements SingletonInterface {
 
     private $configurationManager;
