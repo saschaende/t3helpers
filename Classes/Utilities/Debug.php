@@ -15,7 +15,7 @@ class Debug implements SingletonInterface {
     }
 
     public function mailoutput($fromEmail, $recipientEmail, $data) {
-        t3h_mail(
+        \T3h\Mail()->send(
             $recipientEmail,
             $fromEmail,
             'Debugger',
@@ -25,7 +25,7 @@ class Debug implements SingletonInterface {
     }
 
     public function debugFullTyposcript() {
-        $configurationManager = t3h_injectClass(ConfigurationManager::class);
+        $configurationManager = \T3h\injectClass(ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $this->output($extbaseFrameworkConfiguration);
     }

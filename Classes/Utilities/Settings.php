@@ -10,7 +10,7 @@ class Settings implements SingletonInterface {
     public function getPlugin($extensionName, $pluginName) {
         $pluginName = strtolower($pluginName);
         /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
-        $configurationManager = t3h_injectClass(ConfigurationManagerInterface::class);
+        $configurationManager = \T3h\injectClass(ConfigurationManagerInterface::class);
         $settings = $configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             $extensionName,

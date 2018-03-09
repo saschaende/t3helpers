@@ -6,9 +6,9 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 class Template implements SingletonInterface {
 
     public function renderTemplate($extension, $path, $variables = []) {
-        $templatePathAndFilename = t3h_getFileExtPath($extension,$path);
+        $templatePathAndFilename = \T3h\Filesystem()->getFileExtPath($extension,$path);
         /** @var StandaloneView $emailView */
-        $emailView = t3h_injectClass(StandaloneView::class);
+        $emailView = \T3h\injectClass(StandaloneView::class);
         $emailView->setFormat('html');
         $emailView->setTemplatePathAndFilename($templatePathAndFilename);
         $emailView->assignMultiple($variables);

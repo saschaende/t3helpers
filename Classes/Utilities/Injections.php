@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 class Injections implements SingletonInterface {
 
     public function phpFile($extension, $path) {
-        $filePath = t3h_getFileExtPath($extension, $path);
+        $filePath = \T3h\Filesystem()->getFileExtPath($extension, $path);
         require_once($filePath);
     }
 

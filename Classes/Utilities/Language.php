@@ -9,7 +9,7 @@ class Language implements SingletonInterface {
     /**
      * Get the current language
      */
-    public function current() {
+    public function getCurrent() {
         if (TYPO3_MODE === 'FE') {
             if (isset($GLOBALS['TSFE']->config['config']['language'])) {
                 return $GLOBALS['TSFE']->config['config']['language'];

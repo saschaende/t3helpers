@@ -18,7 +18,7 @@ class Configuration implements SingletonInterface {
      */
     public function setExtension($ext) {
         $this->ext = $ext;
-        $this->configurationManager = t3h_injectClass(ConfigurationManager::class);
+        $this->configurationManager = \T3h\injectClass(ConfigurationManager::class);
         $this->extensionConfiguration = unserialize($this->configurationManager->getConfigurationValueByPath('EXT/extConf/' . $ext));
     }
 
@@ -30,6 +30,6 @@ class Configuration implements SingletonInterface {
     }
 
     public function getAll() {
-        return t3h_arrayToObject($this->extensionConfiguration);
+        return \T3h\Data()->arrayToObject($this->extensionConfiguration);
     }
 }

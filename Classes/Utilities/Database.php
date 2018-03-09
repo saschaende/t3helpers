@@ -12,7 +12,7 @@ class Database implements SingletonInterface {
     public function querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
 
         /** @var Typo3QuerySettings $querySettings */
-        $querySettings = t3h_injectClass(Typo3QuerySettings::class);
+        $querySettings = \T3h\injectClass(Typo3QuerySettings::class);
 
         $querySettings->setRespectStoragePage($setRespectStoragePage);
         $querySettings->setIgnoreEnableFields($setIgnoreEnableFields);

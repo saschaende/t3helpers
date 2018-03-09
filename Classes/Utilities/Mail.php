@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Mail implements SingletonInterface {
 
-    public function sendMail($recipient, $senderEmail, $senderName, $subject, $emailBody) {
+    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody) {
         // set email settings
         $message = GeneralUtility::makeInstance(MailMessage::class);
 

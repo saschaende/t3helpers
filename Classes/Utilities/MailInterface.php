@@ -4,6 +4,6 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 interface MailInterface {
 
-    public function sendMail($recipient, $senderEmail, $senderName, $subject, $emailBody);
+    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody);
 
 }
