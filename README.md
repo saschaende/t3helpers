@@ -40,16 +40,25 @@ A list of short functions you can use within your extensions:
 Get a list of files from a folder in fileadmin
 
 ```
-$Files = \T3h\Filesystem()->getFilesByFolder('user_upload/Bildergalerie/Januar');
+$files = \T3h\Filesystem()->getFilesByFolder('fileadmin/user_upload/Bilderslider');
 ```
 
 #### Filesystem()->getFileByID($id)
 
 Get a file by file UID
 
+````
+$file = \T3h\Filesystem()->getFileByID(14);
+````
+
 #### Filesystem()->getFileExtPath($extension, $path)
 
 Get full path for a file in an extension directory
+
+````
+$filePath = \T3h\Filesystem()->getFileExtPath('t3helpers','Resources/Private/Libraries/t3helpers.php');
+// Will output: 'C:/xampp/htdocs/typo3/typo3conf/ext/t3helpers/Resources/Private/Libraries/t3helpers.php'
+````
 
 ## \T3h\Database()
 

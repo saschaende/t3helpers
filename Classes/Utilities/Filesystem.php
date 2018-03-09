@@ -46,8 +46,7 @@ class Filesystem implements SingletonInterface {
     }
 
     public function getFileExtPath($extension, $path) {
-        $filePath = ExtensionManagementUtility::extPath($extension) . $path;
-        require_once($filePath);
+        return ExtensionManagementUtility::extPath($extension) . $path;
     }
 
 }
