@@ -43,8 +43,6 @@ Get a list of files from a folder in fileadmin
 $files = \T3h\Filesystem()->getFilesByFolder('fileadmin/user_upload/Bilderslider');
 ```
 
-*Last compatibility test with TYPO3 8.7.10: 09.03.2017*
-
 #### Filesystem()->getFileByID($id)
 
 Get a file by file UID
@@ -52,8 +50,6 @@ Get a file by file UID
 ````
 $file = \T3h\Filesystem()->getFileByID(14);
 ````
-
-*Last compatibility test with TYPO3 8.7.10: 09.03.2017*
 
 #### Filesystem()->getFileExtPath($extension, $path)
 
@@ -64,7 +60,13 @@ $filePath = \T3h\Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 // Will output: 'C:/xampp/htdocs/typo3/typo3conf/ext/t3helpers/Resources/Private/Libraries/t3helpers.php'
 ````
 
-*Last compatibility test with TYPO3 8.7.10: 09.03.2017*
+### Overview / Latest functionality tests
+
+Function | TYPO3 Version test | Test date
+------------- |------------- | ------------------
+Filesystem()->getFilesByFolder($folder)      |  8.7.10 | 09.03.2017 
+Filesystem()->getFileByID($id)     |  8.7.10 | 09.03.2017
+Filesystem()->getFileExtPath($extension, $path) |  8.7.10 | 09.03.2017
 
 ## \T3h\Database()
 
