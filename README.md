@@ -1,5 +1,7 @@
 # T3Helpers - Helpers for TYPO3
 
+**Important: During BETA everything can change. Please wait some days until the final stable version is ready to use.**
+
 * **Version**: v0.9.0
 * **Last update**: 08.03.2018
 * **CMS**: TYPO3
