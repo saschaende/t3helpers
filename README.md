@@ -35,15 +35,19 @@ A list of short functions you can use within your extensions:
 
 ## File System
 
-#### t3h_getFilesByFolder($folder)
+#### Filesystem()->getFilesByFolder($folder)
 
 Get a list of files from a folder in fileadmin
 
-#### t3h_getFileByID($id)
+```
+$Files = \T3h\Filesystem()->getFilesByFolder('user_upload/Bildergalerie/Januar');
+```
+
+#### Filesystem()->getFileByID($id)($id)
 
 Get a file by file UID
 
-#### t3h_getFileExtPath($extension, $path)
+#### Filesystem()->getFileExtPath($extension, $path)
 
 Get full path for a file in an extension directory
 
