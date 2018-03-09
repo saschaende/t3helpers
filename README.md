@@ -21,7 +21,15 @@
 * **08.03.2017** - DEBUG: Full Typoscript, (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces, (Max Schröter) Convert static helper classes to abstractable normal classes, TEMPLATES: Render some Template with Variables
 * **07.03.2017** - Bugfixes, Password functions added, Bugfixes, Injections added, Google added, t3h_truncateTable() added, Link helpers added
 
-# Functions
+# Installation
+
+## Composer
+
+* https://packagist.org/packages/saschaende/t3helpers
+
+``composer require saschaende/t3helpers``
+
+# Features
 
 A list of short functions you can use within your extensions:
 
