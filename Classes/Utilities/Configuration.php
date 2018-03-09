@@ -15,6 +15,7 @@ class Configuration implements SingletonInterface {
      * constructor
      *
      * will read in and unserialze the config as set by EM
+     * @return $this
      */
     public function setExtension($ext) {
         $this->ext = $ext;

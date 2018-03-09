@@ -10,11 +10,11 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Debug implements SingletonInterface {
 
-    public function output($data) {
+    public function dump($data) {
         DebuggerUtility::var_dump($data);
     }
 
-    public function mailoutput($fromEmail, $recipientEmail, $data) {
+    public function mail($fromEmail, $recipientEmail, $data) {
         \T3h\Mail()->send(
             $recipientEmail,
             $fromEmail,
@@ -24,7 +24,7 @@ class Debug implements SingletonInterface {
         );
     }
 
-    public function debugFullTyposcript() {
+    public function dumpFullTyposcript() {
         $configurationManager = \T3h\injectClass(ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $this->output($extbaseFrameworkConfiguration);

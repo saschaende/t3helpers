@@ -110,26 +110,11 @@ function Template() {
     return injectClass(TemplateInterface::class);
 }
 
-// ---------------------------------------------------------------------------------
-// DEBUG
-// ---------------------------------------------------------------------------------
-
-function debug($data) {
-    /** @var DebugInterface $debug */
-    $debug = injectClass(DebugInterface::class);
-    $debug->output($data);
-}
-
-function debugMail($fromEmail, $recipientEmail, $data) {
-    /** @var DebugInterface $debug */
-    $debug = injectClass(DebugInterface::class);
-    $debug->mailoutput($fromEmail, $recipientEmail, $data);
-}
-
-function debugFullTyposcript() {
-    /** @var DebugInterface $debug */
-    $debug = injectClass(DebugInterface::class);
-    $debug->debugFullTyposcript();
+/**
+ * @return DebugInterface
+ */
+function Debug() {
+    return injectClass(DebugInterface::class);
 }
 
 // ---------------------------------------------------------------------------------
