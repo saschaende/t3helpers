@@ -60,7 +60,7 @@ $filePath = t3h::Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 // Will output: 'C:/xampp/htdocs/typo3/typo3conf/ext/t3helpers/Resources/Private/Libraries/t3helpers.php'
 ````
 
-### Overview / Latest functionality tests
+#### Overview / Latest functionality tests
 
 Function | TYPO3 Version test | Test date
 ------------- |------------- | ------------------
@@ -81,7 +81,7 @@ $this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(f
 
 Truncate a table (make it empty and reset increment counter)
 
-### Overview / Latest functionality tests
+#### Overview / Latest functionality tests
 
 Function | TYPO3 Version test | Test date
 ------------- |------------- | ------------------
