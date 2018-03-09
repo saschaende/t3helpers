@@ -51,7 +51,7 @@ Get a file by file UID
 
 Get full path for a file in an extension directory
 
-## Database
+## \T3h\Database()
 
 #### t3h_querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
 
