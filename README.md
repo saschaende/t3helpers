@@ -60,14 +60,6 @@ $filePath = t3h::Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 // Will output: 'C:/xampp/htdocs/typo3/typo3conf/ext/t3helpers/Resources/Private/Libraries/t3helpers.php'
 ````
 
-#### Overview / Latest functionality tests
-
-Function | TYPO3 Version test | Test date
-------------- |------------- | ------------------
-t3h::Filesystem()->getFilesByFolder($folder)      |  8.7.10 | 09.03.2017 
-t3h::Filesystem()->getFileByID($id)     |  8.7.10 | 09.03.2017
-t3h::Filesystem()->getFileExtPath($extension, $path) |  8.7.10 | 09.03.2017
-
 ## t3h::Database()
 
 #### t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
@@ -81,45 +73,48 @@ $this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(f
 
 > Truncate a table (make it empty and reset increment counter)
 
-#### Overview / Latest functionality tests
-
-Function | TYPO3 Version test | Test date
-------------- |------------- | ------------------
-t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)     |  - | - 
-t3h::Database()->truncateTable($table)     |  - | -
-
 ## Data
 
-#### t3h_sortArray($arr, $fields)
+#### t3h::sortArray($arr, $fields)
 
 > Sort a multidimensional way by keys
 
 ```
-$arr = t3h_sortArray(
+$arr = t3h::sortArray(
     $arr,
     ['column' => 'asc']
 );
 ```
 
-#### t3h_arrayToObject($array)
+#### t3h::arrayToObject($array)
 
 > Convert an array to an object
 
 ## Configuration (from EXT_CONF_TEMPLATE)
 
-#### t3h_getExtensionConfiguration($ext)
+#### t3h:Configuration()->setExtension($ext)
+
+> Set the extension name.
+
+#### t3h:Configuration()->getAll()
 
 > Get all the configuration settings for an extension
 
-#### t3h_getExtensionConfigurationByKey($ext,$key)
+#### t3h:Configuration()->get($propertyName)
 
 > Get only one configuration setting for $key (in most cases you dont need all)
 
 ## Settings (from TYPOSCRIPT)
 
-#### t3h_getPluginSettings($extensionName, $pluginName)
+#### t3h::Settings()->getPlugin($extensionName, $pluginName)
 
 > Get plugin settings from TYPOSCRIPT. Normally ``plugin.plugin_name.settings`` or ``plugin.extension_name.settings`` 
+
+````
+// Do not use "tx_" in the extension name
+$settings = t3h::Settings()->getPlugin('semusicdirectory','Searchresults');
+t3h::Debug()->dump($settings); // will ne null, if there are no settings
+````
 
 ## Session
 
