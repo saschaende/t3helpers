@@ -153,19 +153,40 @@ t3h::Debug()->dump($settings); // will ne null, if there are no settings
 
 
 
-## Session
+## t3h::Session()
 
-#### t3h_getSession($extension,$key)
+#### t3h::Session()->setExtension($extension)
 
 > Get a value from session by extension name and key
 
-#### t3h_setSession($extension,$key,$value)
+#### t3h::Session()->get($key)
+
+> Get a value from session by extension name and key
+
+#### t3h::Session()->set($key, $value)
 
 > Put data into the session by using extension name and a key
 
-#### t3h_isSession($extension,$key)
+#### t3h::Session()->exists($key)
 
 > Does a key exist?
+
+````
+t3h::Session()->setExtension('t3helpers')->set('testing1', ['key' => 'value']);
+t3h::Session()->set('testing2','bla');
+t3h::Session()->setExtension('secondextension')->set('testing3','otherextension');
+
+t3h::Session()->setExtension('t3helpers');
+t3h::Debug()->dump(t3h::Session()->get('testing1'));
+t3h::Debug()->dump(t3h::Session()->get('testing2'));
+
+t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing3'));
+````
+
+
+
+
+
 
 ## Debug
 
