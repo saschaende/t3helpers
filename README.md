@@ -206,21 +206,33 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 > Debug output the whole TYPOSCRIPT, that is actually defined
 
+
+
+
 ## t3h::Email()
 
 #### t3h::Email()->send($recipient, $senderEmail, $senderName, $subject, $emailBody)
 
 > Just send an email with one line
 
-### t3h::Email()->sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [])
+#### t3h::Email()->sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [])
 
 > Send an email and use a fluid template with assigned variables
+
+
+
+
 
 ## t3h::Language()
 
 #### t3h::Language()->getCurrent()
 
 > Get the current language
+
+
+
+
+
 
 ## t3h::Link()
 
@@ -231,6 +243,11 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 #### t3h_getLinkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
 
 > Generate a link with some more settings
+
+
+
+
+
 
 ## t3h::Injections()
 
@@ -246,11 +263,20 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 ```
 
+
+
+
+
 ## t3h::Google()
 
 #### t3h_getGoogleGeoCoordinates($googleApiKey,$address)
 
 > Get geo coordinates
+
+
+
+
+
 
 ## t3h::Passwords()
 
