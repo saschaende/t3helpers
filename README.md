@@ -68,18 +68,23 @@ t3h::Filesystem()->getFilesByFolder($folder)      |  8.7.10 | 09.03.2017
 t3h::Filesystem()->getFileByID($id)     |  8.7.10 | 09.03.2017
 t3h::Filesystem()->getFileExtPath($extension, $path) |  8.7.10 | 09.03.2017
 
-## \T3h\Database()
+## t3h::Database()
 
-#### t3h_querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
+#### t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
 
 Use it for setting the three most used query settings when using database features.
 
 ```
-$query->setDefaultQuerySettings(t3h_querySettings(false,true,true));
+$this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(false,true,true));
 ```
-#### t3h_truncateTable($table)
+#### t3h::Database()->truncateTable($table)
 
 Truncate a table (make it empty and reset increment counter)
+
+Function | TYPO3 Version test | Test date
+------------- |------------- | ------------------
+t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)     |  - | - 
+t3h::Database()->truncateTable($table)     |  - | -
 
 ## Data
 
