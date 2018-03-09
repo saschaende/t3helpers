@@ -4,6 +4,6 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 interface TemplateInterface {
 
-    public function renderTemplate($extension, $path, $variables = []);
+    public function render($extension, $path, $variables = []);
 
 }

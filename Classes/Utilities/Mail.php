@@ -23,4 +23,9 @@ class Mail implements SingletonInterface {
         return $message->isSent();
     }
 
+    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = []){
+        $emailBody = \T3h\Template()->render($extension, $path, $variables);
+        return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody);
+    }
+
 }
