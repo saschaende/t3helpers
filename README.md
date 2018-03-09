@@ -33,7 +33,7 @@
 
 A list of short functions you can use within your extensions:
 
-## File System
+## \T3h\Filesystem()
 
 #### Filesystem()->getFilesByFolder($folder)
 
