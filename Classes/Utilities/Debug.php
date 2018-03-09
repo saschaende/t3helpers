@@ -27,7 +27,7 @@ class Debug implements SingletonInterface {
     public function dumpFullTyposcript() {
         $configurationManager = \T3h\injectClass(ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-        $this->output($extbaseFrameworkConfiguration);
+        $this->dump($extbaseFrameworkConfiguration);
     }
 
 }
