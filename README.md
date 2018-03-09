@@ -81,6 +81,8 @@ $this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(f
 
 Truncate a table (make it empty and reset increment counter)
 
+### Overview / Latest functionality tests
+
 Function | TYPO3 Version test | Test date
 ------------- |------------- | ------------------
 t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)     |  - | - 
