@@ -33,30 +33,30 @@
 
 A list of short functions you can use within your extensions:
 
-## \T3h\Filesystem()
+## t3h::Filesystem()
 
-#### Filesystem()->getFilesByFolder($folder)
+#### t3h::Filesystem()->getFilesByFolder($folder)
 
 Get a list of files from a folder in fileadmin
 
 ```
-$files = \T3h\Filesystem()->getFilesByFolder('fileadmin/user_upload/Bilderslider');
+$files = t3h::Filesystem()->getFilesByFolder('fileadmin/user_upload/Bilderslider');
 ```
 
-#### Filesystem()->getFileByID($id)
+#### t3h::Filesystem()->getFileByID($id)
 
 Get a file by file UID
 
 ````
-$file = \T3h\Filesystem()->getFileByID(14);
+$file = t3h::Filesystem()->getFileByID(14);
 ````
 
-#### Filesystem()->getFileExtPath($extension, $path)
+#### t3h::Filesystem()->getFileExtPath($extension, $path)
 
 Get full path for a file in an extension directory
 
 ````
-$filePath = \T3h\Filesystem()->getFileExtPath('t3helpers','Resources/Private/Libraries/t3helpers.php');
+$filePath = t3h::Filesystem()->getFileExtPath('t3helpers','Resources/Private/Libraries/t3helpers.php');
 // Will output: 'C:/xampp/htdocs/typo3/typo3conf/ext/t3helpers/Resources/Private/Libraries/t3helpers.php'
 ````
 
@@ -64,9 +64,9 @@ $filePath = \T3h\Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 
 Function | TYPO3 Version test | Test date
 ------------- |------------- | ------------------
-Filesystem()->getFilesByFolder($folder)      |  8.7.10 | 09.03.2017 
-Filesystem()->getFileByID($id)     |  8.7.10 | 09.03.2017
-Filesystem()->getFileExtPath($extension, $path) |  8.7.10 | 09.03.2017
+t3h::Filesystem()->getFilesByFolder($folder)      |  8.7.10 | 09.03.2017 
+t3h::Filesystem()->getFileByID($id)     |  8.7.10 | 09.03.2017
+t3h::Filesystem()->getFileExtPath($extension, $path) |  8.7.10 | 09.03.2017
 
 ## \T3h\Database()
 

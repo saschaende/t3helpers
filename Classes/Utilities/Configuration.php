@@ -2,8 +2,10 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\Configuration\ConfigurationManager;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class Configuration
@@ -24,7 +26,7 @@ class Configuration implements SingletonInterface {
      */
     public function setExtension($ext) {
         $this->ext = $ext;
-        $this->configurationManager = \T3h\injectClass(ConfigurationManager::class);
+        $this->configurationManager = t3h::injectClass(ConfigurationManager::class);
         $this->extensionConfiguration = unserialize($this->configurationManager->getConfigurationValueByPath('EXT/extConf/' . $ext));
     }
 
@@ -36,6 +38,6 @@ class Configuration implements SingletonInterface {
     }
 
     public function getAll() {
-        return \T3h\Data()->arrayToObject($this->extensionConfiguration);
+        return t3h::Data()->arrayToObject($this->extensionConfiguration);
     }
 }

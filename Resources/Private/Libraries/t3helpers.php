@@ -1,6 +1,6 @@
 <?php
 
-namespace T3h;
+namespace t3h;
 
 use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
 use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
@@ -19,109 +19,113 @@ use SaschaEnde\T3helpers\Utilities\UriInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
-/**
- * @return FilesystemInterface
- */
-function Filesystem() {
-    return injectClass(FilesystemInterface::class);
-}
+class t3h {
 
-/**
- * @return ConfigurationInterface
- */
-function Configuration() {
-    return injectClass(ConfigurationInterface::class);
-}
+    /**
+     * @return FilesystemInterface
+     */
+    public static function Filesystem() {
+        return self::injectClass(FilesystemInterface::class);
+    }
 
-/**
- * @return SettingsInterface
- */
-function Settings() {
-    return injectClass(SettingsInterface::class);
-}
+    /**
+     * @return ConfigurationInterface
+     */
+    public static function Configuration() {
+        return self::injectClass(ConfigurationInterface::class);
+    }
 
-/**
- * @return DataInterface
- */
-function Data() {
-    return injectClass(DataInterface::class);
-}
+    /**
+     * @return SettingsInterface
+     */
+    public static function Settings() {
+        return self::injectClass(SettingsInterface::class);
+    }
 
-/**
- * @return SessionInterface
- */
-function Session() {
-    return injectClass(SessionInterface::class);
-}
+    /**
+     * @return DataInterface
+     */
+    public static function Data() {
+        return self::injectClass(DataInterface::class);
+    }
 
-/**
- * @return MailInterface
- */
-function Mail() {
-    return injectClass(MailInterface::class);
-}
+    /**
+     * @return SessionInterface
+     */
+    public static function Session() {
+        return self::injectClass(SessionInterface::class);
+    }
 
-/**
- * @return LanguageInterface
- */
-function Language() {
-    return injectClass(LanguageInterface::class);
-}
+    /**
+     * @return MailInterface
+     */
+    public static function Mail() {
+        return self::injectClass(MailInterface::class);
+    }
 
-/**
- * @return DatabaseInterface
- */
-function Database() {
-    return injectClass(DatabaseInterface::class);
-}
+    /**
+     * @return LanguageInterface
+     */
+    public static function Language() {
+        return self::injectClass(LanguageInterface::class);
+    }
 
-/**
- * @return UriInterface
- */
-function Link() {
-    return injectClass(UriInterface::class);
-}
+    /**
+     * @return DatabaseInterface
+     */
+    public static function Database() {
+        return self::injectClass(DatabaseInterface::class);
+    }
 
-/**
- * @return InjectionsInterface
- */
-function Inject() {
-    return injectClass(InjectionsInterface::class);
-}
+    /**
+     * @return UriInterface
+     */
+    public static function Link() {
+        return self::injectClass(UriInterface::class);
+    }
 
-/**
- * @return GoogleInterface
- */
-function Google() {
-    return injectClass(GoogleInterface::class);
-}
+    /**
+     * @return InjectionsInterface
+     */
+    public static function Inject() {
+        return self::injectClass(InjectionsInterface::class);
+    }
 
-/**
- * @return PasswordInterface
- */
-function Password() {
-    return injectClass(PasswordInterface::class);
-}
+    /**
+     * @return GoogleInterface
+     */
+    public static function Google() {
+        return self::injectClass(GoogleInterface::class);
+    }
 
-/**
- * @return TemplateInterface
- */
-function Template() {
-    return injectClass(TemplateInterface::class);
-}
+    /**
+     * @return PasswordInterface
+     */
+    public static function Password() {
+        return self::injectClass(PasswordInterface::class);
+    }
 
-/**
- * @return DebugInterface
- */
-function Debug() {
-    return injectClass(DebugInterface::class);
-}
+    /**
+     * @return TemplateInterface
+     */
+    public static function Template() {
+        return self::injectClass(TemplateInterface::class);
+    }
+
+    /**
+     * @return DebugInterface
+     */
+    public static function Debug() {
+        return self::injectClass(DebugInterface::class);
+    }
 
 // ---------------------------------------------------------------------------------
 // Objectmanager
 // ---------------------------------------------------------------------------------
 
-function injectClass($class) {
-    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-    return $objectManager->get($class);
+    public static function injectClass($class) {
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        return $objectManager->get($class);
+    }
+
 }

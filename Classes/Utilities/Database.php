@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -12,7 +13,7 @@ class Database implements SingletonInterface {
     public function querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
 
         /** @var Typo3QuerySettings $querySettings */
-        $querySettings = \T3h\injectClass(Typo3QuerySettings::class);
+        $querySettings = t3h::injectClass(Typo3QuerySettings::class);
 
         $querySettings->setRespectStoragePage($setRespectStoragePage);
         $querySettings->setIgnoreEnableFields($setIgnoreEnableFields);

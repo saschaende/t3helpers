@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -24,7 +25,7 @@ class Mail implements SingletonInterface {
     }
 
     public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = []){
-        $emailBody = \T3h\Template()->render($extension, $path, $variables);
+        $emailBody = t3h::Template()->render($extension, $path, $variables);
         return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody);
     }
 

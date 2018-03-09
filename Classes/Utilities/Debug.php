@@ -3,6 +3,7 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 
+use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -15,7 +16,7 @@ class Debug implements SingletonInterface {
     }
 
     public function mail($fromEmail, $recipientEmail, $data) {
-        \T3h\Mail()->send(
+        t3h::Mail()->send(
             $recipientEmail,
             $fromEmail,
             'Debugger',
@@ -25,7 +26,7 @@ class Debug implements SingletonInterface {
     }
 
     public function dumpFullTyposcript() {
-        $configurationManager = \T3h\injectClass(ConfigurationManager::class);
+        $configurationManager = t3h::injectClass(ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $this->dump($extbaseFrameworkConfiguration);
     }
