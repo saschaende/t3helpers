@@ -207,13 +207,17 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 ## t3h::Email()
 
-#### t3h_mail($recipient, $senderEmail, $senderName, $subject, $emailBody)
+#### t3h::Email()->send($recipient, $senderEmail, $senderName, $subject, $emailBody)
 
 > Just send an email with one line
 
+### t3h::Email()->sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [])
+
+> Send an email and use a fluid template with assigned variables
+
 ## t3h::Language()
 
-#### t3h_getCurrentLanguage()
+#### t3h::Language()->getCurrent()
 
 > Get the current language
 
