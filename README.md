@@ -43,7 +43,7 @@ Get a list of files from a folder in fileadmin
 $Files = \T3h\Filesystem()->getFilesByFolder('user_upload/Bildergalerie/Januar');
 ```
 
-#### Filesystem()->getFileByID($id)($id)
+#### Filesystem()->getFileByID($id)
 
 Get a file by file UID
 
