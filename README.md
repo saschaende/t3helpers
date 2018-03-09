@@ -33,6 +33,13 @@
 
 A list of short functions you can use within your extensions:
 
+
+
+
+
+
+
+
 ## t3h::Filesystem()
 
 #### t3h::Filesystem()->getFilesByFolder($folder)
@@ -60,6 +67,12 @@ $filePath = t3h::Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 // Will output: 'C:/xampp/htdocs/typo3/typo3conf/ext/t3helpers/Resources/Private/Libraries/t3helpers.php'
 ````
 
+
+
+
+
+
+
 ## t3h::Database()
 
 #### t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
@@ -73,9 +86,15 @@ $this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(f
 
 > Truncate a table (make it empty and reset increment counter)
 
-## Data
 
-#### t3h::sortArray($arr, $fields)
+
+
+
+
+
+## t3h::Data()
+
+#### t3h::Data()->sortArray($arr, $fields)
 
 > Sort a multidimensional way by keys
 
@@ -86,11 +105,17 @@ $arr = t3h::sortArray(
 );
 ```
 
-#### t3h::arrayToObject($array)
+#### t3h::Data()->arrayToObject($array)
 
 > Convert an array to an object
 
-## Configuration (from EXT_CONF_TEMPLATE)
+
+
+
+
+
+
+## t3h::Configuration (from EXT_CONF_TEMPLATE)
 
 #### t3h:Configuration()->setExtension($ext)
 
@@ -104,7 +129,12 @@ $arr = t3h::sortArray(
 
 > Get only one configuration setting for $key (in most cases you dont need all)
 
-## Settings (from TYPOSCRIPT)
+
+
+
+
+
+## t3h::Settings() (from TYPOSCRIPT)
 
 #### t3h::Settings()->getPlugin($extensionName, $pluginName)
 
@@ -115,6 +145,13 @@ $arr = t3h::sortArray(
 $settings = t3h::Settings()->getPlugin('semusicdirectory','Searchresults');
 t3h::Debug()->dump($settings); // will ne null, if there are no settings
 ````
+
+
+
+
+
+
+
 
 ## Session
 
