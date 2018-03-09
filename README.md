@@ -155,6 +155,8 @@ t3h::Debug()->dump($settings); // will ne null, if there are no settings
 
 ## t3h::Session()
 
+T3h is grouping your session data by extension name - so there will be no conflicts with other extensions.
+
 #### t3h::Session()->setExtension($extension)
 
 > Get a value from session by extension name and key
@@ -172,6 +174,7 @@ t3h::Debug()->dump($settings); // will ne null, if there are no settings
 > Does a key exist?
 
 ````
+// Some examples with sessions and combination of functions
 t3h::Session()->setExtension('t3helpers')->set('testing1', ['key' => 'value']);
 t3h::Session()->set('testing2','bla');
 t3h::Session()->setExtension('secondextension')->set('testing3','otherextension');
@@ -188,33 +191,33 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 
 
-## Debug
+## t3h::Debug()
 
-#### t3h_debug($data)
+#### t3h::Debug()->dump($data,$split = false)
 
-> Shortcut for DebuggerUtility
+> Shortcut for DebuggerUtility, use $split = true to get many debugs with one debug :)
 
-#### t3h_debugMail($fromEmail,$recipientEmail,$data)
+#### t3h::Debug()->mail($fromEmail,$recipientEmail,$data)
 
 > Get a print_r directly with mail
 
-#### t3h_debugFullTyposcript()
+#### t3h::Debug()->dumpFullTyposcript()
 
 > Debug output the whole TYPOSCRIPT, that is actually defined
 
-## Email
+## t3h::Email()
 
 #### t3h_mail($recipient, $senderEmail, $senderName, $subject, $emailBody)
 
 > Just send an email with one line
 
-## Language
+## t3h::Language()
 
 #### t3h_getCurrentLanguage()
 
 > Get the current language
 
-## Link
+## t3h::Link()
 
 #### t3h_getLinkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
 
@@ -224,7 +227,7 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 > Generate a link with some more settings
 
-## Injections
+## t3h::Injections()
 
 #### t3h_injectClass($class)
 
@@ -238,13 +241,13 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 ```
 
-## GOOGLE
+## t3h::Google()
 
 #### t3h_getGoogleGeoCoordinates($googleApiKey,$address)
 
 > Get geo coordinates
 
-## Passwords
+## t3h::Passwords()
 
 #### t3h_getEncryptedPassword($password)
 
@@ -254,7 +257,7 @@ t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 
 > Get a human readable password
 
-## Template
+## t3h::Template()
 
 #### t3h_getTemplate($extension, $path, $variables = [])
 

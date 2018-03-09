@@ -11,8 +11,15 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Debug implements SingletonInterface {
 
-    public function dump($data) {
-        DebuggerUtility::var_dump($data);
+    public function dump($data,$split = false) {
+        if($split && (is_array($$data) || is_object($data))){
+            foreach($data as $col){
+                DebuggerUtility::var_dump($col);
+            }
+        }else{
+            DebuggerUtility::var_dump($data);
+        }
+
     }
 
     public function mail($fromEmail, $recipientEmail, $data) {
