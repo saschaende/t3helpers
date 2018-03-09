@@ -11,6 +11,7 @@
 
 # TODO
 
+* [BIG CHANGE] Remove functions, use Shortcuts like T3hSessions()->get() or T3hDatabase()->truncateTable($table)
 * [DOCS] Code examples and explainations for every function
 * [TESTING] Test all functions for stable 1.0 release
 * [FEATURE] SETTINGS: Get Template Root Paths for extension
