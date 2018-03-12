@@ -7,6 +7,7 @@ use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Debug implements SingletonInterface {
@@ -36,6 +37,16 @@ class Debug implements SingletonInterface {
         $configurationManager = t3h::injectClass(ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $this->dump($extbaseFrameworkConfiguration);
+    }
+
+    /**
+     * @todo Testen und aufräumen
+     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
+     */
+    public function query($query) {
+        /** @var Typo3DbQueryParser $queryParser */
+        $queryParser = t3h::injectClass(\TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser::class);
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($queryParser->convertQueryToDoctrineQueryBuilder($query)->getSQL());
     }
 
 }

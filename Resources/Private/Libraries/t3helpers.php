@@ -127,9 +127,9 @@ class t3h {
         return self::injectClass(BackendUserInterface::class);
     }
 
-// ---------------------------------------------------------------------------------
-// Objectmanager
-// ---------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------
+    // Objectmanager
+    // ---------------------------------------------------------------------------------
 
     public static function injectClass($class) {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
