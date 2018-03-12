@@ -2,6 +2,7 @@
 
 namespace t3h;
 
+use SaschaEnde\T3helpers\Utilities\BackendUserInterface;
 use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
 use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
 use SaschaEnde\T3helpers\Utilities\DataInterface;
@@ -117,6 +118,13 @@ class t3h {
      */
     public static function Debug() {
         return self::injectClass(DebugInterface::class);
+    }
+
+    /**
+     * @return DebugInterface
+     */
+    public static function BackendUser() {
+        return self::injectClass(BackendUserInterface::class);
     }
 
 // ---------------------------------------------------------------------------------

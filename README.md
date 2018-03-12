@@ -41,9 +41,9 @@ A list of short functions you can use within your extensions:
 
 
 
-## t3h::Filesystem()
+## Filesystem
 
-#### t3h::Filesystem()->getFilesByFolder($folder)
+#### getFilesByFolder($folder)
 
 > Get a list of files from a folder in fileadmin
 
@@ -51,7 +51,7 @@ A list of short functions you can use within your extensions:
 $files = t3h::Filesystem()->getFilesByFolder('fileadmin/user_upload/Bilderslider');
 ```
 
-#### t3h::Filesystem()->getFileByID($id)
+#### getFileByID($id)
 
 > Get a file by file UID
 
@@ -59,7 +59,7 @@ $files = t3h::Filesystem()->getFilesByFolder('fileadmin/user_upload/Bilderslider
 $file = t3h::Filesystem()->getFileByID(14);
 ````
 
-#### t3h::Filesystem()->getFileExtPath($extension, $path)
+#### getFileExtPath($extension, $path)
 
 > Get full path for a file in an extension directory
 
@@ -74,16 +74,16 @@ $filePath = t3h::Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 
 
 
-## t3h::Database()
+## Database
 
-#### t3h::Database()->querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
+#### querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false)
 
 > Use it for setting the three most used query settings when using database features.
 
 ```
 $this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(false,true,true));
 ```
-#### t3h::Database()->truncateTable($table)
+#### truncateTable($table)
 
 > Truncate a table (make it empty and reset increment counter)
 
@@ -93,9 +93,9 @@ $this->musicRepository->setDefaultQuerySettings(t3h::Database()->querySettings(f
 
 
 
-## t3h::Data()
+## Data
 
-#### t3h::Data()->sortArray($arr, $fields)
+#### sortArray($arr, $fields)
 
 > Sort a multidimensional way by keys
 
@@ -106,7 +106,7 @@ $arr = t3h::sortArray(
 );
 ```
 
-#### t3h::Data()->arrayToObject($array)
+#### arrayToObject($array)
 
 > Convert an array to an object
 
@@ -116,17 +116,17 @@ $arr = t3h::sortArray(
 
 
 
-## t3h::Configuration (from EXT_CONF_TEMPLATE)
+## Configuration (from EXT_CONF_TEMPLATE)
 
-#### t3h:Configuration()->setExtension($ext)
+#### setExtension($ext)
 
 > Set the extension name.
 
-#### t3h:Configuration()->getAll()
+#### getAll()
 
 > Get all the configuration settings for an extension
 
-#### t3h:Configuration()->get($propertyName)
+#### get($propertyName)
 
 > Get only one configuration setting for $key (in most cases you dont need all)
 
@@ -135,9 +135,9 @@ $arr = t3h::sortArray(
 
 
 
-## t3h::Settings() (from TYPOSCRIPT)
+## Settings (from TYPOSCRIPT)
 
-#### t3h::Settings()->getPlugin($extensionName, $pluginName)
+#### getPlugin($extensionName, $pluginName)
 
 > Get plugin settings from TYPOSCRIPT. Normally ``plugin.plugin_name.settings`` or ``plugin.extension_name.settings`` 
 
@@ -154,23 +154,23 @@ t3h::Debug()->dump($settings); // will ne null, if there are no settings
 
 
 
-## t3h::Session()
+## Session
 
 T3h is grouping your session data by extension name - so there will be no conflicts with other extensions.
 
-#### t3h::Session()->setExtension($extension)
+#### setExtension($extension)
 
 > Get a value from session by extension name and key
 
-#### t3h::Session()->get($key)
+#### get($key)
 
 > Get a value from session by extension name and key
 
-#### t3h::Session()->set($key, $value)
+#### set($key, $value)
 
 > Put data into the session by using extension name and a key
 
-#### t3h::Session()->exists($key)
+#### exists($key)
 
 > Does a key exist?
 
@@ -192,30 +192,30 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 
 
-## t3h::Debug()
+## Debug
 
-#### t3h::Debug()->dump($data,$split = false)
+#### dump($data,$split = false)
 
 > Shortcut for DebuggerUtility, use $split = true to get many debugs with one debug :)
 
-#### t3h::Debug()->mail($fromEmail,$recipientEmail,$data)
+#### mail($fromEmail,$recipientEmail,$data)
 
 > Get a print_r directly with mail
 
-#### t3h::Debug()->dumpFullTyposcript()
+#### dumpFullTyposcript()
 
 > Debug output the whole TYPOSCRIPT, that is actually defined
 
 
 
 
-## t3h::Email()
+## Email
 
-#### t3h::Email()->send($recipient, $senderEmail, $senderName, $subject, $emailBody)
+#### send($recipient, $senderEmail, $senderName, $subject, $emailBody)
 
 > Just send an email with one line
 
-#### t3h::Email()->sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [])
+#### sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [])
 
 > Send an email and use a fluid template with assigned variables
 
@@ -223,9 +223,9 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 
 
-## t3h::Language()
+## Language()
 
-#### t3h::Language()->getCurrent()
+#### getCurrent()
 
 > Get the current language
 
@@ -234,13 +234,15 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 
 
-## t3h::Link()
+## Link()
 
-#### t3h_getLinkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
+Important if you use REALURL: REALURL does not support workspaces. If you are are using a workspace, REALURL will be ignored.
+
+#### getLinkPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true)
 
 > Generate a link with PID
 
-#### t3h_getLinkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
+#### getLinkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
 
 > Generate a link with some more settings
 
