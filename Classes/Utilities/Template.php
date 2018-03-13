@@ -1,5 +1,7 @@
 <?php
 
+namespace SaschaEnde\T3helpers\Utilities;
+
 use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
