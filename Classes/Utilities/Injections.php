@@ -9,29 +9,52 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Injections implements SingletonInterface {
 
-    public function phpFile($extension, $path) {
-        $filePath = t3h::Filesystem()->getFileExtPath($extension, $path);
-        require_once($filePath);
-    }
+    protected $extension;
 
     /**
-     * @todo Aufräumen und fertich machen
+     * @param $ext
+     * @return $this
      */
-    public function jsFile($ext, $jspath = 'Language'){
+    public function setExtension($ext){
+        $this->extension = $ext;
+        return $this;
+    }
 
-        // return default
-        $path = '../typo3conf/ext/'.$ext.'/Resources/Public/JavaScript/'.$jspath.'/en.js';
+    public function phpFile($filepath) {
+        $path = t3h::Filesystem()->getFileExtPath($this->extension, $filepath);
+        require_once($path);
+    }
 
-        // check if there is a translation
-        $abs_path = ExtensionManagementUtility::extPath($ext) . 'Resources/Public/JavaScript/'.$jspath;
-        if(file_exists($abs_path.'/'.$this->getLanguage().'.js')){
-            $path = '../typo3conf/ext/'.$ext.'/Resources/Public/JavaScript/'.$jspath.'/'.$this->getLanguage().'.js';
-        }
-
+    public function jsFile($filepath){
+        // Get path
+        $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->addJsFile($path);
+    }
 
+    public function jsLibraryFile($filepath){
+        // Get path
+        $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
+        /** @var PageRenderer $pageRenderer */
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->addJsLibrary($path);
+    }
+
+    public function cssFile($filepath){
+        // Get path
+        $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
+        /** @var PageRenderer $pageRenderer */
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->addCssFile($path);
+    }
+
+    public function cssLibraryFile($filepath){
+        // Get path
+        $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
+        /** @var PageRenderer $pageRenderer */
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->addCssLibrary($path);
     }
 
 }
