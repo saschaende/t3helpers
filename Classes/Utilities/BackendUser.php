@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
@@ -27,6 +28,50 @@ class BackendUser implements SingletonInterface {
 
     public function getGroups(){
         return $this->beUser->userGroups;
+    }
+
+    public function getAllowedPages(){
+        $pids = [];
+        foreach($GLOBALS['BE_USER']->userGroups as $group){
+            if(!empty($group['db_mountpoints'])){
+                $pids[] = $group['db_mountpoints'];
+            }
+        }
+        if(!empty($GLOBALS['BE_USER']->user['db_mountpoints'])){
+            $pids[] = $GLOBALS['BE_USER']->user['db_mountpoints'];
+        }
+        return $pids;
+    }
+
+    private function getAllowedPagesUris(){
+        $allowedPages = $this->getAllowedPages();
+        $pids = [];
+        $uriList = [];
+
+        // Hole all IDs von allen Unterseiten
+        foreach($allowedPages as $p){
+            $pids[] = $p;
+            $pt = t3h::Page()->getPagetree($p,999);
+            foreach($pt as $id){
+                $pids[] = $id;
+            }
+        }
+        $pids = array_unique($pids);
+
+        // Aktuelle Workspace ID zwischenspeichern
+        $ws = $GLOBALS['BE_USER']->workspace;
+        // Workspace auf standard setzen (RealURL kommt mit Workspaces nicht klar)
+        $GLOBALS['BE_USER']->workspace = 0;
+        foreach($pids as $id){
+            $link = t3h::Link()->getByPid($id, true, false);
+            if(!empty($link)){
+                $uriList[] = $link;
+            }
+        }
+        // Workspace wieder zurücksetzen
+        $GLOBALS['BE_USER']->workspace = $ws;
+        // Liste der Uris zurückgeben
+        return $uriList;
     }
 
 }

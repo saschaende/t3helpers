@@ -12,6 +12,7 @@ use SaschaEnde\T3helpers\Utilities\GoogleInterface;
 use SaschaEnde\T3helpers\Utilities\InjectionsInterface;
 use SaschaEnde\T3helpers\Utilities\LanguageInterface;
 use SaschaEnde\T3helpers\Utilities\MailInterface;
+use SaschaEnde\T3helpers\Utilities\PageInterface;
 use SaschaEnde\T3helpers\Utilities\PasswordInterface;
 use SaschaEnde\T3helpers\Utilities\SessionInterface;
 use SaschaEnde\T3helpers\Utilities\SettingsInterface;
@@ -121,10 +122,17 @@ class t3h {
     }
 
     /**
-     * @return DebugInterface
+     * @return BackendUserInterface
      */
     public static function BackendUser() {
         return self::injectClass(BackendUserInterface::class);
+    }
+
+    /**
+     * @return PageInterface
+     */
+    public static function Page() {
+        return self::injectClass(PageInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
