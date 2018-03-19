@@ -223,7 +223,7 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 
 
-## Language()
+## Language
 
 #### getCurrent()
 
@@ -234,7 +234,7 @@ t3h::Debug()->dump(t3h::Session()->setExtension('secondextension')->get('testing
 
 
 
-## Link()
+## Link
 
 Important if you use REALURL: REALURL does not support workspaces. If you are are using a workspace, REALURL will be ignored.
 
@@ -251,7 +251,7 @@ Important if you use REALURL: REALURL does not support workspaces. If you are ar
 
 
 
-## t3h::Injections()
+## Injections
 
 #### t3h_injectClass($class)
 
@@ -269,7 +269,7 @@ t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 
 
 
-## t3h::Google()
+## Google
 
 #### t3h_getGoogleGeoCoordinates($googleApiKey,$address)
 
@@ -280,7 +280,7 @@ t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 
 
 
-## t3h::Passwords()
+## Passwords
 
 #### t3h_getEncryptedPassword($password)
 
@@ -290,7 +290,7 @@ t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
 
 > Get a human readable password
 
-## t3h::Template()
+## Template
 
 #### t3h_getTemplate($extension, $path, $variables = [])
 
