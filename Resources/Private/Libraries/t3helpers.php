@@ -17,6 +17,7 @@ use SaschaEnde\T3helpers\Utilities\PasswordInterface;
 use SaschaEnde\T3helpers\Utilities\SessionInterface;
 use SaschaEnde\T3helpers\Utilities\SettingsInterface;
 use SaschaEnde\T3helpers\Utilities\TemplateInterface;
+use SaschaEnde\T3helpers\Utilities\TsfeInterface;
 use SaschaEnde\T3helpers\Utilities\UriInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -133,6 +134,13 @@ class t3h {
      */
     public static function Page() {
         return self::injectClass(PageInterface::class);
+    }
+
+    /**
+     * @return TsfeInterface
+     */
+    public static function Tsfe() {
+        return self::injectClass(TsfeInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
