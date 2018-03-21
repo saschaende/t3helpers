@@ -12,10 +12,12 @@ use SaschaEnde\T3helpers\Utilities\Google;
 use SaschaEnde\T3helpers\Utilities\Injections;
 use SaschaEnde\T3helpers\Utilities\Language;
 use SaschaEnde\T3helpers\Utilities\Mail;
+use SaschaEnde\T3helpers\Utilities\Page;
 use SaschaEnde\T3helpers\Utilities\Password;
 use SaschaEnde\T3helpers\Utilities\Session;
 use SaschaEnde\T3helpers\Utilities\Settings;
 use SaschaEnde\T3helpers\Utilities\Template;
+use SaschaEnde\T3helpers\Utilities\Tsfe;
 use SaschaEnde\T3helpers\Utilities\Upload;
 use SaschaEnde\T3helpers\Utilities\Uri;
 
@@ -116,5 +118,17 @@ class AbstractActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @inject
      */
     protected $Uri;
+
+    /**
+     * @var Page
+     * @inject
+     */
+    protected $Page;
+
+    /**
+     * @var Tsfe
+     * @inject
+     */
+    protected $Tsfe;
 
 }
