@@ -3,7 +3,7 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 interface DatabaseInterface {
-    public function querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false);
+    public function getQuerySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false);
     public function truncateTable($table);
-    public function convertQueryResultToObjectStorage($queryResult);
+    public function getObjectStorageByQueryResult($queryResult);
 }

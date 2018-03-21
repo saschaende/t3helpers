@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Database implements SingletonInterface {
 
-    public function querySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
+    public function getQuerySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
 
         /** @var Typo3QuerySettings $querySettings */
         $querySettings = t3h::injectClass(Typo3QuerySettings::class);
@@ -28,7 +28,7 @@ class Database implements SingletonInterface {
         $connection->truncate($table);
     }
 
-    public function convertQueryResultToObjectStorage($queryResult){
+    public function getObjectStorageByQueryResult($queryResult){
         $object = new ObjectStorage();
         foreach($queryResult as $q){
             $object->attach($q);
