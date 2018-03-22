@@ -43,7 +43,7 @@ class BackendUser implements SingletonInterface {
         return $pids;
     }
 
-    private function getAllowedPagesUris(){
+    public function getAllowedPagesUris(){
         $allowedPages = $this->getAllowedPages();
         $pids = [];
         $uriList = [];

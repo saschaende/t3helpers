@@ -8,4 +8,5 @@ interface  BackendUserInterface {
     public function get();
     public function getGroups();
     public function getAllowedPages();
+    public function getAllowedPagesUris();
 }
