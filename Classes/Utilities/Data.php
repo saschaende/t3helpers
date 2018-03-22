@@ -3,8 +3,33 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Data implements SingletonInterface {
+
+    /**
+     * Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
+     * @param ObjectStorage $object
+     * @param $function
+     * @param string $ordering
+     * @return ObjectStorage
+     */
+    public function sortObjectStorage(ObjectStorage $object, $function, $ordering = 'asc'){
+        $array = [];
+        foreach($object as $elm){
+            $array[] = [
+                'object'    =>  $elm,
+                'sort'   =>  $elm->$function()
+            ];
+        }
+        $array = $this->sortArray($array,['sort'=>$ordering]);
+
+        $storage = new ObjectStorage();
+        foreach($array as $elm){
+            $storage->attach($elm['object']);
+        }
+        return $storage;
+    }
 
     public function sortArray($arr, $fields) {
         $sortFields = array();
