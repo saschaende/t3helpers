@@ -37,7 +37,7 @@ class Data implements SingletonInterface {
 
         foreach ($arr as $key => $row) {
             foreach ($fields as $field => $order) {
-                $sortFields[$field][$key] = trim($row[$field]);
+                $sortFields[$field][$key] = $row[$field];
             }
         }
 
