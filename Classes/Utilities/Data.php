@@ -49,7 +49,7 @@ class Data implements SingletonInterface {
                     $args[$pt];
                 }
             } else {
-                $args[] = ($order == 'asc') ? SORT_ASC : SORT_DESC;
+                $args[] = ($order == 'asc' || $order == 'ASC' || $order == SORT_ASC) ? SORT_ASC : SORT_DESC;
             }
         }
 
