@@ -20,6 +20,29 @@ class Google implements SingletonInterface {
 
     }
 
+    /**
+     * Get Youtube video ID from URL
+     *
+     * @param string $url
+     * @return mixed Youtube video ID or FALSE if not found
+     */
+    public function getYoutubeVideoIdByUrl($url) {
+        $parts = parse_url($url);
+        if (isset($parts['query'])) {
+            parse_str($parts['query'], $qs);
+            if (isset($qs['v'])) {
+                return $qs['v'];
+            } else if (isset($qs['vi'])) {
+                return $qs['vi'];
+            }
+        }
+        if (isset($parts['path'])) {
+            $path = explode('/', trim($parts['path'], '/'));
+            return $path[count($path) - 1];
+        }
+        return false;
+    }
+
     private function file_get_contents_curl($url) {
 
         $ch = curl_init();
