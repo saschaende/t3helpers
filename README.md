@@ -2,8 +2,6 @@
 
 **IMPORTANT: During BETA everything can change. Please wait some days until the final stable version is ready to use.**
 
-* **Version**: v0.9.2beta
-* **Last update**: 22.03.2018
 * **CMS**: TYPO3
 * **Type**: plugin
 * **Description**: Helpers like in LARAVEL: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier.
@@ -18,6 +16,7 @@
 
 # Changelog
 
+* **31.03.2017** - Bugfixes & enhancements
 * **22.03.2017** - Many changes and enhancements
 * **09.03.2017** - First cleanup and documentation, new functions, tests
 * **08.03.2017** - DEBUG: Full Typoscript, (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces, (Max Schröter) Convert static helper classes to abstractable normal classes, TEMPLATES: Render some Template with Variables
