@@ -33,7 +33,7 @@ class Uri implements SingletonInterface {
         $extraParameters['action'] = $action;
 
         $params = [
-            $extension => $extraParameters
+            $extension => $extraParameters,
         ];
 
         if ($typeNum) {

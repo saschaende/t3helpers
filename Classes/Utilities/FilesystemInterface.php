@@ -19,4 +19,6 @@ interface FilesystemInterface {
 
     public function getFileExtPath($extension, $path);
 
+    public function getCategoriesForFile($uid);
+
 }

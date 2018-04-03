@@ -7,6 +7,11 @@ use TYPO3\CMS\Core\Configuration\ConfigurationManager;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+// Perhaps the better way now (TYPO3 8):
+///** @var \TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility $configurationUtility */
+//$configurationUtility = $this->objectManager->get('TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility');
+//$extensionConfiguration = $configurationUtility->getCurrentConfiguration('abc_extension');
+
 /**
  * Class Configuration
  * @package SaschaEnde\T3helpers\Utilities
