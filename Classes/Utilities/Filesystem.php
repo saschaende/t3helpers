@@ -8,9 +8,14 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Filesystem implements SingletonInterface {
 
+    /**
+     * @param $id
+     * @return array|bool
+     */
     public function getFileByID($id) {
 
         $resourceFactory = ResourceFactory::getInstance();
@@ -30,6 +35,32 @@ class Filesystem implements SingletonInterface {
         return $props;
     }
 
+    /**
+     * @param $id
+     * @return bool|\TYPO3\CMS\Core\Resource\File
+     */
+    public function getFileObjectByID($id) {
+
+        $resourceFactory = ResourceFactory::getInstance();
+
+        try {
+            $fo = $resourceFactory->getFileObject($id);
+        } catch (Exception $e) {
+            return false;
+        }
+
+        if ($fo) {
+            return $fo;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $folder
+     * @return array
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
     public function getFilesByFolder($folder) {
 
         $filesResult = [];
@@ -47,10 +78,19 @@ class Filesystem implements SingletonInterface {
 
     }
 
+    /**
+     * @param $extension
+     * @param $path
+     * @return string
+     */
     public function getFileExtPath($extension, $path) {
         return ExtensionManagementUtility::extPath($extension) . $path;
     }
 
+    /**
+     * @param $uid
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
     public function getCategoriesForFile($uid){
         /** @var CategoryRepository $categories */
         $categories = t3h::injectClass(CategoryRepository::class);
