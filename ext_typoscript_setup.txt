@@ -1,36 +1,31 @@
-plugin.tx_t3helpers {
+config.tx_extbase {
     persistence {
         classes {
-            SaschaEnde\T3helpers\Domain\Model\Page {
+            SaschaEnde\T3helpers\Domain\Model\Pages {
                 mapping {
                     tableName = pages
-                    columns {
-                        nav_title.mapOnProperty = navTitle
-                        author_email.mapOnProperty = authorEmail
-                        tstamp.mapOnProperty = tstamp
-                        crdate.mapOnProperty = creationDate
-                        lastUpdated.mapOnProperty = lastUpdated
-                        starttime.mapOnProperty = starttime
-                        endtime.mapOnProperty = endtime
-                        newUntil.mapOnProperty = newUntil
-                        sorting.mapOnProperty = sorting
-                        l18n_cfg.mapOnProperty = l18nConfiguration
-                    }
+                }
+                columns {
+                    uid.mapOnProperty = uid
+                    pid.mapOnProperty = pid
+                    sorting.mapOnProperty = sorting
+                    tstamp.mapOnProperty = tstamp
                 }
             }
-            SaschaEnde\T3helpers\Domain\Model\Content {
+            SaschaEnde\T3helpers\Domain\Model\Contents {
                 mapping {
                     tableName = tt_content
                     columns {
+                        uid.mapOnProperty = uid
                         pid.mapOnProperty = pid
-                        colPos.mapOnProperty = colPos
-                        CType.mapOnProperty = ctype
-                        tstamp.mapOnProperty = tstamp
-                        crdate.mapOnProperty = crdate
+                        sorting.mapOnProperty = sorting
+                        header.mapOnProperty = header
+                        bodytext.mapOnProperty = bodytext
+                        image.mapOnProperty = image
+                        assets.mapOnProperty = assets
                     }
                 }
             }
         }
-        storagePid =
     }
 }
