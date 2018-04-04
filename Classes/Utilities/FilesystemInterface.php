@@ -25,6 +25,14 @@ interface FilesystemInterface {
 
 
     /**
+     * @param $folder
+     * @return array
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function getFileObjectsByFolder($folder);
+
+
+    /**
      * @param $extension
      * @param $path
      * @return string
