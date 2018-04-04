@@ -82,8 +82,16 @@ class t3h {
 
     /**
      * @return UriInterface
+     * @deprecated
      */
     public static function Link() {
+        return self::Uri();
+    }
+
+    /**
+     * @return UriInterface
+     */
+    public static function Uri() {
         return self::injectClass(UriInterface::class);
     }
 
