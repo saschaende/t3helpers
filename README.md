@@ -16,7 +16,7 @@
 
 # Changelog
 
-* **04.04.2018** - models and repositories for pages, contents / content element object viewhelper
+* **04.04.2018** - models and repositories for pages, contents / content element object viewhelper / Filesystem::getFileObjectByID($id) / phpdoc comments for Filesystem / Link()->Uri() / Link() is deprecated / t3h::Category()
 * **03.04.2018** - Filesystem::getCategoriesForFile($uid)
 * **31.03.2018** - Bugfixes & enhancements
 * **22.03.2018** - Many changes and enhancements
@@ -34,13 +34,7 @@
 
 # Features
 
-A list of short functions you can use within your extensions:
-
-
-
-
-
-
+Some short functions you can use within your extensions (and many more...):
 
 
 ## Filesystem
@@ -247,57 +241,3 @@ Important if you use REALURL: REALURL does not support workspaces. If you are ar
 #### getLinkAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true)
 
 > Generate a link with some more settings
-
-
-
-
-
-
-## Injections
-
-#### t3h_injectClass($class)
-
-> Inject a class by using object manager and dependency injection
-
-#### t3h_injectPhpFile($extension,$path)
-
-> Inject a php file (for example with external function you want to use)
-
-```
-t3h_injectPhpFile('t3helpers','Resources/Private/Libraries/t3helpers.php');
-```
-
-
-
-
-
-## Google
-
-#### t3h_getGoogleGeoCoordinates($googleApiKey,$address)
-
-> Get geo coordinates
-
-
-
-
-
-
-## Passwords
-
-#### t3h_getEncryptedPassword($password)
-
-> Get a salted and encrypted password for login
-
-#### t3h_getReadablePassword($letters = 8, $length = false)
-
-> Get a human readable password
-
-## Template
-
-#### t3h_getTemplate($extension, $path, $variables = [])
-
-> Render a fluid template with online line of code - even outside a controller :)
-
-```
-$html = t3h_getTemplate('t3helpers','Resources/Private/Templates/Mail.html');
-```
