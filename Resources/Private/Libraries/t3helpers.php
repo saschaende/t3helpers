@@ -3,6 +3,7 @@
 namespace t3h;
 
 use SaschaEnde\T3helpers\Utilities\BackendUserInterface;
+use SaschaEnde\T3helpers\Utilities\CategoryInterface;
 use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
 use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
 use SaschaEnde\T3helpers\Utilities\DataInterface;
@@ -149,6 +150,13 @@ class t3h {
      */
     public static function Tsfe() {
         return self::injectClass(TsfeInterface::class);
+    }
+
+    /**
+     * @return CategoryInterface
+     */
+    public static function Category(){
+        return self::injectClass(CategoryInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
