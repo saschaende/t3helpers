@@ -11,10 +11,19 @@ interface ConfigurationInterface {
 
     /**
      * @param $ext
-     * @return $this
      */
     public function setExtension($ext);
+
+    /**
+     * @param $propertyName
+     * @return mixed
+     * @throws \TYPO3\CMS\Core\Exception
+     */
     public function get($propertyName);
+
+    /**
+     * @return mixed
+     */
     public function getAll();
 
 }

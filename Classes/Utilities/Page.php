@@ -9,16 +9,27 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Page implements SingletonInterface {
 
+    /**
+     * @return mixed|string
+     */
     public function getPid() {
         return $GLOBALS['TSFE']->id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getTitle() {
         $arr = $GLOBALS['TSFE']->rootLine;
         $titlArr = array_shift(array_values($arr));
         return $titlArr['title'];
     }
 
+    /**
+     * @param $topId
+     * @param int $depth
+     * @return array
+     */
     public function getPagetree($topId, $depth = 1000000) {
         /** @var QueryGenerator $queryGenerator */
         $queryGenerator = t3h::injectClass(QueryGenerator::class);

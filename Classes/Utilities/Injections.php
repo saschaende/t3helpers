@@ -20,11 +20,17 @@ class Injections implements SingletonInterface {
         return $this;
     }
 
+    /**
+     * @param $filepath
+     */
     public function phpFile($filepath) {
         $path = t3h::Filesystem()->getFileExtPath($this->extension, $filepath);
         require_once($path);
     }
 
+    /**
+     * @param $filepath
+     */
     public function jsFile($filepath){
         // Get path
         $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
@@ -33,6 +39,9 @@ class Injections implements SingletonInterface {
         $pageRenderer->addJsFile($path);
     }
 
+    /**
+     * @param $filepath
+     */
     public function jsLibraryFile($filepath){
         // Get path
         $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
@@ -41,6 +50,9 @@ class Injections implements SingletonInterface {
         $pageRenderer->addJsLibrary($path);
     }
 
+    /**
+     * @param $filepath
+     */
     public function cssFile($filepath){
         // Get path
         $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);
@@ -49,6 +61,9 @@ class Injections implements SingletonInterface {
         $pageRenderer->addCssFile($path);
     }
 
+    /**
+     * @param $filepath
+     */
     public function cssLibraryFile($filepath){
         // Get path
         $path = t3h::Filesystem()->getFileExtPath($this->extension,$filepath);

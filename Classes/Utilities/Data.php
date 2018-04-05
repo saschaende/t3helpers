@@ -31,6 +31,11 @@ class Data implements SingletonInterface {
         return $storage;
     }
 
+    /**
+     * @param $arr
+     * @param $fields
+     * @return mixed
+     */
     public function sortArray($arr, $fields) {
         $sortFields = array();
         $args = array();
@@ -60,6 +65,10 @@ class Data implements SingletonInterface {
         return $arr;
     }
 
+    /**
+     * @param $array
+     * @return \stdClass
+     */
     public function arrayToObject($array) {
         $obj = new \stdClass();
         foreach ($array as $key => $value) {

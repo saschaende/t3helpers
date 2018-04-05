@@ -8,6 +8,7 @@ class Language implements SingletonInterface {
 
     /**
      * Get the current language
+     * @return string
      */
     public function getCurrent() {
         if (TYPO3_MODE === 'FE') {

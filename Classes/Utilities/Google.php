@@ -6,6 +6,11 @@ use TYPO3\CMS\Core\SingletonInterface;
 
 class Google implements SingletonInterface {
 
+    /**
+     * @param $googleApiKey
+     * @param $address
+     * @return array|bool
+     */
     public function getGeoCoordinates($googleApiKey, $address) {
         $res = $this->file_get_contents_curl('https://maps.googleapis.com/maps/api/geocode/json?key=' . $googleApiKey . '&address=' . $address);
         $res = json_decode($res);
@@ -43,6 +48,10 @@ class Google implements SingletonInterface {
         return false;
     }
 
+    /**
+     * @param $url
+     * @return mixed
+     */
     private function file_get_contents_curl($url) {
 
         $ch = curl_init();

@@ -12,6 +12,10 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Debug implements SingletonInterface {
 
+    /**
+     * @param $data
+     * @param bool $split
+     */
     public function dump($data,$split = false) {
         if($split && (is_array($$data) || is_object($data))){
             foreach($data as $col){
@@ -23,6 +27,11 @@ class Debug implements SingletonInterface {
 
     }
 
+    /**
+     * @param $fromEmail
+     * @param $recipientEmail
+     * @param $data
+     */
     public function mail($fromEmail, $recipientEmail, $data) {
         t3h::Mail()->send(
             $recipientEmail,
@@ -33,6 +42,9 @@ class Debug implements SingletonInterface {
         );
     }
 
+    /**
+     *
+     */
     public function dumpFullTyposcript() {
         $configurationManager = t3h::injectClass(ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
@@ -46,7 +58,7 @@ class Debug implements SingletonInterface {
     public function query($query) {
         /** @var Typo3DbQueryParser $queryParser */
         $queryParser = t3h::injectClass(\TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser::class);
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($queryParser->convertQueryToDoctrineQueryBuilder($query)->getSQL());
+        $this->dump($queryParser->convertQueryToDoctrineQueryBuilder($query)->getSQL());
     }
 
 }

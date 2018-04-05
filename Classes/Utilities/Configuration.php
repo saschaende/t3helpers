@@ -23,11 +23,9 @@ class Configuration implements SingletonInterface {
     private $extensionConfiguration;
     private $ext;
 
+
     /**
-     * constructor
-     *
-     * will read in and unserialze the config as set by EM
-     * @return $this
+     * @param $ext
      */
     public function setExtension($ext) {
         $this->ext = $ext;
@@ -35,6 +33,11 @@ class Configuration implements SingletonInterface {
         $this->extensionConfiguration = unserialize($this->configurationManager->getConfigurationValueByPath('EXT/extConf/' . $ext));
     }
 
+    /**
+     * @param $propertyName
+     * @return mixed
+     * @throws \TYPO3\CMS\Core\Exception
+     */
     public function get($propertyName) {
         if (array_key_exists($propertyName, $this->extensionConfiguration) === FALSE || $this->extensionConfiguration[$propertyName] == '') {
             throw new \TYPO3\CMS\Core\Exception('"' . $propertyName . '" must be configured in the ExtensionManager (EXT:' . $this->ext . ')', 1380287842);
@@ -42,6 +45,9 @@ class Configuration implements SingletonInterface {
         return $this->extensionConfiguration[$propertyName];
     }
 
+    /**
+     * @return mixed
+     */
     public function getAll() {
         return t3h::Data()->arrayToObject($this->extensionConfiguration);
     }

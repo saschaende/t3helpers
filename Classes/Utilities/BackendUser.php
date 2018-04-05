@@ -22,14 +22,23 @@ class BackendUser implements SingletonInterface {
         $this->beUser = $GLOBALS['BE_USER'];
     }
 
+    /**
+     * @return mixed|\TYPO3\CMS\Core\Authentication\BackendUserAuthentication
+     */
     public function get(){
         return $this->beUser;
     }
 
+    /**
+     * @return array
+     */
     public function getGroups(){
         return $this->beUser->userGroups;
     }
 
+    /**
+     * @return array
+     */
     public function getAllowedPages(){
         $pids = [];
         foreach($GLOBALS['BE_USER']->userGroups as $group){
@@ -43,6 +52,9 @@ class BackendUser implements SingletonInterface {
         return $pids;
     }
 
+    /**
+     * @return array
+     */
     public function getAllowedPagesUris(){
         $allowedPages = $this->getAllowedPages();
         $pids = [];
