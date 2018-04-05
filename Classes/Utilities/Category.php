@@ -30,4 +30,12 @@ class Category implements SingletonInterface {
         return $query->execute();
     }
 
+    /**
+     * @param $uid
+     * @see \SaschaEnde\T3helpers\Utilities\Filesystem::getCategoriesForFile()
+     */
+    public function getCategoriesForFile($uid){
+        t3h::Filesystem()->getCategoriesForFile($uid);
+    }
+
 }
