@@ -4,6 +4,7 @@ namespace t3h;
 
 use SaschaEnde\T3helpers\Utilities\BackendUserInterface;
 use SaschaEnde\T3helpers\Utilities\CategoryInterface;
+use SaschaEnde\T3helpers\Utilities\CommandInterface;
 use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
 use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
 use SaschaEnde\T3helpers\Utilities\DataInterface;
@@ -157,6 +158,13 @@ class t3h {
      */
     public static function Category(){
         return self::injectClass(CategoryInterface::class);
+    }
+
+    /**
+     * @return CommandInterface
+     */
+    public static function Command(){
+        return self::injectClass(CommandInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
