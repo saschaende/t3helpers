@@ -13,6 +13,20 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class Filesystem implements SingletonInterface {
 
     /**
+     * Check if file exists in a folder
+     * @param $folder
+     * @param $fileName
+     * @return bool
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function fileExists($folder,$fileName){
+        $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+        $defaultStorage = $resourceFactory->getDefaultStorage();
+        $folderObj = $defaultStorage->getFolder($folder);
+        return $defaultStorage->hasFileInFolder($fileName,$folderObj);
+    }
+
+    /**
      * @param $id
      * @return array|bool
      */

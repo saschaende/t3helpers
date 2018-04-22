@@ -5,6 +5,15 @@ namespace SaschaEnde\T3helpers\Utilities;
 interface FilesystemInterface {
 
     /**
+     * Check if file exists in a folder
+     * @param $folder
+     * @param $fileName
+     * @return bool
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function fileExists($folder,$fileName);
+
+    /**
      * @param $id
      * @return array|bool
      */

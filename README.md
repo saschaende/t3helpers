@@ -16,6 +16,7 @@
 
 # Changelog
 
+* **22.04.2018** - Filesystem->fileExists($folder,$fileName)
 * **04.04.2018** - models and repositories for pages, contents / content element object viewhelper / Filesystem::getFileObjectByID($id) / phpdoc comments for Filesystem / Link()->Uri() / Link() is deprecated / t3h::Category()
 * **03.04.2018** - Filesystem::getCategoriesForFile($uid)
 * **31.03.2018** - Bugfixes & enhancements
