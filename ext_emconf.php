@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'T3Helpers',
-    'description' => 'Helpers like in LARAVEL: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier. IMPORTANT: During BETA everything can change. Please wait some days until the final stable version is ready to use.',
+    'description' => 'Helpers for Extbase: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier. Please let me know if you have any ideas or if you find any errors, i will fix this immediately.',
     'category' => 'tools',
     'author' => 'Sascha Ende',
     'author_email' => 'sascha@sascha-ende.de',

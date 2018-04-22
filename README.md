@@ -1,22 +1,13 @@
 # T3Helpers - Helpers for TYPO3
 
-**IMPORTANT: During BETA everything can change. Please wait some days until the final stable version is ready to use.**
+Helpers for Extbase: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier. Please let me know if you have any ideas or if you find any errors, i will fix this immediately.
 
 * **CMS**: TYPO3
 * **Type**: plugin
-* **Description**: Helpers like in LARAVEL: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier.
-
-
-# TODO FOR FINAL STABLE RELEASE
-
-* [BIG CHANGE] Remove functions, use Shortcuts like T3hSessions()->get() or T3hDatabase()->truncateTable($table)
-* [DOCS] Code examples and explainations for every function
-* [TESTING] Test all functions for stable 1.0 release
-* [FEATURE] SETTINGS: Get Template Root Paths for extension
 
 # Changelog
 
-* **22.04.2018** - Filesystem->fileExists($folder,$fileName)
+* **22.04.2018** - [0.9.6] Filesystem->fileExists($folder,$fileName)
 * **04.04.2018** - models and repositories for pages, contents / content element object viewhelper / Filesystem::getFileObjectByID($id) / phpdoc comments for Filesystem / Link()->Uri() / Link() is deprecated / t3h::Category()
 * **03.04.2018** - Filesystem::getCategoriesForFile($uid)
 * **31.03.2018** - Bugfixes & enhancements
