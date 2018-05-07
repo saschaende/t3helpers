@@ -27,6 +27,19 @@ class Filesystem implements SingletonInterface {
     }
 
     /**
+     * @param $folder
+     * @param $fileName
+     * @return null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function getFileByName($folder,$fileName){
+        $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+        $defaultStorage = $resourceFactory->getDefaultStorage();
+        $folderObj = $defaultStorage->getFolder($folder);
+        return $defaultStorage->getFileInFolder($fileName,$folderObj);
+    }
+
+    /**
      * @param $id
      * @return array|bool
      */

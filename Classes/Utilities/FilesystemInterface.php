@@ -14,6 +14,14 @@ interface FilesystemInterface {
     public function fileExists($folder,$fileName);
 
     /**
+     * @param $folder
+     * @param $fileName
+     * @return null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function getFileByName($folder,$fileName);
+
+    /**
      * @param $id
      * @return array|bool
      */

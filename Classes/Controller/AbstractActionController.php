@@ -8,6 +8,7 @@ use SaschaEnde\T3helpers\Utilities\Data;
 use SaschaEnde\T3helpers\Utilities\Database;
 use SaschaEnde\T3helpers\Utilities\Debug;
 use SaschaEnde\T3helpers\Utilities\Filesystem;
+use SaschaEnde\T3helpers\Utilities\FrontendUser;
 use SaschaEnde\T3helpers\Utilities\Google;
 use SaschaEnde\T3helpers\Utilities\Injections;
 use SaschaEnde\T3helpers\Utilities\Language;
@@ -28,6 +29,11 @@ class AbstractActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @inject
      */
     protected $BackendUser;
+
+    /**
+     * @var FrontendUser
+     */
+    protected $FrontendUser;
 
     /**
      * @var Configuration

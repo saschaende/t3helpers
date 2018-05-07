@@ -10,6 +10,7 @@ use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
 use SaschaEnde\T3helpers\Utilities\DataInterface;
 use SaschaEnde\T3helpers\Utilities\DebugInterface;
 use SaschaEnde\T3helpers\Utilities\FilesystemInterface;
+use SaschaEnde\T3helpers\Utilities\FrontendUserInterface;
 use SaschaEnde\T3helpers\Utilities\GoogleInterface;
 use SaschaEnde\T3helpers\Utilities\InjectionsInterface;
 use SaschaEnde\T3helpers\Utilities\LanguageInterface;
@@ -165,6 +166,13 @@ class t3h {
      */
     public static function Command(){
         return self::injectClass(CommandInterface::class);
+    }
+
+    /**
+     * @return FrontendUserInterface
+     */
+    public static function FrontendUser(){
+        return self::injectClass(FrontendUserInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
