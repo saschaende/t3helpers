@@ -27,4 +27,11 @@ interface DataInterface {
      * @return \stdClass
      */
     public function arrayToObject($array);
+
+    /**
+     * Create an array from xml string - cause GeneralUtility::xml2array is buggy with some xml structures
+     * @param $xmldata
+     * @return \t3h\DOMDocument
+     */
+    public function xmlToArray($xmldata);
 }

@@ -2,6 +2,8 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
+use t3h\XML2Array;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -75,5 +77,15 @@ class Data implements SingletonInterface {
             $obj->{$key} = $value;
         }
         return $obj;
+    }
+
+    /**
+     * Create an array from xml string - cause GeneralUtility::xml2array is buggy with some xml structures
+     * @param $xmldata
+     * @return \t3h\DOMDocument
+     */
+    public function xmlToArray($xmldata){
+        t3h::Inject()->setExtension('t3helpers')->phpFile('Resources/Private/Libraries/XML2Array.php');
+        return XML2Array::createArray($xmldata);
     }
 }
