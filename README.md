@@ -7,6 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Changelog
 
+* **24.05.2018** - [0.9.9] Database()->getQuerybuilder($table, $addFrom = true)
 * **23.05.2018** - [0.9.8] Data()->xmlToArray($xmldata)
 * **22.04.2018** - [0.9.6] Filesystem->fileExists($folder,$fileName)
 * **04.04.2018** - models and repositories for pages, contents / content element object viewhelper / Filesystem::getFileObjectByID($id) / phpdoc comments for Filesystem / Link()->Uri() / Link() is deprecated / t3h::Category()

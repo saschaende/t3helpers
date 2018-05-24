@@ -11,6 +11,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Database implements SingletonInterface {
 
+    /**
+     * @param bool $setRespectStoragePage
+     * @param bool $setIgnoreEnableFields
+     * @param bool $setIncludeDeleted
+     * @return Typo3QuerySettings
+     */
     public function getQuerySettings($setRespectStoragePage = false, $setIgnoreEnableFields = false, $setIncludeDeleted = false) {
 
         /** @var Typo3QuerySettings $querySettings */
@@ -23,17 +29,37 @@ class Database implements SingletonInterface {
         return $querySettings;
     }
 
+    /**
+     * @param $table
+     */
     public function truncateTable($table) {
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
         $connection->truncate($table);
     }
 
+    /**
+     * @param $queryResult
+     * @return ObjectStorage
+     */
     public function getObjectStorageByQueryResult($queryResult){
         $object = new ObjectStorage();
         foreach($queryResult as $q){
             $object->attach($q);
         }
         return $object;
+    }
+
+    /**
+     * @param $table
+     * @param $addFrom
+     * @return \TYPO3\CMS\Core\Database\Query\QueryBuilder
+     */
+    public function getQuerybuilder($table, $addFrom = true){
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($table);
+        if($addFrom){
+            $queryBuilder->from($table);
+        }
+        return $queryBuilder;
     }
 
 }
