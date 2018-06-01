@@ -15,7 +15,6 @@ class Settings implements SingletonInterface {
      * @return mixed
      */
     public function getExtension($extensionName, $part = 'settings'){
-        $extensionName = str_replace(['tx_','_'],'',$extensionName);
         $ts = $this->getFullTyposcript();
         return $ts['plugin.'][$extensionName.'.'][$part.'.'];
     }
