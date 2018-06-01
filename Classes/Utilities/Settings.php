@@ -9,6 +9,17 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class Settings implements SingletonInterface {
 
+    /**
+     * @param $extensionName
+     * @param string $part
+     * @return mixed
+     */
+    public function getExtension($extensionName, $part = 'settings'){
+        $extensionName = str_replace(['tx_','_'],'',$extensionName);
+        $ts = $this->getFullTyposcript();
+        return $ts['plugin.'][$extensionName.'.'][$part.'.'];
+    }
+
     public function getPlugin($extensionName, $pluginName = null) {
         if($pluginName != null){
             $pluginName = strtolower($pluginName);
