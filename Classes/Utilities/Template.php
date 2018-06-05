@@ -6,7 +6,7 @@ use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class Template implements SingletonInterface {
+class Template implements TemplateInterface, SingletonInterface {
 
     public function render($extension, $path, $variables = []) {
         $templatePathAndFilename = t3h::Filesystem()->getFileExtPath($extension,$path);

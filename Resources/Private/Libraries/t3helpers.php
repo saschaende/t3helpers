@@ -8,6 +8,7 @@ use SaschaEnde\T3helpers\Utilities\CommandInterface;
 use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
 use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
 use SaschaEnde\T3helpers\Utilities\DataInterface;
+use SaschaEnde\T3helpers\Utilities\DatastorageInterface;
 use SaschaEnde\T3helpers\Utilities\DebugInterface;
 use SaschaEnde\T3helpers\Utilities\FilesystemInterface;
 use SaschaEnde\T3helpers\Utilities\FrontendUserInterface;
@@ -157,22 +158,29 @@ class t3h {
     /**
      * @return CategoryInterface
      */
-    public static function Category(){
+    public static function Category() {
         return self::injectClass(CategoryInterface::class);
     }
 
     /**
      * @return CommandInterface
      */
-    public static function Command(){
+    public static function Command() {
         return self::injectClass(CommandInterface::class);
     }
 
     /**
      * @return FrontendUserInterface
      */
-    public static function FrontendUser(){
+    public static function FrontendUser() {
         return self::injectClass(FrontendUserInterface::class);
+    }
+
+    /**
+     * @return DatastorageInterface
+     */
+    public static function Datastorage() {
+        return self::injectClass(DatastorageInterface::class);
     }
 
     // ---------------------------------------------------------------------------------

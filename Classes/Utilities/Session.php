@@ -4,7 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-class Session implements SingletonInterface {
+class Session implements SessionInterface, SingletonInterface {
 
     protected $extension;
     protected $sessiondata = [];

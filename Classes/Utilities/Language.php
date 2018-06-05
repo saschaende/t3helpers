@@ -4,7 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-class Language implements SingletonInterface {
+class Language implements LanguageInterface, SingletonInterface {
 
     /**
      * Get the current language

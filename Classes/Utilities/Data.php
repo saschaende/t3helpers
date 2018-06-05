@@ -7,7 +7,7 @@ use t3h\XML2Array;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Data implements SingletonInterface {
+class Data implements DataInterface, SingletonInterface {
 
     /**
      * Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')

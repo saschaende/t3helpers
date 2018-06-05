@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Filesystem implements SingletonInterface {
+class Filesystem implements FilesystemInterface, SingletonInterface {
 
     /**
      * Check if file exists in a folder

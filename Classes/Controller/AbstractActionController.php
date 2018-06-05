@@ -6,6 +6,7 @@ use SaschaEnde\T3helpers\Utilities\BackendUser;
 use SaschaEnde\T3helpers\Utilities\Configuration;
 use SaschaEnde\T3helpers\Utilities\Data;
 use SaschaEnde\T3helpers\Utilities\Database;
+use SaschaEnde\T3helpers\Utilities\Datastorage;
 use SaschaEnde\T3helpers\Utilities\Debug;
 use SaschaEnde\T3helpers\Utilities\Filesystem;
 use SaschaEnde\T3helpers\Utilities\FrontendUser;
@@ -46,6 +47,12 @@ class AbstractActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @inject
      */
     protected $Data;
+
+    /**
+     * @var Datastorage
+     * @inject
+     */
+    protected $Datastorage;
 
     /**
      * @var Database

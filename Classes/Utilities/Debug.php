@@ -10,7 +10,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Debug implements SingletonInterface {
+class Debug implements DebugInterface, SingletonInterface {
 
     /**
      * @param $data

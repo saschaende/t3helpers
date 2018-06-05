@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Page implements SingletonInterface {
+class Page implements PageInterface, SingletonInterface {
 
     /**
      * @return mixed|string

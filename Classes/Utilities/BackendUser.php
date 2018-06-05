@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\SingletonInterface;
  * Backend Userdata is only available in Backend and on pages where the backend user has permissions. Otherwise this will return null
  * @package SaschaEnde\T3helpers\Utilities
  */
-class BackendUser implements SingletonInterface {
+class BackendUser implements BackendUserInterface, SingletonInterface {
 
     protected $beUser;
 

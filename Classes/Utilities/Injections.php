@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Injections implements SingletonInterface {
+class Injections implements InjectionsInterface, SingletonInterface {
 
     protected $extension;
 

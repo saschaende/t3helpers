@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
-class Settings implements SingletonInterface {
+class Settings implements SettingsInterface, SingletonInterface {
 
     /**
      * @param $extensionName

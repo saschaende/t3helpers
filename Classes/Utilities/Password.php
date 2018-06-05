@@ -6,7 +6,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
 use TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility;
 
-class Password implements SingletonInterface {
+class Password implements PasswordInterface, SingletonInterface {
 
     /**
      * Get the hashed password

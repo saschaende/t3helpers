@@ -6,7 +6,7 @@ use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 
-class Category implements SingletonInterface {
+class Category implements CategoryInterface, SingletonInterface {
 
     /**
      * CategoryRepository
