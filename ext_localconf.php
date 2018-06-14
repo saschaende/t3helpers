@@ -11,3 +11,6 @@ $composerAutoloadFile = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extP
     . 'Resources/Private/Libraries/t3helpers.php';
 
 require_once($composerAutoloadFile);
+
+// eID Dispatcher
+$TYPO3_CONF_VARS['FE']['eID_include']['t3h_example'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('t3helpers').'Classes/Examples/EidExample.php';

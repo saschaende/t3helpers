@@ -7,6 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Changelog
 
+* **14.06.2018** - [0.9.10] Abstract eID Dispatcher, check Classes/Examples/EidExample.php
 * **05.06.2018** - [0.9.9] Interface implements for Utility Classes
 * **05.06.2018** - [0.9.9] + Datastorage()
 * **01.06.2018** - [0.9.9] Settings()->getExtension($extensionName, $part = 'settings')
