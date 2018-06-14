@@ -22,6 +22,7 @@ use SaschaEnde\T3helpers\Utilities\SessionInterface;
 use SaschaEnde\T3helpers\Utilities\SettingsInterface;
 use SaschaEnde\T3helpers\Utilities\TemplateInterface;
 use SaschaEnde\T3helpers\Utilities\TsfeInterface;
+use SaschaEnde\T3helpers\Utilities\UploadInterface;
 use SaschaEnde\T3helpers\Utilities\UriInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -181,6 +182,13 @@ class t3h {
      */
     public static function Datastorage() {
         return self::injectClass(DatastorageInterface::class);
+    }
+
+    /**
+     * @return UploadInterface
+     */
+    public static function Upload(){
+        return self::injectClass(UploadInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
