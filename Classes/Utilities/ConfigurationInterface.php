@@ -11,6 +11,7 @@ interface ConfigurationInterface {
 
     /**
      * @param $ext
+     * @return $this
      */
     public function setExtension($ext);
 

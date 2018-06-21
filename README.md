@@ -5,6 +5,10 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
+# Dev version
+
+* **21.06.2018** - [0.9.11] Configuration::setExtension() -> return $this
+
 # Changelog
 
 * **14.06.2018** - [0.9.10] Abstract eID Dispatcher, check Classes/Examples/EidExample.php

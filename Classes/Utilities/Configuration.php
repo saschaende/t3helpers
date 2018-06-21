@@ -26,11 +26,13 @@ class Configuration implements ConfigurationInterface, SingletonInterface {
 
     /**
      * @param $ext
+     * @return $this
      */
     public function setExtension($ext) {
         $this->ext = $ext;
         $this->configurationManager = t3h::injectClass(ConfigurationManager::class);
         $this->extensionConfiguration = unserialize($this->configurationManager->getConfigurationValueByPath('EXT/extConf/' . $ext));
+        return $this;
     }
 
     /**
