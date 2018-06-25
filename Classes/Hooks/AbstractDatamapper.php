@@ -22,7 +22,8 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
  * updateStreetAction($value)
  * beforeUpdateStreetAction($value)
  *
- *
+ * Use in your extension with:
+ * $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['your_extension'] = \YourName\YourExtension\Hooks\YourDatamapper::class;
  *
  */
 
