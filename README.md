@@ -5,8 +5,9 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
-# Dev version
+# Dev version (not released yet)
 
+* **25.06.2018** - [0.9.11] AbstractDatamapper Hook (after updating/adding database entries hooks)
 * **21.06.2018** - [0.9.11] Configuration::setExtension() -> return $this
 
 # Changelog
