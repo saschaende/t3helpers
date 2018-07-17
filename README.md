@@ -7,17 +7,19 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
-* **25.06.2018** - [0.9.11] AbstractDatamapper Hook (after updating/adding database entries hooks)
-* **21.06.2018** - [0.9.11] Configuration::setExtension() -> return $this
+nothing
 
 # Changelog
 
+* **17.07.2018** - [0.9.11] Finalized Upload() Features
+* **17.07.2018** - [0.9.11] Bugfix, save session Data (by Markus A.)
+* **25.06.2018** - [0.9.11] AbstractDatamapper Hook (after updating/adding database entries hooks)
+* **21.06.2018** - [0.9.11] Configuration::setExtension() -> return $this
 * **14.06.2018** - [0.9.10] Abstract eID Dispatcher, check Classes/Examples/EidExample.php
 * **05.06.2018** - [0.9.9] Interface implements for Utility Classes
 * **05.06.2018** - [0.9.9] + Datastorage()
 * **01.06.2018** - [0.9.9] Settings()->getExtension($extensionName, $part = 'settings')
 * **24.05.2018** - [0.9.9] Database()->getQuerybuilder($table, $addFrom = true)
-
 * **23.05.2018** - [0.9.8] Data()->xmlToArray($xmldata)
 * **22.04.2018** - [0.9.6] Filesystem->fileExists($folder,$fileName)
 * **04.04.2018** - models and repositories for pages, contents / content element object viewhelper / Filesystem::getFileObjectByID($id) / phpdoc comments for Filesystem / Link()->Uri() / Link() is deprecated / t3h::Category()
@@ -69,7 +71,25 @@ $filePath = t3h::Filesystem()->getFileExtPath('t3helpers','Resources/Private/Lib
 ````
 
 
+## File Uploads in Frontend: Upload example
 
+````
+// Dateinamen beim Hochladen automatisch generieren und nicht den Originaldateinamen verwenden
+t3h::Upload()->setAutofilenames(true);
+// Erlaubte Dateiendungen
+t3h::Upload()->setAllowedFiletypes(['csv','gz']);
+// Initialisierung der hochgeladenen Dateien und Prüfung
+$errors = t3h::Upload()->check();
+debug($errors);
+// Dateien erhalten
+if(count($errors) <= 0){
+    $files = t3h::Upload()->getFiles();
+    debug($files);
+    // Upload und Dateien verschieben in Zielverzeichnis
+    $results = t3h::Upload()->execute('user_upload/meinordner');
+    debug($results);
+}
+````
 
 
 
