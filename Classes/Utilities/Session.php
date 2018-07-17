@@ -33,6 +33,9 @@ class Session implements SessionInterface, SingletonInterface {
     public function set($key, $value) {
         $this->sessiondata[$this->extension][$key] = $value;
         $GLOBALS['TSFE']->fe_user->setKey('ses', $this->extension, $this->sessiondata[$this->extension]);
+        // say TYPO3 to save the new Session Data
+        $GLOBALS["TSFE"]->fe_user->sesData_change = true;
+        $GLOBALS['TSFE']->fe_user->storeSessionData();
     }
 
     public function exists($key) {
