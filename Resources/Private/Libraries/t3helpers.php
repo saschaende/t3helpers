@@ -6,6 +6,7 @@ use SaschaEnde\T3helpers\Utilities\BackendUserInterface;
 use SaschaEnde\T3helpers\Utilities\CategoryInterface;
 use SaschaEnde\T3helpers\Utilities\CommandInterface;
 use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
+use SaschaEnde\T3helpers\Utilities\CsvInterface;
 use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
 use SaschaEnde\T3helpers\Utilities\DataInterface;
 use SaschaEnde\T3helpers\Utilities\DatastorageInterface;
@@ -189,6 +190,13 @@ class t3h {
      */
     public static function Upload(){
         return self::injectClass(UploadInterface::class);
+    }
+
+    /**
+     * @return CsvInterface
+     */
+    public static function Csv(){
+        return self::injectClass(CsvInterface::class);
     }
 
     // ---------------------------------------------------------------------------------
