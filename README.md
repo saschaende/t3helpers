@@ -7,7 +7,8 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
-nothing
+* **18.07.2018** - [0.9.12] Method added Session()->remove($key)
+* **18.07.2018** - [0.9.12] Session()->get($key = null) now returns all values, if no key is given
 
 # Changelog
 
