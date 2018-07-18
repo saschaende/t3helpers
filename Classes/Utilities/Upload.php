@@ -89,7 +89,7 @@ class Upload implements UploadInterface, SingletonInterface {
                     'size' => $FILES['size'][$prop],
                     'pathinfo' => $pathinfo,
                 ];
-                $this->FILES[$prop] = $uploadfile;
+                $this->FILES[] = $uploadfile;
 
                 // Checks: Dateityp
                 if (!in_array(strtolower($pathinfo['extension']), $this->allowedFiletypes)) {
