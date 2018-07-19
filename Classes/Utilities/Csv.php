@@ -7,7 +7,6 @@ use TYPO3\CMS\Core\SingletonInterface;
 class Csv implements CsvInterface, SingletonInterface {
 
     protected $file;
-    protected $fileParsed = null;
     protected $rules;
 
     protected $patterns = [
@@ -31,10 +30,34 @@ class Csv implements CsvInterface, SingletonInterface {
     }
 
     /**
-     * @return null
+     * Get parsed file
+     * @param bool $object Set true, to return std objects
+     * @return array|bool|null
      */
-    public function getFileParsed() {
-        return $this->fileParsed;
+    public function getFileParsed($object = false) {
+        $fileParsed = $this->parseFile();
+
+        if($object){
+
+            $res = [];
+
+            foreach ($fileParsed as $row) {
+
+                $obj = new \stdClass();
+
+                // Für jede Spalte
+                for ($i = 0; $i < count($row); $i++) {
+                    $obj->{$this->rules[$i]['column']} = $row[$i];
+                }
+
+                $res[] = $obj;
+            }
+
+            return $res;
+
+        }else{
+            return $fileParsed;
+        }
     }
 
     /**
@@ -54,7 +77,8 @@ class Csv implements CsvInterface, SingletonInterface {
      * @param $column
      * @param string $regex
      * @param string $option
-     * @return $this
+     * @param bool $emptyAllowed
+     * @return $this|CsvInterface
      */
     public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false) {
 
@@ -63,7 +87,7 @@ class Csv implements CsvInterface, SingletonInterface {
             $option = $this->patterns[$regex][1];
         }
 
-        $this->rules = [
+        $this->rules[] = [
             'column' => $column,
             'regex' => $regex,
             'option' => $option,
@@ -78,19 +102,30 @@ class Csv implements CsvInterface, SingletonInterface {
      */
     public function check() {
         $errors = [];
+        $fileParsed = $this->getFileParsed();
+
         // Für jede Zeile
-        foreach ($this->fileParsed as $row) {
+        $rowcount = 1;
+        foreach ($fileParsed as $row) {
             // Für jede Spalte
-            for($i=0;$i<count($row);$i++) {
+            for ($i = 0; $i < count($row); $i++) {
                 // Regel zur Überprüfung anwenden
                 preg_match_all(
-                    "/".$this->rules[$i]['regex']."/".$this->rules[$i]['option'],
+                    "/" . $this->rules[$i]['regex'] . "/" . $this->rules[$i]['option'],
                     $row[$i],
                     $output_array
                 );
-                debug($output_array);
+                if($output_array[0][0] != $row[$i] || ($this->rules[$i]['emptyAllowed'] == false && empty($row[$i]))){
+                    $errors[] = [
+                        'row'   =>  $rowcount,
+                        'column'    => $this->rules[$i]['column'],
+                        'value' =>  $row[$i]
+                    ];
+                }
             }
+            $rowcount++;
         }
+        debug($errors);
         return $errors;
     }
 
@@ -102,15 +137,11 @@ class Csv implements CsvInterface, SingletonInterface {
             return FALSE;
         }
 
-        $header = NULL;
         $data = [];
 
         if (($handle = fopen($this->file, 'r')) !== FALSE) {
             while (($row = fgetcsv($handle, 0, $this->delimiter, $this->enclosure, $this->escape)) !== FALSE) {
-                if (!$header)
-                    $header = $row;
-                else
-                    $data[] = array_combine($header, $row);
+                $data[] = array_map('trim', $row); // trim every column
             }
             fclose($handle);
         }

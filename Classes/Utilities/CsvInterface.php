@@ -11,9 +11,11 @@ interface CsvInterface {
     public function setFile($file);
 
     /**
-     * @return null
+     * Get parsed file
+     * @param bool $object Set true, to return std objects
+     * @return array|bool|null
      */
-    public function getFileParsed();
+    public function getFileParsed($object = false);
 
     /**
      * @param string $delimiter
