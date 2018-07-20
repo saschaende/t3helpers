@@ -40,6 +40,19 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
     }
 
     /**
+     * @param $folder
+     * @param $fileName
+     * @return bool|null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function deleteFileByName($folder,$fileName){
+        $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+        $defaultStorage = $resourceFactory->getDefaultStorage();
+        $folderObj = $defaultStorage->getFolder($folder);
+        return $defaultStorage->getFileInFolder($fileName,$folderObj)->dele te();
+    }
+
+    /**
      * @param $id
      * @return array|bool
      */

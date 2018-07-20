@@ -22,6 +22,14 @@ interface FilesystemInterface {
     public function getFileByName($folder,$fileName);
 
     /**
+     * @param $folder
+     * @param $fileName
+     * @return bool|null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     */
+    public function deleteFileByName($folder,$fileName);
+
+    /**
      * @param $id
      * @return array|bool
      */
