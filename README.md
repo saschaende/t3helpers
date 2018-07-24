@@ -7,14 +7,15 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
+nothing yet
+
+# Changelog
+
 * **24.07.2018** - [0.9.12] Readme: Example for csv parser
 * **18.07.2018** - [0.9.12] Added CSV Validator with rules and parser: t3h::Csv()
 * **18.07.2018** - [0.9.12] Major change: Numeric keys for uploaded files
 * **18.07.2018** - [0.9.12] Method added Session()->remove($key)
 * **18.07.2018** - [0.9.12] Session()->get($key = null) now returns all values, if no key is given
-
-# Changelog
-
 * **17.07.2018** - [0.9.11] Finalized Upload() Features
 * **17.07.2018** - [0.9.11] Bugfix, save session Data (by Markus A.)
 * **25.06.2018** - [0.9.11] AbstractDatamapper Hook (after updating/adding database entries hooks)
