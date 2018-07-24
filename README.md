@@ -7,6 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
+* **24.07.2018** - [0.9.12] Readme: Example for csv parser
 * **18.07.2018** - [0.9.12] Added CSV Validator with rules and parser: t3h::Csv()
 * **18.07.2018** - [0.9.12] Major change: Numeric keys for uploaded files
 * **18.07.2018** - [0.9.12] Method added Session()->remove($key)
@@ -83,19 +84,40 @@ t3h::Upload()->setAutofilenames(true);
 t3h::Upload()->setAllowedFiletypes(['csv','gz']);
 // Initialisierung der hochgeladenen Dateien und Prüfung
 $errors = t3h::Upload()->check();
-debug($errors);
 // Dateien erhalten
 if(count($errors) <= 0){
+    // erhalte Liste der hochgeladenen Dateien inkl. Daten
     $files = t3h::Upload()->getFiles();
-    debug($files);
     // Upload und Dateien verschieben in Zielverzeichnis
     $results = t3h::Upload()->execute('user_upload/meinordner');
-    debug($results);
 }
 ````
 
+## Parsing CSV files: Example
 
+````
+// Setze Pfad zum CSV File und d3efiniere Formatierung
+t3h::Csv()
+    ->setFile('fileadmin/uploads/daten.csv')
+    ->setFormatting(';');
 
+// Definiere Regeln für CSV Import
+t3h::Csv()
+    ->addRule('gender', 'anrede')// 1. Spalte
+    ->addRule('forename', 'text')// 2. Spalte
+    ->addRule('lastname', 'text')// 3. Spalte
+    ->addRule('email', 'email')// 4. Spalte
+    ->addRule('dateofbirth', 'date') // 5. Spalte
+    ->addRule('twonumbers','^([0-9]+){2}$','',true); // 6. Spalte
+
+// Führe Checks durch
+$errors = t3h::Csv()->check();
+
+if(count($errors) <= 0){
+    // erhalte die CSV Daten als Objekte
+    $csvdata = t3h::Csv()->getFileParsed(true);
+}
+````
 
 ## Database
 
