@@ -14,6 +14,7 @@ use SaschaEnde\T3helpers\Utilities\DebugInterface;
 use SaschaEnde\T3helpers\Utilities\FilesystemInterface;
 use SaschaEnde\T3helpers\Utilities\FrontendUserInterface;
 use SaschaEnde\T3helpers\Utilities\GoogleInterface;
+use SaschaEnde\T3helpers\Utilities\Html5PatternsInterface;
 use SaschaEnde\T3helpers\Utilities\InjectionsInterface;
 use SaschaEnde\T3helpers\Utilities\LanguageInterface;
 use SaschaEnde\T3helpers\Utilities\MailInterface;
@@ -197,6 +198,13 @@ class t3h {
      */
     public static function Csv(){
         return self::injectClass(CsvInterface::class);
+    }
+
+    /**
+     * @return Html5PatternsInterface
+     */
+    public static function Html5Patterns(){
+        return self::injectClass(Html5PatternsInterface::class);
     }
 
     // ---------------------------------------------------------------------------------

@@ -7,7 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
-nothing yet
+* **25.07.2018** - [0.9.13] Added Html5Patterns() for use in controllers and FLUID templates
 
 # Changelog
 
