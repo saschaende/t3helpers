@@ -15,9 +15,10 @@ class Mail implements MailInterface, SingletonInterface {
      * @param $senderName
      * @param $subject
      * @param $emailBody
+     * @param array $attachments
      * @return bool
      */
-    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody) {
+    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody, $attachments = []) {
         // set email settings
         $message = GeneralUtility::makeInstance(MailMessage::class);
 
@@ -26,6 +27,15 @@ class Mail implements MailInterface, SingletonInterface {
             ->setSubject($subject);
 
         $message->setBody($emailBody, 'text/html');
+
+        // Dateianhänge
+        foreach ($attachments as $filename => $path) {
+            if (trim($filename) && !is_numeric($filename)) {
+                $message->attach(\Swift_Attachment::fromPath($path)->setFilename($filename));
+            } else {
+                $message->attach(\Swift_Attachment::fromPath($path));
+            }
+        }
 
         // send now
         $message->send();
@@ -40,11 +50,12 @@ class Mail implements MailInterface, SingletonInterface {
      * @param $extension
      * @param $path
      * @param array $variables
+     * @param array $attachments
      * @return bool
      */
-    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = []){
+    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = []) {
         $emailBody = t3h::Template()->render($extension, $path, $variables);
-        return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody);
+        return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments);
     }
 
 }
