@@ -49,7 +49,7 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
         $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
         $defaultStorage = $resourceFactory->getDefaultStorage();
         $folderObj = $defaultStorage->getFolder($folder);
-        return $defaultStorage->getFileInFolder($fileName,$folderObj)->dele te();
+        return $defaultStorage->getFileInFolder($fileName,$folderObj)->delete();
     }
 
     /**
