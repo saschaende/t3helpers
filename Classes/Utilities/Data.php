@@ -136,7 +136,7 @@ class Data implements DataInterface, SingletonInterface {
             else
             {
                 // add single node.
-                $value = htmlentities($value);
+                $value = htmlentities($value,ENT_XML1);
                 $xml->addChild($key,$value);
             }
 
