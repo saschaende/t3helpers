@@ -7,7 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
-n/a
+* **02.08.2018** - [0.9.14] Added Data()->arrayToXml()
 
 # Changelog
 

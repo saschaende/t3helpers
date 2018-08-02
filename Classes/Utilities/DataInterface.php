@@ -34,4 +34,13 @@ interface DataInterface {
      * @return \t3h\DOMDocument
      */
     public function xmlToArray($xmldata);
+
+
+    /**
+     * @param $data
+     * @param string $rootNodeName
+     * @param null $xml
+     * @return mixed
+     */
+    public function arrayToXml($data, $rootNodeName = 'data', $xml=null);
 }
