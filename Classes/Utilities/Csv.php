@@ -50,6 +50,11 @@ class Csv implements CsvInterface, SingletonInterface {
 
                 // Für jede Spalte
                 for ($i = 0; $i < count($row); $i++) {
+                    // Abbrechen, wenn keine Regel vorhanden
+                    if(!$this->rules[$i]){
+                        continue;
+                    }
+                    // Daten hinzufügen
                     $obj->{$this->rules[$i]['column']} = $row[$i];
                 }
 
@@ -81,21 +86,32 @@ class Csv implements CsvInterface, SingletonInterface {
      * @param string $regex
      * @param string $option
      * @param bool $emptyAllowed
+     * @param null $pos
      * @return $this|CsvInterface
      */
-    public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false) {
+    public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false, $pos = null) {
 
         if ($this->patterns[$regex]) {
             $regex = $this->patterns[$regex][0];
             $option = $this->patterns[$regex][1];
         }
 
-        $this->rules[] = [
-            'column' => $column,
-            'regex' => $regex,
-            'option' => $option,
-            'emptyAllowed' => $emptyAllowed
-        ];
+        if($pos === null){
+            $this->rules[] = [
+                'column' => $column,
+                'regex' => $regex,
+                'option' => $option,
+                'emptyAllowed' => $emptyAllowed
+            ];
+        }else{
+            $this->rules[$pos-1] = [
+                'column' => $column,
+                'regex' => $regex,
+                'option' => $option,
+                'emptyAllowed' => $emptyAllowed
+            ];
+        }
+
         return $this;
     }
 

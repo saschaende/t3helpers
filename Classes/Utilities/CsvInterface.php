@@ -29,9 +29,11 @@ interface CsvInterface {
      * @param $column
      * @param string $regex
      * @param string $option
-     * @return $this
+     * @param bool $emptyAllowed
+     * @param null $pos
+     * @return $this|CsvInterface
      */
-    public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false);
+    public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false, $pos = null);
 
     /**
      * Check the csv against the rules
