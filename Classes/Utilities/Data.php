@@ -5,6 +5,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 use t3h\t3h;
 use t3h\XML2Array;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Data implements DataInterface, SingletonInterface {
@@ -143,5 +144,18 @@ class Data implements DataInterface, SingletonInterface {
         }
         // pass back as string. or simple xml object if you want!
         return $xml->asXML();
+    }
+
+
+    /**
+     * Format html code with RTE features
+     * @param $str
+     * @return string
+     */
+    public function formatRTE($str) {
+        /** @var ConfigurationManagerInterface $configurationManager */
+        $configurationManager = t3h::injectClass(ConfigurationManagerInterface::class);
+        $output = $configurationManager->getContentObject()->parseFunc($str, array(), '< lib.parseFunc_RTE');
+        return $output;
     }
 }

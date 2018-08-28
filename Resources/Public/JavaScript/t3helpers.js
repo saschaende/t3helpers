@@ -20,6 +20,7 @@ function t3h_mobilePlaceholders(){
             });
         }
     }
+
     replacePlaceholders();
 
     $( window ).resize(function() {

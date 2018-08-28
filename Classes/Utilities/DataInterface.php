@@ -43,4 +43,12 @@ interface DataInterface {
      * @return mixed
      */
     public function arrayToXml($data, $rootNodeName = 'data', $xml=null);
+
+    /**
+     * Format html code with RTE features
+     * @param $str
+     * @return string
+     */
+    public function formatRTE($str);
+
 }
