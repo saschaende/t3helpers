@@ -7,12 +7,13 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
-* **28.08.2018** - [0.9.14] Added: Data()->formatRTE($str)
-* **03.08.2018** - [0.9.14] CSV(): $pos Paremeter for addRule
-* **02.08.2018** - [0.9.14] Added: Data()->arrayToXml()
+n/a
 
 # Changelog
 
+* **28.08.2018** - [0.9.14] Added: Data()->formatRTE($str)
+* **03.08.2018** - [0.9.14] CSV(): $pos Paremeter for addRule
+* **02.08.2018** - [0.9.14] Added: Data()->arrayToXml()
 * **01.08.2018** - [0.9.13] Bugfix in Filesystem
 * **26.07.2018** - [0.9.13] Mail() -> Now you can easily add attachments by adding an array with filenames and paths
 * **25.07.2018** - [0.9.13] Added Html5Patterns() for use in controllers and FLUID templates
