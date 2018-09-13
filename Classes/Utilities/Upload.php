@@ -57,7 +57,7 @@ class Upload implements UploadInterface, SingletonInterface {
 
         $Errors = [];
 
-        if ($this->maxFiles != null && count($FILES['name']) > $this->maxFiles) {
+        if ($this->maxFiles != null && count($_FILES['name']) > $this->maxFiles) {
             $Errors[] = [
                 'error' => 'count'
             ];

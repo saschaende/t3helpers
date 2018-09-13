@@ -2,6 +2,8 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use TYPO3\CMS\Core\Resource\File;
+
 interface FilesystemInterface {
 
     /**
@@ -69,5 +71,16 @@ interface FilesystemInterface {
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function getCategoriesForFile($uid);
+
+    /**
+     * Always Use this AFTER adding a new object to the database - because you need the $uid_foreign of this object :)
+     * @param \TYPO3\CMS\Core\Resource\File $file File Object (FAL), the uploaded file
+     * @param $uid_foreign UID of the element (for example a content element)
+     * @param $pid Page UID of the page, where the item is stored
+     * @param $table tha table of the item (for example tt_content)
+     * @param $fieldname the field name for the relations (for example "assets")
+     * @return bool true|false
+     */
+    public function setFileReference(File $file, $uid_foreign, $pid, $table, $fieldname);
 
 }

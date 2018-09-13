@@ -5,12 +5,11 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
-# Dev version (not released yet)
-
-- Added FrontendUser->loginUser($username)
-
 # Changelog
 
+* **13.09.2018** - [0.9.15] Bugfix in Upload->check()
+* **13.09.2018** - [0.9.15] Added FrontendUser->loginUser($username)
+* **13.09.2018** - [0.9.15] Added Filesystem->setFileReference()
 * **28.08.2018** - [0.9.14] Added: Data()->formatRTE($str)
 * **03.08.2018** - [0.9.14] CSV(): $pos Paremeter for addRule
 * **02.08.2018** - [0.9.14] Added: Data()->arrayToXml()

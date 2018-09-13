@@ -3,12 +3,13 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use t3h\t3h;
+use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Exception;
+use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Filesystem implements FilesystemInterface, SingletonInterface {
 
@@ -19,11 +20,11 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
      * @return bool
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
      */
-    public function fileExists($folder,$fileName){
+    public function fileExists($folder, $fileName) {
         $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
         $defaultStorage = $resourceFactory->getDefaultStorage();
         $folderObj = $defaultStorage->getFolder($folder);
-        return $defaultStorage->hasFileInFolder($fileName,$folderObj);
+        return $defaultStorage->hasFileInFolder($fileName, $folderObj);
     }
 
     /**
@@ -32,11 +33,11 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
      * @return null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
      */
-    public function getFileByName($folder,$fileName){
+    public function getFileByName($folder, $fileName) {
         $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
         $defaultStorage = $resourceFactory->getDefaultStorage();
         $folderObj = $defaultStorage->getFolder($folder);
-        return $defaultStorage->getFileInFolder($fileName,$folderObj);
+        return $defaultStorage->getFileInFolder($fileName, $folderObj);
     }
 
     /**
@@ -45,11 +46,11 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
      * @return bool|null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
      */
-    public function deleteFileByName($folder,$fileName){
+    public function deleteFileByName($folder, $fileName) {
         $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
         $defaultStorage = $resourceFactory->getDefaultStorage();
         $folderObj = $defaultStorage->getFolder($folder);
-        return $defaultStorage->getFileInFolder($fileName,$folderObj)->delete();
+        return $defaultStorage->getFileInFolder($fileName, $folderObj)->delete();
     }
 
     /**
@@ -153,12 +154,50 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
      * @param $uid
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function getCategoriesForFile($uid){
+    public function getCategoriesForFile($uid) {
         /** @var CategoryRepository $categories */
         $categories = t3h::injectClass(CategoryRepository::class);
         $query = $categories->createQuery();
-        $query->statement("SELECT cat.* FROM sys_file_metadata as meta LEFT JOIN sys_category_record_mm AS mm ON mm.uid_foreign = meta.uid LEFT JOIN sys_category AS cat ON cat.uid = mm.uid_local WHERE meta.file = ".intval($uid)." AND mm.tablenames = 'sys_file_metadata'");
+        $query->statement("SELECT cat.* FROM sys_file_metadata as meta LEFT JOIN sys_category_record_mm AS mm ON mm.uid_foreign = meta.uid LEFT JOIN sys_category AS cat ON cat.uid = mm.uid_local WHERE meta.file = " . intval($uid) . " AND mm.tablenames = 'sys_file_metadata'");
         return $query->execute();
+    }
+
+    /**
+     * Always Use this AFTER adding a new object to the database - because you need the $uid_foreign of this object :)
+     * @param \TYPO3\CMS\Core\Resource\File $file File Object (FAL), the uploaded file
+     * @param $uid_foreign UID of the element (for example a content element)
+     * @param $pid Page UID of the page, where the item is stored
+     * @param $table tha table of the item (for example tt_content)
+     * @param $fieldname the field name for the relations (for example "assets")
+     * @return bool true|false
+     */
+    public function setFileReference(File $file, $uid_foreign, $pid, $table, $fieldname) {
+
+        // Assemble DataHandler data
+        $newId = 'NEW1234';
+        $data = [];
+        $data['sys_file_reference'][$newId] = [
+            'table_local' => 'sys_file',
+            'uid_local' => $file->getUid(),
+            'tablenames' => $table,
+            'uid_foreign' => $uid_foreign,
+            'fieldname' => $fieldname,
+            'pid' => $pid
+        ];
+        $data[$table][$uid_foreign] = [
+            'assets' => $newId
+        ];
+        // Get an instance of the DataHandler and process the data
+        /** @var DataHandler $dataHandler */
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start($data, []);
+        $dataHandler->process_datamap();
+        // Error or success reporting
+        if (count($dataHandler->errorLog) === 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
