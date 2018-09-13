@@ -6,4 +6,11 @@ interface FrontendUserInterface {
 
     public function getCurrentUser();
 
+    /**
+     * Manually login a user
+     * @param $username
+     * @throws \ReflectionException
+     */
+    public function loginUser($username);
+
 }

@@ -7,7 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Dev version (not released yet)
 
-n/a
+- Added FrontendUser->loginUser($username)
 
 # Changelog
 
