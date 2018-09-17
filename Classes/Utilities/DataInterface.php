@@ -51,4 +51,11 @@ interface DataInterface {
      */
     public function formatRTE($str);
 
+    /**
+     * automatic convertion windows-1250 and iso-8859-2 info utf-8 string
+     * @param   string  $s
+     * @return  string
+     */
+    public function autoUTF($s);
+
 }

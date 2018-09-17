@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use SaschaEnde\T3helpers\Vendor\Encoding;
 use t3h\t3h;
 use t3h\XML2Array;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -157,5 +158,15 @@ class Data implements DataInterface, SingletonInterface {
         $configurationManager = t3h::injectClass(ConfigurationManagerInterface::class);
         $output = $configurationManager->getContentObject()->parseFunc($str, array(), '< lib.parseFunc_RTE');
         return $output;
+    }
+
+    /**
+     * automatic convertion info utf-8 string
+     * @param   string  $s
+     * @return  string
+     */
+    public function autoUTF($s)
+    {
+        return Encoding::toUTF8($s);
     }
 }

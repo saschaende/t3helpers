@@ -2,7 +2,9 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Csv implements CsvInterface, SingletonInterface {
 
@@ -14,14 +16,15 @@ class Csv implements CsvInterface, SingletonInterface {
         'text' => ['^([a-zA-Z0-9ßäöüÄÖÜ\s]+)$', 'is'],
         'number' => ['^([0-9]+){5}$', 'is'],
         'plz' => ['^([0-9]+){5}$', ''],
-        'email' => ['^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$', 'iD'],
-        'date'  => ['^([0-9]{2}.[0-9]{2}.[0-9]{4})$','is'],
-        'anrede'    =>  ['^(Herr|Frau)$', 'is']
+        'email' => ['^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$', 'i'],
+        'date' => ['^([0-9]{2}.[0-9]{2}.[0-9]{4})$', 'is'],
+        'anrede' => ['^(Herr|Frau)$', 'is']
     ];
 
     protected $delimiter = ',';
     protected $enclosure = '"';
     protected $escape = "\\";
+    protected $autoUTF = true;
 
     /**
      * @param $file
@@ -33,6 +36,16 @@ class Csv implements CsvInterface, SingletonInterface {
     }
 
     /**
+     * @param bool $autoUTF
+     * @return $this
+     */
+    public function setAutoUTF($autoUTF) {
+        $this->autoUTF = $autoUTF;
+        return $this;
+    }
+
+
+    /**
      * Get parsed file
      * @param bool $object Set true, to return std objects
      * @return array|bool|null
@@ -40,7 +53,7 @@ class Csv implements CsvInterface, SingletonInterface {
     public function getFileParsed($object = false) {
         $fileParsed = $this->parseFile();
 
-        if($object){
+        if ($object) {
 
             $res = [];
 
@@ -51,7 +64,7 @@ class Csv implements CsvInterface, SingletonInterface {
                 // Für jede Spalte
                 for ($i = 0; $i < count($row); $i++) {
                     // Abbrechen, wenn keine Regel vorhanden
-                    if(!$this->rules[$i]){
+                    if (!$this->rules[$i]) {
                         continue;
                     }
                     // Daten hinzufügen
@@ -63,7 +76,7 @@ class Csv implements CsvInterface, SingletonInterface {
 
             return $res;
 
-        }else{
+        } else {
             return $fileParsed;
         }
     }
@@ -96,15 +109,15 @@ class Csv implements CsvInterface, SingletonInterface {
             $option = $this->patterns[$regex][1];
         }
 
-        if($pos === null){
+        if ($pos === null) {
             $this->rules[] = [
                 'column' => $column,
                 'regex' => $regex,
                 'option' => $option,
                 'emptyAllowed' => $emptyAllowed
             ];
-        }else{
-            $this->rules[$pos-1] = [
+        } else {
+            $this->rules[$pos - 1] = [
                 'column' => $column,
                 'regex' => $regex,
                 'option' => $option,
@@ -134,11 +147,11 @@ class Csv implements CsvInterface, SingletonInterface {
                     $row[$i],
                     $output_array
                 );
-                if($output_array[0][0] != $row[$i] || ($this->rules[$i]['emptyAllowed'] == false && empty($row[$i]))){
+                if ($output_array[0][0] != $row[$i] || ($this->rules[$i]['emptyAllowed'] == false && empty($row[$i]))) {
                     $errors[] = [
-                        'row'   =>  $rowcount,
-                        'column'    => $this->rules[$i]['column'],
-                        'value' =>  $row[$i]
+                        'row' => $rowcount,
+                        'column' => $this->rules[$i]['column'],
+                        'value' => $row[$i]
                     ];
                 }
             }
@@ -158,9 +171,19 @@ class Csv implements CsvInterface, SingletonInterface {
         $data = [];
 
         if (($handle = fopen($this->file, 'r')) !== FALSE) {
-            while (($row = fgetcsv($handle, 0, $this->delimiter, $this->enclosure, $this->escape)) !== FALSE) {
-                $data[] = array_map('trim', $row); // trim every column
+
+            while (($buffer = fgets($handle)) !== false) {
+
+                if ($this->autoUTF) {
+                    $buffer = t3h::Data()->autoUTF($buffer);
+                }
+
+                $row = str_getcsv($buffer, $this->delimiter, $this->enclosure, $this->escape);
+                $row = array_map('trim', $row); // trim every column
+
+                $data[] = $row;
             }
+
             fclose($handle);
         }
         return $data;

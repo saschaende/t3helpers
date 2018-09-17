@@ -11,6 +11,12 @@ interface CsvInterface {
     public function setFile($file);
 
     /**
+     * @param bool $autoUTF
+     * @return $this
+     */
+    public function setAutoUTF($autoUTF);
+
+    /**
      * Get parsed file
      * @param bool $object Set true, to return std objects
      * @return array|bool|null
