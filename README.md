@@ -5,6 +5,10 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
+# 0.9.18
+
+* Added Database::persistAll()
+
 # Changelog
 
 * **13.09.2018** - [0.9.17] CSV()->setAutoUTF($autoUTF)
