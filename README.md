@@ -7,6 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Working on 0.9.17
 
+* **03.11.2018** - [0.9.17]  Added Settings::getTypo3Configuration($part = false)
 * **03.11.2018** - [0.9.17]  Added Database::persistAll()
 * **13.09.2018** - [0.9.17] CSV()->setAutoUTF($autoUTF)
 * **13.09.2018** - [0.9.17] Added Data()->autoUTF($s)

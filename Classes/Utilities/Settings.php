@@ -40,5 +40,17 @@ class Settings implements SettingsInterface, SingletonInterface {
             return $extbaseFrameworkConfiguration;
     }
 
+    /**
+     * @param bool $part default: false (BE, DB, EXT, MAIL, FE, SYS...)
+     * @return mixed
+     */
+    public function getTypo3Configuration($part = false){
+        if($part){
+            return $GLOBALS['TYPO3_CONF_VARS'][$part];
+        }else{
+            return $GLOBALS['TYPO3_CONF_VARS'];
+        }
+    }
+
 
 }
