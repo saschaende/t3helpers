@@ -5,16 +5,17 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
-# Working on 0.9.17
+# Working on 0.9.18
+
+- n/a
+
+# Changelog
 
 * **03.11.2018** - [0.9.17]  Added Settings::getTypo3Configuration($part = false)
 * **03.11.2018** - [0.9.17]  Added Database::persistAll()
 * **13.09.2018** - [0.9.17] CSV()->setAutoUTF($autoUTF)
 * **13.09.2018** - [0.9.17] Added Data()->autoUTF($s)
 * **13.09.2018** - [0.9.17] Added ForceUTF8 Library
-
-# Changelog
-
 * **13.09.2018** - [0.9.16] Bugfix release (GeneralUtility was missing in Filesystem->setFileReference)
 * **13.09.2018** - [0.9.15] Bugfix in Upload->check()
 * **13.09.2018** - [0.9.15] Added FrontendUser->loginUser($username)
