@@ -6,6 +6,7 @@ use t3h\t3h;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -60,6 +61,14 @@ class Database implements DatabaseInterface, SingletonInterface {
             $queryBuilder->from($table);
         }
         return $queryBuilder;
+    }
+
+    /**
+     * Persist All
+     */
+    public function persistAll(){
+        $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
+        $persistenceManager->persistAll();
     }
 
 }

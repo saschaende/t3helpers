@@ -29,4 +29,9 @@ interface DatabaseInterface {
      * @return \TYPO3\CMS\Core\Database\Query\QueryBuilder
      */
     public function getQuerybuilder($table, $addFrom = true);
+
+    /**
+     * Persist All
+     */
+    public function persistAll();
 }
