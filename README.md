@@ -7,7 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Working on 0.9.18
 
-- n/a
+- Coming soon
 
 # Changelog
 
