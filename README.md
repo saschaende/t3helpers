@@ -7,11 +7,11 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Next release
 
-n/a
+* **13.11.2018** - [0.9.19]  Added t3h namespace for viewhelpers
 
 # Changelog
 
-* **03.11.2018** - [0.9.18]  Viewhelper css/class now supports array
+* **12.11.2018** - [0.9.18]  Viewhelper css/class now supports array
 * **03.11.2018** - [0.9.17]  Added Settings::getTypo3Configuration($part = false)
 * **03.11.2018** - [0.9.17]  Added Database::persistAll()
 * **13.09.2018** - [0.9.17] CSV()->setAutoUTF($autoUTF)
