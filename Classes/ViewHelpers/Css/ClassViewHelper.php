@@ -9,12 +9,19 @@ class ClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 {
 
     /**
-     * @param string $css
+     * @param mixed $css
      * @return string
      */
     public function render($css = null)
     {
-        $css = explode(',',$css);
-        return implode(" ",$css);
+        if(is_array($css)){
+            $parts = [];
+            foreach($css as $cssArrElement){
+               $parts = array_merge($parts,explode(',',$cssArrElement));
+            }
+        }else{
+            $parts = explode(',',$css);
+        }
+        return implode(" ",$parts);
     }
 }
