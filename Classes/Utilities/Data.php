@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use function GuzzleHttp\Psr7\parse_query;
 use SaschaEnde\T3helpers\Vendor\Encoding;
 use t3h\t3h;
 use t3h\XML2Array;
@@ -168,5 +169,47 @@ class Data implements DataInterface, SingletonInterface {
     public function autoUTF($s)
     {
         return Encoding::toUTF8($s);
+    }
+
+    /**
+     * Extended version of parse_url
+     * @param $url
+     */
+    public function parse_url($url){
+        $parseData = parse_url($url);
+
+        if($parseData['scheme'] == 'https'){
+            $parseData['ssl'] = true;
+        }else{
+            $parseData['ssl'] = false;
+        }
+
+        // Queries
+        if(isset($parseData['query'])) {
+            $parseData['queryData'] = parse_query($parseData['query']);
+        }else{
+            $parseData['queryData'] = [];
+        }
+
+        // Extract Subdomain
+        $domainparts = explode('.',$parseData['host']);
+        $parseData['domain'] = $domainparts[count($domainparts)-2].'.'.$domainparts[count($domainparts)-1];
+        $parseData['subdomain'] = str_replace('.'.$parseData['domain'],'',$parseData['host']);
+
+        // URI 1
+        $uri = $parseData['domain'].$parseData['path'];
+        if(isset($parseData['query'])){
+            $uri .= '?'.$parseData['query'];
+        }
+        $parseData['domainPath'] = $uri;
+
+        // URI 1
+        $uri = $parseData['host'].$parseData['path'];
+        if(isset($parseData['query'])){
+            $uri .= '?'.$parseData['query'];
+        }
+        $parseData['hostPath'] = $uri;
+
+        return $parseData;
     }
 }

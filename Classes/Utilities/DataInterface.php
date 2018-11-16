@@ -58,4 +58,10 @@ interface DataInterface {
      */
     public function autoUTF($s);
 
+    /**
+     * Extended version of parse_url
+     * @param $url
+     */
+    public function parse_url($url);
+
 }
