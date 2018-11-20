@@ -9,6 +9,7 @@ use t3h\XML2Array;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Data implements DataInterface, SingletonInterface {
 
@@ -178,6 +179,19 @@ class Data implements DataInterface, SingletonInterface {
     public function parse_url($url){
         $parseData = parse_url($url);
 
+        // google Webcache?
+        if($parseData['host'] == 'webcache.googleusercontent.com'){
+            $querydata = parse_query($parseData['query']);
+            $domain = explode(':',$querydata['q']);
+            $domain = array_slice($domain, 2);
+            $domain = urldecode(trim(implode(':',$domain)));
+
+            if(substr($domain,0,4) != 'http'){
+                $domain = 'http://'.$domain;
+            }
+            $parseData = parse_url($domain);
+        }
+
         if($parseData['scheme'] == 'https'){
             $parseData['ssl'] = true;
         }else{
@@ -194,7 +208,13 @@ class Data implements DataInterface, SingletonInterface {
         // Extract Subdomain
         $domainparts = explode('.',$parseData['host']);
         $parseData['domain'] = $domainparts[count($domainparts)-2].'.'.$domainparts[count($domainparts)-1];
-        $parseData['subdomain'] = str_replace('.'.$parseData['domain'],'',$parseData['host']);
+
+        if(count($domainparts) > 2){
+            $parseData['subdomain'] = str_replace('.'.$parseData['domain'],'',$parseData['host']);
+        }else{
+            $parseData['subdomain'] = '';
+        }
+
 
         // URI 1
         $uri = $parseData['domain'].$parseData['path'];
@@ -203,12 +223,20 @@ class Data implements DataInterface, SingletonInterface {
         }
         $parseData['domainPath'] = $uri;
 
-        // URI 1
+        // URI 2
         $uri = $parseData['host'].$parseData['path'];
         if(isset($parseData['query'])){
             $uri .= '?'.$parseData['query'];
         }
         $parseData['hostPath'] = $uri;
+
+        // URI 3
+        $uri = $parseData['path'];
+        if(isset($parseData['query'])){
+            $uri .= '?'.$parseData['query'];
+        }
+        $parseData['queryPath'] = $uri;
+
 
         return $parseData;
     }
