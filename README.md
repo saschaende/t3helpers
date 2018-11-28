@@ -7,6 +7,7 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 
 # Next release
 
+* **16.11.2018** - [0.9.19]  Added Data::parse_url($url)
 * **13.11.2018** - [0.9.19]  Added t3h namespace for viewhelpers
 * **28.11.2018** - [0.9.19]  Filesystem::getUniqueFilename($originFilename)
 * **28.11.2018** - [0.9.19]  Bugfix: JS Injections

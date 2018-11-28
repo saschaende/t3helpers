@@ -2,12 +2,14 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use function GuzzleHttp\Psr7\parse_query;
 use SaschaEnde\T3helpers\Vendor\Encoding;
 use t3h\t3h;
 use t3h\XML2Array;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Data implements DataInterface, SingletonInterface {
 
@@ -168,5 +170,74 @@ class Data implements DataInterface, SingletonInterface {
     public function autoUTF($s)
     {
         return Encoding::toUTF8($s);
+    }
+
+    /**
+     * Extended version of parse_url
+     * @param $url
+     */
+    public function parse_url($url){
+        $parseData = parse_url($url);
+
+        // google Webcache?
+        if($parseData['host'] == 'webcache.googleusercontent.com'){
+            $querydata = parse_query($parseData['query']);
+            $domain = explode(':',$querydata['q']);
+            $domain = array_slice($domain, 2);
+            $domain = urldecode(trim(implode(':',$domain)));
+
+            if(substr($domain,0,4) != 'http'){
+                $domain = 'http://'.$domain;
+            }
+            $parseData = parse_url($domain);
+        }
+
+        if($parseData['scheme'] == 'https'){
+            $parseData['ssl'] = true;
+        }else{
+            $parseData['ssl'] = false;
+        }
+
+        // Queries
+        if(isset($parseData['query'])) {
+            $parseData['queryData'] = parse_query($parseData['query']);
+        }else{
+            $parseData['queryData'] = [];
+        }
+
+        // Extract Subdomain
+        $domainparts = explode('.',$parseData['host']);
+        $parseData['domain'] = $domainparts[count($domainparts)-2].'.'.$domainparts[count($domainparts)-1];
+
+        if(count($domainparts) > 2){
+            $parseData['subdomain'] = str_replace('.'.$parseData['domain'],'',$parseData['host']);
+        }else{
+            $parseData['subdomain'] = '';
+        }
+
+
+        // URI 1
+        $uri = $parseData['domain'].$parseData['path'];
+        if(isset($parseData['query'])){
+            $uri .= '?'.$parseData['query'];
+        }
+        $parseData['domainPath'] = $uri;
+
+        // URI 2
+        $uri = $parseData['host'].$parseData['path'];
+        if(isset($parseData['query'])){
+            $uri .= '?'.$parseData['query'];
+        }
+        $parseData['hostPath'] = $uri;
+
+        // URI 3
+        $uri = $parseData['path'];
+        if(isset($parseData['query'])){
+            $uri .= '?'.$parseData['query'];
+        }
+        $parseData['queryPath'] = $uri;
+
+
+        return $parseData;
     }
 }
