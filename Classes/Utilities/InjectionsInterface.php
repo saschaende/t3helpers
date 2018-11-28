@@ -22,6 +22,12 @@ interface InjectionsInterface {
 
     /**
      * @param $filepath
+     * @return mixed
+     */
+    public function jsFooterFile($filepath);
+
+    /**
+     * @param $filepath
      */
     public function jsLibraryFile($filepath);
 

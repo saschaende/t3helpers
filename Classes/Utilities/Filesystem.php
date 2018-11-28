@@ -201,4 +201,9 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
         }
     }
 
+    public function getUniqueFilename($originFilename){
+        $path_parts = pathinfo($originFilename);
+        return uniqid().time().'.'.$path_parts['extension'];
+    }
+
 }

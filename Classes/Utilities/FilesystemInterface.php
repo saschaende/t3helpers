@@ -83,4 +83,12 @@ interface FilesystemInterface {
      */
     public function setFileReference(File $file, $uid_foreign, $pid, $table, $fieldname);
 
+
+    /**
+     * Get a unique filename
+     * @param $originFilename
+     * @return mixed
+     */
+    public function getUniqueFilename($originFilename);
+
 }

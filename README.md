@@ -8,6 +8,9 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 # Next release
 
 * **13.11.2018** - [0.9.19]  Added t3h namespace for viewhelpers
+* **28.11.2018** - [0.9.19]  Filesystem::getUniqueFilename($originFilename)
+* **28.11.2018** - [0.9.19]  Bugfix: JS Injections
+* **28.11.2018** - [0.9.19]  Injections::jsFooterFile
 
 # Changelog
 
