@@ -109,7 +109,7 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
 
         $resourceFactory = ResourceFactory::getInstance();
         $defaultStorage = $resourceFactory->getDefaultStorage();
-        $folderObj = $resourceFactory->getFolderObjectFromCombinedIdentifier($folder);
+        $folderObj = $defaultStorage->getFolder($folder);
         $files = $defaultStorage->getFilesInFolder($folderObj);
 
         foreach ($files as $file) {
@@ -131,7 +131,7 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
 
         $resourceFactory = ResourceFactory::getInstance();
         $defaultStorage = $resourceFactory->getDefaultStorage();
-        $folderObj = $resourceFactory->getFolderObjectFromCombinedIdentifier($folder);
+        $folderObj = $defaultStorage->getFolder($folder);
         $files = $defaultStorage->getFilesInFolder($folderObj);
 
         foreach ($files as $file) {
