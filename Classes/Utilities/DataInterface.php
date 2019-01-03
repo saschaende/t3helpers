@@ -59,6 +59,12 @@ interface DataInterface {
     public function autoUTF($s);
 
     /**
+     * @param $url
+     * @return mixed
+     */
+    public function get_youtube_id_from_url($url);
+
+    /**
      * Extended version of parse_url
      * @param $url
      */
