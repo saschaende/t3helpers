@@ -83,6 +83,13 @@ interface FilesystemInterface {
      */
     public function setFileReference(File $file, $uid_foreign, $pid, $table, $fieldname);
 
+    /**
+     * Get the file extension (f.e. mp3, doc, zip...)
+     * @param $filename
+     * @return string
+     */
+    public function getFileExtension($filename);
+
 
     /**
      * Get a unique filename

@@ -195,6 +195,16 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
         }
     }
 
+    /**
+     * Get the file extension (f.e. mp3, doc, zip...)
+     * @param $filename
+     * @return string
+     */
+    public function getFileExtension($filename){
+        $pathinfo = pathinfo($filename);
+        return strtolower($pathinfo['extension']);
+    }
+
     public function getUniqueFilename($originFilename) {
         $path_parts = pathinfo($originFilename);
         return uniqid() . time() . '.' . $path_parts['extension'];
