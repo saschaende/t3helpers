@@ -3,7 +3,7 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use t3h\t3h;
-use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Exception;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -174,36 +174,30 @@ class Filesystem implements FilesystemInterface, SingletonInterface {
      */
     public function setFileReference(File $file, $uid_foreign, $pid, $table, $fieldname) {
 
-        // Assemble DataHandler data
-        $newId = 'NEW1234';
-        $data = [];
-        $data['sys_file_reference'][$newId] = [
-            'table_local' => 'sys_file',
-            'uid_local' => $file->getUid(),
-            'tablenames' => $table,
-            'uid_foreign' => $uid_foreign,
-            'fieldname' => $fieldname,
-            'pid' => $pid
-        ];
-        $data[$table][$uid_foreign] = [
-            'assets' => $newId
-        ];
-        // Get an instance of the DataHandler and process the data
-        /** @var DataHandler $dataHandler */
-        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
-        $dataHandler->start($data, []);
-        $dataHandler->process_datamap();
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_file_reference');
+        $affectedRows = $queryBuilder
+            ->insert('sys_file_reference')
+            ->values([
+                'table_local' => 'sys_file',
+                'uid_local' => $file->getUid(),
+                'tablenames' => $table,
+                'uid_foreign' => $uid_foreign,
+                'fieldname' => $fieldname,
+                'pid' => $pid
+            ])
+            ->execute();
+
         // Error or success reporting
-        if (count($dataHandler->errorLog) === 0) {
+        if ($affectedRows >= 1) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function getUniqueFilename($originFilename){
+    public function getUniqueFilename($originFilename) {
         $path_parts = pathinfo($originFilename);
-        return uniqid().time().'.'.$path_parts['extension'];
+        return uniqid() . time() . '.' . $path_parts['extension'];
     }
 
 }
