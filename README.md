@@ -5,56 +5,6 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
-# Next release
-
-* **16.11.2018** - [0.9.19]  Added Data::parse_url($url)
-* **13.11.2018** - [0.9.19]  Added t3h namespace for viewhelpers
-* **28.11.2018** - [0.9.19]  Filesystem::getUniqueFilename($originFilename)
-* **28.11.2018** - [0.9.19]  Bugfix: JS Injections
-* **28.11.2018** - [0.9.19]  Injections::jsFooterFile
-
-# Changelog
-
-* **12.11.2018** - [0.9.18]  Viewhelper css/class now supports array
-* **03.11.2018** - [0.9.17]  Added Settings::getTypo3Configuration($part = false)
-* **03.11.2018** - [0.9.17]  Added Database::persistAll()
-* **13.09.2018** - [0.9.17] CSV()->setAutoUTF($autoUTF)
-* **13.09.2018** - [0.9.17] Added Data()->autoUTF($s)
-* **13.09.2018** - [0.9.17] Added ForceUTF8 Library
-* **13.09.2018** - [0.9.16] Bugfix release (GeneralUtility was missing in Filesystem->setFileReference)
-* **13.09.2018** - [0.9.15] Bugfix in Upload->check()
-* **13.09.2018** - [0.9.15] Added FrontendUser->loginUser($username)
-* **13.09.2018** - [0.9.15] Added Filesystem->setFileReference()
-* **28.08.2018** - [0.9.14] Added: Data()->formatRTE($str)
-* **03.08.2018** - [0.9.14] CSV(): $pos Paremeter for addRule
-* **02.08.2018** - [0.9.14] Added: Data()->arrayToXml()
-* **01.08.2018** - [0.9.13] Bugfix in Filesystem
-* **26.07.2018** - [0.9.13] Mail() -> Now you can easily add attachments by adding an array with filenames and paths
-* **25.07.2018** - [0.9.13] Added Html5Patterns() for use in controllers and FLUID templates
-* **24.07.2018** - [0.9.12] Readme: Example for csv parser
-* **18.07.2018** - [0.9.12] Added CSV Validator with rules and parser: t3h::Csv()
-* **18.07.2018** - [0.9.12] Major change: Numeric keys for uploaded files
-* **18.07.2018** - [0.9.12] Method added Session()->remove($key)
-* **18.07.2018** - [0.9.12] Session()->get($key = null) now returns all values, if no key is given
-* **17.07.2018** - [0.9.11] Finalized Upload() Features
-* **17.07.2018** - [0.9.11] Bugfix, save session Data (by Markus A.)
-* **25.06.2018** - [0.9.11] AbstractDatamapper Hook (after updating/adding database entries hooks)
-* **21.06.2018** - [0.9.11] Configuration::setExtension() -> return $this
-* **14.06.2018** - [0.9.10] Abstract eID Dispatcher, check Classes/Examples/EidExample.php
-* **05.06.2018** - [0.9.9] Interface implements for Utility Classes
-* **05.06.2018** - [0.9.9] + Datastorage()
-* **01.06.2018** - [0.9.9] Settings()->getExtension($extensionName, $part = 'settings')
-* **24.05.2018** - [0.9.9] Database()->getQuerybuilder($table, $addFrom = true)
-* **23.05.2018** - [0.9.8] Data()->xmlToArray($xmldata)
-* **22.04.2018** - [0.9.6] Filesystem->fileExists($folder,$fileName)
-* **04.04.2018** - models and repositories for pages, contents / content element object viewhelper / Filesystem::getFileObjectByID($id) / phpdoc comments for Filesystem / Link()->Uri() / Link() is deprecated / t3h::Category()
-* **03.04.2018** - Filesystem::getCategoriesForFile($uid)
-* **31.03.2018** - Bugfixes & enhancements
-* **22.03.2018** - Many changes and enhancements
-* **09.03.2018** - First cleanup and documentation, new functions, tests
-* **08.03.2018** - DEBUG: Full Typoscript, (Max Schröter) Use Interfaces, so we can easily overwrite them: https://wiki.typo3.org/Dependency_Injection#Programming_against_interfaces, (Max Schröter) Convert static helper classes to abstractable normal classes, TEMPLATES: Render some Template with Variables
-* **07.03.2018** - Bugfixes, Password functions added, Bugfixes, Injections added, Google added, t3h_truncateTable() added, Link helpers added
-
 # Installation
 
 ## Composer
