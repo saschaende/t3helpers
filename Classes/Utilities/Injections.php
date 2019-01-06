@@ -16,7 +16,7 @@ class Injections implements InjectionsInterface, SingletonInterface {
      * @param $ext
      * @return $this
      */
-    public function setExtension($ext){
+    public function setExtension($ext) {
         $this->extension = $ext;
         return $this;
     }
@@ -32,9 +32,9 @@ class Injections implements InjectionsInterface, SingletonInterface {
     /**
      * @param $filepath
      */
-    public function jsFile($filepath){
+    public function jsFile($filepath) {
         // Get path
-        $path = 'typo3conf/ext/'.$this->extension.'/'.$filepath;
+        $path = 'typo3conf/ext/' . $this->extension . '/' . $filepath;
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->addJsFile(
@@ -49,9 +49,9 @@ class Injections implements InjectionsInterface, SingletonInterface {
     /**
      * @param $filepath
      */
-    public function jsFooterFile($filepath){
+    public function jsFooterFile($filepath) {
         // Get path
-        $path = 'typo3conf/ext/'.$this->extension.'/'.$filepath;
+        $path = 'typo3conf/ext/' . $this->extension . '/' . $filepath;
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->addJsFooterFile(
@@ -66,9 +66,9 @@ class Injections implements InjectionsInterface, SingletonInterface {
     /**
      * @param $filepath
      */
-    public function jsLibraryFile($filepath){
+    public function jsLibraryFile($filepath) {
         // Get path
-        $path = 'typo3conf/ext/'.$this->extension.'/'.$filepath;
+        $path = 'typo3conf/ext/' . $this->extension . '/' . $filepath;
 
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
@@ -86,9 +86,9 @@ class Injections implements InjectionsInterface, SingletonInterface {
     /**
      * @param $filepath
      */
-    public function cssFile($filepath){
+    public function cssFile($filepath) {
         // Get path
-        $path = 'typo3conf/ext/'.$this->extension.'/'.$filepath;
+        $path = 'typo3conf/ext/' . $this->extension . '/' . $filepath;
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->addCssFile($path);
@@ -97,12 +97,28 @@ class Injections implements InjectionsInterface, SingletonInterface {
     /**
      * @param $filepath
      */
-    public function cssLibraryFile($filepath){
+    public function cssLibraryFile($filepath) {
         // Get path
-        $path = 'typo3conf/ext/'.$this->extension.'/'.$filepath;
+        $path = 'typo3conf/ext/' . $this->extension . '/' . $filepath;
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->addCssLibrary($path);
+    }
+
+    /**
+     * Add flexform
+     * @param $plugin
+     */
+    public function addFlexform($plugin) {
+        global $TCA;
+        // Stoebern: Flexform
+        $extensionName = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($this->extension));
+        $pluginName = strtolower($plugin);
+        $pluginSignature = $extensionName . '_' . $pluginName;
+
+        $TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,pages,recursive';
+        $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform, layout';
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $this->extension . '/Configuration/FlexForm/' . $plugin . '.xml');
     }
 
 }

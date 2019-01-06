@@ -41,4 +41,10 @@ interface InjectionsInterface {
      */
     public function cssLibraryFile($filepath);
 
+    /**
+     * Add flexform
+     * @param $plugin
+     */
+    public function addFlexform($plugin);
+
 }
