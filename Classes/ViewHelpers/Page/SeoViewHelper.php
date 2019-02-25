@@ -8,9 +8,11 @@ class SeoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
      * @param $tag title|og:image|og:title|og:type|og:url|og:description|fp:app_id|og:site_name
      */
     public function render($tag) {
+
         switch ($tag) {
             case 'title':
                 $GLOBALS['TSFE']->page['title'] = trim($this->renderChildren());
+                $GLOBALS['TSFE']->additionalHeaderData[] = '<title>'.trim($this->renderChildren()).'</title>';
                 break;
             case 'og:title':
                 $GLOBALS['TSFE']->additionalHeaderData[] = '<meta property="og:title" content="'.htmlspecialchars(trim($this->renderChildren())).'"/>';
