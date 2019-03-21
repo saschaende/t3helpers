@@ -16,15 +16,20 @@ class Mail implements MailInterface, SingletonInterface {
      * @param $subject
      * @param $emailBody
      * @param array $attachments
-     * @return bool
+     * @param bool $priority
+     * @return bool|mixed
      */
-    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody, $attachments = []) {
+    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody, $attachments = [],$priority = false) {
         // set email settings
         $message = GeneralUtility::makeInstance(MailMessage::class);
 
         $message->setTo($recipient)
             ->setFrom([$senderEmail => $senderName])
             ->setSubject($subject);
+
+        if($priority){
+            $message->setPriority($priority);
+        }
 
         $message->setBody($emailBody, 'text/html');
 
@@ -51,9 +56,10 @@ class Mail implements MailInterface, SingletonInterface {
      * @param $path
      * @param array $variables
      * @param array $attachments
+     * @param bool $priority
      * @return bool
      */
-    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = []) {
+    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = [],$priority = false) {
         $emailBody = t3h::Template()->render($extension, $path, $variables);
         return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments);
     }

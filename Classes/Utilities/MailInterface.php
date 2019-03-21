@@ -11,9 +11,10 @@ interface MailInterface {
      * @param $subject
      * @param $emailBody
      * @param array $attachments
-     * @return bool
+     * @param bool $priority
+     * @return mixed
      */
-    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody, $attachments = []);
+    public function send($recipient, $senderEmail, $senderName, $subject, $emailBody, $attachments = [],$priority = false);
 
     /**
      * @param $recipient
@@ -24,8 +25,9 @@ interface MailInterface {
      * @param $path
      * @param array $variables
      * @param array $attachments
-     * @return bool
+     * @param bool $priority
+     * @return mixed
      */
-    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = []);
+    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = [],$priority = false);
 
 }
