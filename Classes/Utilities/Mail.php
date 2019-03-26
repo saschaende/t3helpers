@@ -61,7 +61,7 @@ class Mail implements MailInterface, SingletonInterface {
      */
     public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = [],$priority = false) {
         $emailBody = t3h::Template()->render($extension, $path, $variables);
-        return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments);
+        return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments,$priority);
     }
 
 }
