@@ -23,6 +23,18 @@ class Password implements PasswordInterface, SingletonInterface {
     }
 
     /**
+     * Check password
+     * @return null|string
+     */
+    public function checkPassword($plainPW,$saltedHashPW) {
+        if (SaltedPasswordsUtility::isUsageEnabled('FE')) {
+            $objSalt = SaltFactory::getSaltingInstance(NULL);
+            return $objSalt->checkPassword($plainPW, $saltedHashPW);
+        }
+        return false;
+    }
+
+    /**
      * Create a human readable password
      * @param int $letters
      * @param bool $length
