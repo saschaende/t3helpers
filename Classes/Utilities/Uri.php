@@ -20,7 +20,7 @@ class Uri implements UriInterface, SingletonInterface {
 
     public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true) {
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
-            'parameter' => $pid,
+            'parameter' => intval($pid),
             'useCacheHash' => $useCacheHash,
             'returnLast' => 'url',
             'forceAbsoluteUrl' => $forceAbsoluteUrl
@@ -41,7 +41,7 @@ class Uri implements UriInterface, SingletonInterface {
         }
 
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
-            'parameter' => $pid,
+            'parameter' => intval($pid),
             'additionalParams' => '&' . http_build_query($params),
             'useCacheHash' => $useCacheHash,
             'returnLast' => 'url',
