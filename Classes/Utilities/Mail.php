@@ -57,10 +57,11 @@ class Mail implements MailInterface, SingletonInterface {
      * @param array $variables
      * @param array $attachments
      * @param bool $priority
-     * @return bool
+     * @param null $controllerContext $controllerContext In your controller action use $this->controllerContext, important for using translation
+     * @return bool|mixed
      */
-    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = [],$priority = false) {
-        $emailBody = t3h::Template()->render($extension, $path, $variables);
+    public function sendTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $path, $variables = [], $attachments = [],$priority = false, $controllerContext = null) {
+        $emailBody = t3h::Template()->render($extension, $path, $variables, $controllerContext);
         return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments,$priority);
     }
 
