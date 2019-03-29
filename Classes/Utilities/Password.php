@@ -6,6 +6,12 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
 use TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility;
 
+/**
+ * TYPO3 9:
+ * $hashInstance = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::class)->getDefaultHashInstance('FE');
+ * $user->setPassword($hashInstance->getHashedPassword($user->getPassword()));
+ * @todo TYPO3 9
+ */
 class Password implements PasswordInterface, SingletonInterface {
 
     /**
