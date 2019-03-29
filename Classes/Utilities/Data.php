@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Data implements DataInterface, SingletonInterface {
+class Data implements SingletonInterface {
 
     protected $xml;
 

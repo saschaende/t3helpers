@@ -2,93 +2,93 @@
 
 namespace t3h;
 
-use SaschaEnde\T3helpers\Utilities\BackendUserInterface;
-use SaschaEnde\T3helpers\Utilities\CategoryInterface;
-use SaschaEnde\T3helpers\Utilities\CommandInterface;
-use SaschaEnde\T3helpers\Utilities\ConfigurationInterface;
-use SaschaEnde\T3helpers\Utilities\CsvInterface;
-use SaschaEnde\T3helpers\Utilities\DatabaseInterface;
-use SaschaEnde\T3helpers\Utilities\DataInterface;
-use SaschaEnde\T3helpers\Utilities\DatastorageInterface;
-use SaschaEnde\T3helpers\Utilities\DebugInterface;
-use SaschaEnde\T3helpers\Utilities\FilesystemInterface;
-use SaschaEnde\T3helpers\Utilities\FrontendUserInterface;
-use SaschaEnde\T3helpers\Utilities\GoogleInterface;
-use SaschaEnde\T3helpers\Utilities\Html5PatternsInterface;
-use SaschaEnde\T3helpers\Utilities\InjectionsInterface;
-use SaschaEnde\T3helpers\Utilities\LanguageInterface;
-use SaschaEnde\T3helpers\Utilities\MailInterface;
-use SaschaEnde\T3helpers\Utilities\PageInterface;
-use SaschaEnde\T3helpers\Utilities\PasswordInterface;
-use SaschaEnde\T3helpers\Utilities\SessionInterface;
-use SaschaEnde\T3helpers\Utilities\SettingsInterface;
-use SaschaEnde\T3helpers\Utilities\TemplateInterface;
-use SaschaEnde\T3helpers\Utilities\TsfeInterface;
-use SaschaEnde\T3helpers\Utilities\UploadInterface;
-use SaschaEnde\T3helpers\Utilities\UriInterface;
+use SaschaEnde\T3helpers\Utilities\BackendUser;
+use SaschaEnde\T3helpers\Utilities\Category;
+use SaschaEnde\T3helpers\Utilities\Command;
+use SaschaEnde\T3helpers\Utilities\Configuration;
+use SaschaEnde\T3helpers\Utilities\Csv;
+use SaschaEnde\T3helpers\Utilities\Database;
+use SaschaEnde\T3helpers\Utilities\Data;
+use SaschaEnde\T3helpers\Utilities\Datastorage;
+use SaschaEnde\T3helpers\Utilities\Debug;
+use SaschaEnde\T3helpers\Utilities\Filesystem;
+use SaschaEnde\T3helpers\Utilities\FrontendUser;
+use SaschaEnde\T3helpers\Utilities\Google;
+use SaschaEnde\T3helpers\Utilities\Html5Patterns;
+use SaschaEnde\T3helpers\Utilities\Injections;
+use SaschaEnde\T3helpers\Utilities\Language;
+use SaschaEnde\T3helpers\Utilities\Mail;
+use SaschaEnde\T3helpers\Utilities\Page;
+use SaschaEnde\T3helpers\Utilities\Password;
+use SaschaEnde\T3helpers\Utilities\Session;
+use SaschaEnde\T3helpers\Utilities\Settings;
+use SaschaEnde\T3helpers\Utilities\Template;
+use SaschaEnde\T3helpers\Utilities\Tsfe;
+use SaschaEnde\T3helpers\Utilities\Upload;
+use SaschaEnde\T3helpers\Utilities\Uri;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class t3h {
 
     /**
-     * @return FilesystemInterface
+     * @return Filesystem
      */
     public static function Filesystem() {
-        return self::injectClass(FilesystemInterface::class);
+        return self::injectClass(Filesystem::class);
     }
 
     /**
-     * @return ConfigurationInterface
+     * @return Configuration
      */
     public static function Configuration() {
-        return self::injectClass(ConfigurationInterface::class);
+        return self::injectClass(Configuration::class);
     }
 
     /**
-     * @return SettingsInterface
+     * @return Settings
      */
     public static function Settings() {
-        return self::injectClass(SettingsInterface::class);
+        return self::injectClass(Settings::class);
     }
 
     /**
-     * @return DataInterface
+     * @return Data
      */
     public static function Data() {
-        return self::injectClass(DataInterface::class);
+        return self::injectClass(Data::class);
     }
 
     /**
-     * @return SessionInterface
+     * @return Session
      */
     public static function Session() {
-        return self::injectClass(SessionInterface::class);
+        return self::injectClass(Session::class);
     }
 
     /**
-     * @return MailInterface
+     * @return Mail
      */
     public static function Mail() {
-        return self::injectClass(MailInterface::class);
+        return self::injectClass(Mail::class);
     }
 
     /**
-     * @return LanguageInterface
+     * @return Language
      */
     public static function Language() {
-        return self::injectClass(LanguageInterface::class);
+        return self::injectClass(Language::class);
     }
 
     /**
-     * @return DatabaseInterface
+     * @return Database
      */
     public static function Database() {
-        return self::injectClass(DatabaseInterface::class);
+        return self::injectClass(Database::class);
     }
 
     /**
-     * @return UriInterface
+     * @return Uri
      * @deprecated
      */
     public static function Link() {
@@ -96,115 +96,115 @@ class t3h {
     }
 
     /**
-     * @return UriInterface
+     * @return Uri
      */
     public static function Uri() {
-        return self::injectClass(UriInterface::class);
+        return self::injectClass(Uri::class);
     }
 
     /**
-     * @return InjectionsInterface
+     * @return Injections
      */
     public static function Inject() {
-        return self::injectClass(InjectionsInterface::class);
+        return self::injectClass(Injections::class);
     }
 
     /**
-     * @return GoogleInterface
+     * @return Google
      */
     public static function Google() {
-        return self::injectClass(GoogleInterface::class);
+        return self::injectClass(Google::class);
     }
 
     /**
-     * @return PasswordInterface
+     * @return Password
      */
     public static function Password() {
-        return self::injectClass(PasswordInterface::class);
+        return self::injectClass(Password::class);
     }
 
     /**
-     * @return TemplateInterface
+     * @return Template
      */
     public static function Template() {
-        return self::injectClass(TemplateInterface::class);
+        return self::injectClass(Template::class);
     }
 
     /**
-     * @return DebugInterface
+     * @return Debug
      */
     public static function Debug() {
-        return self::injectClass(DebugInterface::class);
+        return self::injectClass(Debug::class);
     }
 
     /**
-     * @return BackendUserInterface
+     * @return BackendUser
      */
     public static function BackendUser() {
-        return self::injectClass(BackendUserInterface::class);
+        return self::injectClass(BackendUser::class);
     }
 
     /**
-     * @return PageInterface
+     * @return Page
      */
     public static function Page() {
-        return self::injectClass(PageInterface::class);
+        return self::injectClass(Page::class);
     }
 
     /**
-     * @return TsfeInterface
+     * @return Tsfe
      */
     public static function Tsfe() {
-        return self::injectClass(TsfeInterface::class);
+        return self::injectClass(Tsfe::class);
     }
 
     /**
-     * @return CategoryInterface
+     * @return Category
      */
     public static function Category() {
-        return self::injectClass(CategoryInterface::class);
+        return self::injectClass(Category::class);
     }
 
     /**
-     * @return CommandInterface
+     * @return Command
      */
     public static function Command() {
-        return self::injectClass(CommandInterface::class);
+        return self::injectClass(Command::class);
     }
 
     /**
-     * @return FrontendUserInterface
+     * @return FrontendUser
      */
     public static function FrontendUser() {
-        return self::injectClass(FrontendUserInterface::class);
+        return self::injectClass(FrontendUser::class);
     }
 
     /**
-     * @return DatastorageInterface
+     * @return Datastorage
      */
     public static function Datastorage() {
-        return self::injectClass(DatastorageInterface::class);
+        return self::injectClass(Datastorage::class);
     }
 
     /**
-     * @return UploadInterface
+     * @return Upload
      */
     public static function Upload(){
-        return self::injectClass(UploadInterface::class);
+        return self::injectClass(Upload::class);
     }
 
     /**
-     * @return CsvInterface
+     * @return Csv
      */
     public static function Csv(){
-        return self::injectClass(CsvInterface::class);
+        return self::injectClass(Csv::class);
     }
 
     /**
-     * @return Html5PatternsInterface
+     * @return Html5Patterns
      */
     public static function Html5Patterns(){
-        return self::injectClass(Html5PatternsInterface::class);
+        return self::injectClass(Html5Patterns::class);
     }
 
     // ---------------------------------------------------------------------------------

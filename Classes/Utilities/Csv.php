@@ -6,7 +6,7 @@ use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Csv implements CsvInterface, SingletonInterface {
+class Csv implements SingletonInterface {
 
     protected $file;
     protected $rules;

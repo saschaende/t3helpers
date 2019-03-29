@@ -4,7 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-class Google implements GoogleInterface, SingletonInterface {
+class Google implements SingletonInterface {
 
     /**
      * @param $googleApiKey

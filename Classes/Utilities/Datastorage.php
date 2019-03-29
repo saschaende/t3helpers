@@ -4,7 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-class Datastorage implements DatastorageInterface, SingletonInterface {
+class Datastorage implements SingletonInterface {
 
     protected $Data = [];
     protected $extension = '';

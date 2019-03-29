@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\SingletonInterface;
  * @link http://wissen.netzhaut.de/typo3/extensionentwicklung/typolink-realurl-in-scheduler-tasks/
  * @package SaschaEnde\T3helpers\Utilities
  */
-class Uri implements UriInterface, SingletonInterface {
+class Uri implements SingletonInterface {
 
     public function __construct() {
         if (TYPO3_MODE == 'BE') {

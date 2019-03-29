@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Mail implements MailInterface, SingletonInterface {
+class Mail implements SingletonInterface {
 
     /**
      * @param $recipient

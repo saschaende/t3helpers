@@ -4,7 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-class Command implements CommandInterface, SingletonInterface {
+class Command implements SingletonInterface {
 
     /**
      * Call this in "ext_localconf.php"

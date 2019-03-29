@@ -12,7 +12,7 @@ use TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility;
  * $user->setPassword($hashInstance->getHashedPassword($user->getPassword()));
  * @todo TYPO3 9
  */
-class Password implements PasswordInterface, SingletonInterface {
+class Password implements SingletonInterface {
 
     /**
      * Get the hashed password

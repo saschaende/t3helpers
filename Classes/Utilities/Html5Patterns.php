@@ -3,7 +3,7 @@
 namespace SaschaEnde\T3helpers\Utilities;
 use TYPO3\CMS\Core\SingletonInterface;
 
-class Html5Patterns implements Html5PatternsInterface, SingletonInterface {
+class Html5Patterns implements SingletonInterface {
 
     /**
      * Send suggestions for usable patterns via github

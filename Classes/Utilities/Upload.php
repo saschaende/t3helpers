@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Upload implements UploadInterface, SingletonInterface {
+class Upload implements SingletonInterface {
 
     protected $maxFiles = null;
     protected $allowedFiletypes = ['jpg', 'jpeg', 'zip', 'rar', 'pdf', 'gif'];

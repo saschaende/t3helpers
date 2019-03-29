@@ -17,7 +17,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @package SaschaEnde\T3helpers\Utilities
  * @ignore
  */
-class Configuration implements ConfigurationInterface, SingletonInterface {
+class Configuration implements SingletonInterface {
 
     private $configurationManager;
     private $extensionConfiguration;

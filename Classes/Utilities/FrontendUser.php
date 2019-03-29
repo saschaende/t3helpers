@@ -4,7 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-class FrontendUser implements FrontendUserInterface, SingletonInterface  {
+class FrontendUser implements SingletonInterface  {
 
     /**
      * @return User

@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Tsfe implements TsfeInterface, SingletonInterface {
+class Tsfe implements SingletonInterface {
 
     /*
     * Initialise tsfe
