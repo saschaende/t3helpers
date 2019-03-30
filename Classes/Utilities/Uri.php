@@ -18,26 +18,43 @@ class Uri implements SingletonInterface {
         }
     }
 
-    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true) {
+    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = []) {
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
             'parameter' => intval($pid),
             'useCacheHash' => $useCacheHash,
             'returnLast' => 'url',
-            'forceAbsoluteUrl' => $forceAbsoluteUrl
+            'forceAbsoluteUrl' => $forceAbsoluteUrl,
+            'additionalParams' => '&' . http_build_query($additionalParameters),
         ]);
     }
 
-    public function getByAction($pid, $extension, $controller, $action, $extraParameters = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true) {
+    /**
+     * @param $pid
+     * @param $extension
+     * @param $controller
+     * @param $action
+     * @param array $arguments
+     * @param bool $typeNum
+     * @param bool $useCacheHash
+     * @param bool $forceAbsoluteUrl
+     * @param array $additionalParameters
+     * @return string
+     */
+    public function getByAction($pid, $extension, $controller, $action, $arguments = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = []) {
 
-        $extraParameters['controller'] = $controller;
-        $extraParameters['action'] = $action;
+        $arguments['controller'] = $controller;
+        $arguments['action'] = $action;
 
         $params = [
-            $extension => $extraParameters,
+            $extension => $arguments,
         ];
 
         if ($typeNum) {
             $params['type'] = $typeNum;
+        }
+
+        foreach ($additionalParameters as $key=>$value){
+            $params[$key] = $value;
         }
 
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
