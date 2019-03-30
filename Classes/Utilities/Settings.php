@@ -15,6 +15,12 @@ class Settings implements SingletonInterface {
      * @return mixed
      */
     public function getExtension($extensionName, $part = 'settings'){
+
+        // Fix for missing tx_
+        if(substr($extensionName,0,3) != 'tx_'){
+            $extension = 'tx_'.$extensionName;
+        }
+
         $ts = $this->getFullTyposcript();
         return $ts['plugin.'][$extensionName.'.'][$part.'.'];
     }

@@ -19,6 +19,11 @@ class Template implements SingletonInterface {
      */
     public function renderDynamic($extension = 'tx_myextension',$template = 'Default',$variables = [], $controllerContext = null){
 
+        // Fix for missing tx_
+        if(substr($extension,0,3) != 'tx_'){
+            $extension = 'tx_'.$extension;
+        }
+
         /** @var StandaloneView $emailView */
         $emailView = t3h::injectClass(StandaloneView::class);
         $emailView->setFormat('html');
