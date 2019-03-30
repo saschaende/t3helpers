@@ -65,4 +65,23 @@ class Mail implements SingletonInterface {
         return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments,$priority);
     }
 
+    /**
+     * Render a template, it will be called dynamically depending on template, layout and partials paths. This will not work without TYPOSCRIPT settings
+     * @param $recipient
+     * @param $senderEmail
+     * @param $senderName
+     * @param $subject
+     * @param $extension
+     * @param $template
+     * @param array $variables
+     * @param array $attachments
+     * @param bool $priority
+     * @param null $controllerContext
+     * @return bool|mixed
+     */
+    public function sendDynamicTemplate($recipient, $senderEmail, $senderName, $subject, $extension, $template, $variables = [], $attachments = [],$priority = false, $controllerContext = null) {
+        $emailBody = t3h::Template()->renderDynamic($extension, $template, $variables, $controllerContext);
+        return $this->send($recipient, $senderEmail, $senderName, $subject, $emailBody,$attachments,$priority);
+    }
+
 }
