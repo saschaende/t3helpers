@@ -34,7 +34,7 @@ class Password implements SingletonInterface {
      */
     public function checkPassword($plainPW,$saltedHashPW) {
         if (SaltedPasswordsUtility::isUsageEnabled('FE')) {
-            $objSalt = SaltFactory::getSaltingInstance(NULL);
+            $objSalt = SaltFactory::getSaltingInstance($saltedHashPW);
             return $objSalt->checkPassword($plainPW, $saltedHashPW);
         }
         return false;
