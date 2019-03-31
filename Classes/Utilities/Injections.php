@@ -120,4 +120,5 @@ class Injections implements SingletonInterface {
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $this->extension . '/Configuration/FlexForm/' . $plugin . '.xml');
     }
 
+
 }
