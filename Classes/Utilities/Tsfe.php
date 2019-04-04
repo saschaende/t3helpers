@@ -13,10 +13,11 @@ class Tsfe implements SingletonInterface {
     * Initialise tsfe
     */
     public function init($id = 1, $typeNum = 0) {
-        if (!is_object($GLOBALS['TT'])) {
-            $GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\NullTimeTracker;
-            $GLOBALS['TT']->start();
-        }
+        // Removed in TYPO3 9
+//        if (!is_object($GLOBALS['TT'])) {
+//            $GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\NullTimeTracker;
+//            $GLOBALS['TT']->start();
+//        }
         $GLOBALS['TSFE'] = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], $id, $typeNum);
         $GLOBALS['TSFE']->connectToDB();
         $GLOBALS['TSFE']->initFEuser();

@@ -14,6 +14,14 @@ class FrontendUser implements SingletonInterface  {
     }
 
     /**
+     * Get language uid of current user
+     * @return int
+     */
+    public function getLanguage(){
+        return $GLOBALS['TSFE']->sys_language_uid;
+    }
+
+    /**
      * Manually login a user
      * @param $username
      * @throws \ReflectionException
