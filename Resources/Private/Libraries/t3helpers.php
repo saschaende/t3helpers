@@ -27,6 +27,7 @@ use SaschaEnde\T3helpers\Utilities\Template;
 use SaschaEnde\T3helpers\Utilities\Tsfe;
 use SaschaEnde\T3helpers\Utilities\Upload;
 use SaschaEnde\T3helpers\Utilities\Uri;
+use SaschaEnde\T3helpers\Utilities\Website;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -213,6 +214,13 @@ class t3h {
      */
     public static function Icons(){
         return self::injectClass(Icons::class);
+    }
+
+    /**
+     * @return Website
+     */
+    public static function Website(){
+        return self::injectClass(Website::class);
     }
 
     // ---------------------------------------------------------------------------------
