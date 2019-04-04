@@ -15,6 +15,7 @@ use SaschaEnde\T3helpers\Utilities\Filesystem;
 use SaschaEnde\T3helpers\Utilities\FrontendUser;
 use SaschaEnde\T3helpers\Utilities\Google;
 use SaschaEnde\T3helpers\Utilities\Html5Patterns;
+use SaschaEnde\T3helpers\Utilities\Icons;
 use SaschaEnde\T3helpers\Utilities\Injections;
 use SaschaEnde\T3helpers\Utilities\Language;
 use SaschaEnde\T3helpers\Utilities\Mail;
@@ -205,6 +206,13 @@ class t3h {
      */
     public static function Html5Patterns(){
         return self::injectClass(Html5Patterns::class);
+    }
+
+    /**
+     * @return Icons
+     */
+    public static function Icons(){
+        return self::injectClass(Icons::class);
     }
 
     // ---------------------------------------------------------------------------------
