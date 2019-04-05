@@ -26,10 +26,10 @@ t3helpers\Classes\Utilities
 
 Look around in this extension, you will find many helpful tools.
 
-#t3helpers Api Docs
+# t3helpers Api Docs
 
 
-##BackendUser
+## BackendUser
 
 Class BackendUser
 Backend Userdata is only available in Backend and on pages where the backend user has permissions. Otherwise this will return null
@@ -92,7 +92,7 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 ---
 
-##Category
+## Category
 
 
 #### t3h::Category->getByString(<span class="label label-danger">$categories</span>, <span class="label label-primary">$delimiter = ","</span>)
@@ -156,7 +156,7 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 ---
 
-##Command
+## Command
 
 
 #### t3h::Command->register(<span class="label label-danger">$class</span>)
@@ -176,7 +176,7 @@ Call this in "ext_localconf.php"
 
 ---
 
-##Configuration
+## Configuration
 
 Class Configuration
 
@@ -254,7 +254,7 @@ Class Configuration
 
 ---
 
-##Csv
+## Csv
 
 
 #### t3h::Csv->setFile(<span class="label label-danger">$file</span>)
@@ -401,7 +401,7 @@ Check the csv against the rules
 
 ---
 
-##Data
+## Data
 
 
 #### t3h::Data->sortObjectStorage(<span class="label label-danger">$object</span>, <span class="label label-danger">$function</span>, <span class="label label-primary">$ordering = "asc"</span>)
@@ -624,7 +624,7 @@ Extended version of parse_url
 
 ---
 
-##Database
+## Database
 
 
 #### t3h::Database->getQuerySettings(<span class="label label-primary">$setRespectStoragePage = false</span>, <span class="label label-primary">$setIgnoreEnableFields = false</span>, <span class="label label-primary">$setIncludeDeleted = false</span>)
@@ -723,7 +723,7 @@ Persist All
 
 ---
 
-##Datastorage
+## Datastorage
 
 
 #### t3h::Datastorage->extension(<span class="label label-danger">$extension</span>)
@@ -816,7 +816,7 @@ Persist All
 
 ---
 
-##Debug
+## Debug
 
 
 #### t3h::Debug->dump(<span class="label label-danger">$data</span>, <span class="label label-primary">$split = false</span>)
@@ -880,7 +880,7 @@ Persist All
 
 ---
 
-##Filesystem
+## Filesystem
 
 
 #### t3h::Filesystem->fileExists(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
@@ -1214,7 +1214,7 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 ---
 
-##FrontendUser
+## FrontendUser
 
 
 #### t3h::FrontendUser->getCurrentUser()
@@ -1273,7 +1273,7 @@ Manually login a user
 
 ---
 
-##Google
+## Google
 
 
 #### t3h::Google->getGeoCoordinates(<span class="label label-danger">$googleApiKey</span>, <span class="label label-danger">$address</span>)
@@ -1328,7 +1328,7 @@ Get Youtube video ID from URL
 
 ---
 
-##Html5Patterns
+## Html5Patterns
 
 
 #### t3h::Html5Patterns->get()
@@ -1337,7 +1337,7 @@ Get Youtube video ID from URL
 
 ---
 
-##Icons
+## Icons
 
 
 #### t3h::Icons->setExtension(<span class="label label-danger">$ext</span>)
@@ -1382,7 +1382,7 @@ Add icon file
 
 ---
 
-##Injections
+## Injections
 
 
 #### t3h::Injections->setExtension(<span class="label label-danger">$ext</span>)
@@ -1510,7 +1510,7 @@ Add flexform
 
 ---
 
-##Language
+## Language
 
 
 #### t3h::Language->getCurrent()
@@ -1530,7 +1530,7 @@ Get the current language
 
 ---
 
-##Mail
+## Mail
 
 
 #### t3h::Mail->send(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$emailBody</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>)
@@ -1632,7 +1632,7 @@ Render a template, it will be called dynamically depending on template, layout a
 
 ---
 
-##Page
+## Page
 
 
 #### t3h::Page->getPid()
@@ -1690,7 +1690,7 @@ Render a template, it will be called dynamically depending on template, layout a
 
 ---
 
-##Password
+## Password
 
 TYPO3 9:
 $hashInstance = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::class)->getDefaultHashInstance('FE');
@@ -1754,7 +1754,7 @@ Create a human readable password
 
 ---
 
-##Session
+## Session
 
 
 #### t3h::Session->setExtension()
@@ -1779,7 +1779,7 @@ Create a human readable password
 
 ---
 
-##Settings
+## Settings
 
 
 #### t3h::Settings->getExtension(<span class="label label-danger">$extensionName</span>, <span class="label label-primary">$part = "settings"</span>)
@@ -1841,7 +1841,7 @@ Create a human readable password
 
 ---
 
-##Template
+## Template
 
 
 #### t3h::Template->renderDynamic(<span class="label label-primary">$extension = "tx_myextension"</span>, <span class="label label-primary">$template = "Default"</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$controllerContext = null</span>)
@@ -1902,7 +1902,7 @@ Render a template
 
 ---
 
-##Tsfe
+## Tsfe
 
 
 #### t3h::Tsfe->init()
@@ -1911,7 +1911,7 @@ Render a template
 
 ---
 
-##Upload
+## Upload
 
 
 #### t3h::Upload->setAllowedFiletypes(<span class="label label-danger">$filetypes</span>)
@@ -2036,7 +2036,7 @@ Upload files to target directory
 
 ---
 
-##Uri
+## Uri
 
 Class Uri
 
@@ -2078,7 +2078,7 @@ Class Uri
 
 ---
 
-##Website
+## Website
 
 
 #### t3h::Website->getWebsiteRootPid()
@@ -2097,4 +2097,5 @@ Frontend: Get current Website Root PID
 
 
 ---
+
 

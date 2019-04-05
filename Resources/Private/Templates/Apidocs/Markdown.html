@@ -2,10 +2,10 @@
 <f:section name="content">
 
 <textarea style="height: 500px;width:100%;">
-#t3helpers Api Docs
+# t3helpers Api Docs
 
 <f:for as="class" each="{docs}" key="className">
-##{className}
+## {className}
 {class.description}
 <f:for as="method" each="{class.methods}">
 #### t3h::{className}->{method.name}(<f:format.raw>{method.paramstring}</f:format.raw>)
