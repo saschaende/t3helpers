@@ -46,6 +46,15 @@
                 <f:format.html>{class.description}</f:format.html>
             </p>
 
+            <f:if condition="{class.example}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">PHP Example</div>
+                    <div class="panel-body">
+                        <f:format.raw>{class.example}</f:format.raw>
+                    </div>
+                </div><br>
+            </f:if>
+
 
             <div class="panel-group" id="{className}" role="tablist" aria-multiselectable="true">
                 <f:for as="method" each="{class.methods}">

@@ -1,0 +1,8 @@
+<?php
+// Set some data
+$somedata = 'Hello world';
+t3h::Datastorage()->extension('myextension')->set('mykey', $somedata);
+if (t3h::Datastorage()->extension('myextension')->exists('mykey')) {
+    echo t3h::Datastorage()->extension('myextension')->get('mykey'); // Output: Hello world
+}
+?>

@@ -95,9 +95,20 @@ class ApidocsController extends ActionController {
 
             }
 
+            // Example
+            $exampleFile = PATH_typo3conf . 'ext/t3helpers/Documentation/Examples/'.$className.'.phpexample';
+            if(file_exists($exampleFile)){
+                $example = highlight_string(file_get_contents($exampleFile),true);
+                preg_match_all('/<code>(.*)<\/code>/ms', $example, $output_array);
+                $example = $output_array[1][0];
+            }else{
+                $example = false;
+            }
+
             $docs[$className] = [
                 'name' => $className,
                 'description' => $classDescription,
+                'example'   => $example,
                 'methods' => $methods
             ];
         }
