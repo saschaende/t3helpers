@@ -1,0 +1,32 @@
+<f:layout name="Default"/>
+<f:section name="content">
+
+<textarea style="height: 500px;width:100%;">
+#t3helpers Api Docs
+
+<f:for as="class" each="{docs}" key="className">
+##{className}
+{class.description}
+<f:for as="method" each="{class.methods}">
+#### t3h::{className}->{method.name}(<f:format.raw>{method.paramstring}</f:format.raw>)
+{method.description}
+<f:for each="{method.params}" as="params" key="title">
+<f:render section="params" arguments="{title:title,params:params}"/>
+</f:for>
+</f:for>
+</f:for>
+</textarea>
+
+</f:section>
+
+
+<f:section name="params">
+<f:if condition="{params}">
+
+| {title} |
+| --- |
+<f:for as="param" each="{params}">| {param} |
+</f:for>
+
+</f:if>
+</f:section>

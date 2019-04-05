@@ -1,0 +1,103 @@
+<f:layout name="Default"/>
+<f:section name="content">
+
+    <div class="container-fluid">
+        <div class="col-md-2">
+            <f:render section="left" arguments="{_all}"/>
+        </div>
+        <div class="col-md-10">
+            <f:render section="right" arguments="{_all}"/>
+        </div>
+    </div>
+
+</f:section>
+
+<f:section name="left">
+
+    <f:for as="class" each="{docs}" key="className">
+
+
+        <h3>{className}</h3>
+
+
+        <div class="list-group">
+            <f:for as="method" each="{class.methods}">
+                <a href="#{class.name}-{method.name}" class="list-group-item">{method.name}</a>
+            </f:for>
+        </div>
+
+
+    </f:for>
+
+</f:section>
+
+
+<f:section name="right">
+    <h1>t3helpers Api Docs</h1>
+
+
+    <f:for as="class" each="{docs}" key="className">
+
+        <div class="well">
+
+            <h1>{className}</h1>
+
+            <p>
+                <f:format.html>{class.description}</f:format.html>
+            </p>
+
+
+            <div class="panel-group" id="{className}" role="tablist" aria-multiselectable="true">
+                <f:for as="method" each="{class.methods}">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="{className}-{method.name}">
+                            <h3 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#{className}"
+                                   href="#collapse{class.name}-{method.name}"
+                                   aria-expanded="true" aria-controls="collapseOne">
+                                    t3h::{className}->{method.name}(
+                                    <f:format.raw>{method.paramstring}</f:format.raw>
+                                    )
+                                </a>
+
+                            </h3>
+                        </div>
+                        <div id="collapse{class.name}-{method.name}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <f:format.html>{method.description}</f:format.html>
+
+                                <f:for each="{method.params}" as="params" key="title">
+                                    <f:render section="params" arguments="{title:title,params:params}"/>
+                                </f:for>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </f:for>
+            </div>
+
+        </div>
+
+    </f:for>
+
+</f:section>
+
+
+<f:section name="params">
+    <f:if condition="{params}">
+        <table class="table">
+            <thead>
+            <th>{title}</th>
+            </thead>
+            <tbody>
+            <f:for as="param" each="{params}">
+                <tr>
+                    <td style="width: 100%;">{param}</td>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </f:if>
+</f:section>
