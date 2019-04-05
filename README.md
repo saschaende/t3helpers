@@ -40,9 +40,8 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| return |
-| --- |
-| mixed|\TYPO3\CMS\Core\Authentication\BackendUserAuthentication |
+##### return
+* mixed|\TYPO3\CMS\Core\Authentication\BackendUserAuthentication
 
 
 
@@ -55,9 +54,8 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
@@ -70,9 +68,8 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
@@ -85,15 +82,15 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
 
 
 
+---
 
 ##Category
 
@@ -104,10 +101,9 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| param |
-| --- |
-| $categories |
-| string $delimiter |
+##### param
+* $categories
+* string $delimiter
 
 
 
@@ -116,9 +112,8 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| return |
-| --- |
-| array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface |
+##### return
+* array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 
 
 
@@ -127,9 +122,8 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException |
+##### throws
+* \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
 
 
 
@@ -142,9 +136,8 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| param |
-| --- |
-| $uid |
+##### param
+* $uid
 
 
 
@@ -153,15 +146,15 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-| see |
-| --- |
-| \SaschaEnde\T3helpers\Utilities\Filesystem::getCategoriesForFile() |
+##### see
+* \SaschaEnde\T3helpers\Utilities\Filesystem::getCategoriesForFile()
 
 
 
 
 
 
+---
 
 ##Command
 
@@ -173,15 +166,15 @@ Call this in "ext_localconf.php"
 
 
 
-| param |
-| --- |
-| $class |
+##### param
+* $class
 
 
 
 
 
 
+---
 
 ##Configuration
 
@@ -193,9 +186,8 @@ Class Configuration
 
 
 
-| param |
-| --- |
-| $ext |
+##### param
+* $ext
 
 
 
@@ -204,9 +196,8 @@ Class Configuration
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -219,9 +210,8 @@ Class Configuration
 
 
 
-| param |
-| --- |
-| $propertyName |
+##### param
+* $propertyName
 
 
 
@@ -230,9 +220,8 @@ Class Configuration
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
@@ -241,9 +230,8 @@ Class Configuration
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Core\Exception |
+##### throws
+* \TYPO3\CMS\Core\Exception
 
 
 
@@ -256,15 +244,15 @@ Class Configuration
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
 
 
 
+---
 
 ##Csv
 
@@ -275,9 +263,8 @@ Class Configuration
 
 
 
-| param |
-| --- |
-| $file |
+##### param
+* $file
 
 
 
@@ -286,9 +273,8 @@ Class Configuration
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -301,9 +287,8 @@ Class Configuration
 
 
 
-| param |
-| --- |
-| bool $autoUTF |
+##### param
+* bool $autoUTF
 
 
 
@@ -312,9 +297,8 @@ Class Configuration
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -328,9 +312,8 @@ Get parsed file
 
 
 
-| param |
-| --- |
-| bool $object Set true, to return std objects |
+##### param
+* bool $object Set true, to return std objects
 
 
 
@@ -339,9 +322,8 @@ Get parsed file
 
 
 
-| return |
-| --- |
-| array|bool|null |
+##### return
+* array|bool|null
 
 
 
@@ -354,11 +336,10 @@ Get parsed file
 
 
 
-| param |
-| --- |
-| string $delimiter |
-| string $enclosure |
-| string $escape |
+##### param
+* string $delimiter
+* string $enclosure
+* string $escape
 
 
 
@@ -367,9 +348,8 @@ Get parsed file
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -382,13 +362,12 @@ Get parsed file
 
 
 
-| param |
-| --- |
-| $column |
-| string $regex |
-| string $option |
-| bool $emptyAllowed |
-| null $pos |
+##### param
+* $column
+* string $regex
+* string $option
+* bool $emptyAllowed
+* null $pos
 
 
 
@@ -397,9 +376,8 @@ Get parsed file
 
 
 
-| return |
-| --- |
-| $this|CsvInterface |
+##### return
+* $this|CsvInterface
 
 
 
@@ -413,15 +391,15 @@ Check the csv against the rules
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
 
 
 
+---
 
 ##Data
 
@@ -433,11 +411,10 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-| param |
-| --- |
-| ObjectStorage $object |
-| $function |
-| string $ordering |
+##### param
+* ObjectStorage $object
+* $function
+* string $ordering
 
 
 
@@ -446,9 +423,8 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-| return |
-| --- |
-| ObjectStorage |
+##### return
+* ObjectStorage
 
 
 
@@ -461,10 +437,9 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-| param |
-| --- |
-| $arr |
-| $fields |
+##### param
+* $arr
+* $fields
 
 
 
@@ -473,9 +448,8 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
@@ -488,9 +462,8 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-| param |
-| --- |
-| $array |
+##### param
+* $array
 
 
 
@@ -499,9 +472,8 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-| return |
-| --- |
-| \stdClass |
+##### return
+* \stdClass
 
 
 
@@ -515,9 +487,8 @@ Create an array from xml string - cause GeneralUtility::xml2array is buggy with 
 
 
 
-| param |
-| --- |
-| $xmldata |
+##### param
+* $xmldata
 
 
 
@@ -526,9 +497,8 @@ Create an array from xml string - cause GeneralUtility::xml2array is buggy with 
 
 
 
-| return |
-| --- |
-| \t3h\DOMDocument |
+##### return
+* \t3h\DOMDocument
 
 
 
@@ -543,11 +513,10 @@ Pass in a multi dimensional array and this recrusively loops through and builds 
 
 
 
-| param |
-| --- |
-| array $data |
-| string $rootNodeName - what you want the root node to be - defaultsto data. |
-| SimpleXMLElement $xml - should only be used recursively |
+##### param
+* array $data
+* string $rootNodeName - what you want the root node to be - defaultsto data.
+* SimpleXMLElement $xml - should only be used recursively
 
 
 
@@ -556,9 +525,8 @@ Pass in a multi dimensional array and this recrusively loops through and builds 
 
 
 
-| return |
-| --- |
-| string XML |
+##### return
+* string XML
 
 
 
@@ -572,9 +540,8 @@ Format html code with RTE features
 
 
 
-| param |
-| --- |
-| $str |
+##### param
+* $str
 
 
 
@@ -583,9 +550,8 @@ Format html code with RTE features
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
@@ -599,9 +565,8 @@ automatic convertion info utf-8 string
 
 
 
-| param |
-| --- |
-|   string  $s |
+##### param
+*   string  $s
 
 
 
@@ -610,9 +575,8 @@ automatic convertion info utf-8 string
 
 
 
-| return |
-| --- |
-|  string |
+##### return
+*  string
 
 
 
@@ -625,9 +589,8 @@ automatic convertion info utf-8 string
 
 
 
-| param |
-| --- |
-| $url |
+##### param
+* $url
 
 
 
@@ -636,9 +599,8 @@ automatic convertion info utf-8 string
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
@@ -652,15 +614,15 @@ Extended version of parse_url
 
 
 
-| param |
-| --- |
-| $url |
+##### param
+* $url
 
 
 
 
 
 
+---
 
 ##Database
 
@@ -671,11 +633,10 @@ Extended version of parse_url
 
 
 
-| param |
-| --- |
-| bool $setRespectStoragePage |
-| bool $setIgnoreEnableFields |
-| bool $setIncludeDeleted |
+##### param
+* bool $setRespectStoragePage
+* bool $setIgnoreEnableFields
+* bool $setIncludeDeleted
 
 
 
@@ -684,9 +645,8 @@ Extended version of parse_url
 
 
 
-| return |
-| --- |
-| Typo3QuerySettings |
+##### return
+* Typo3QuerySettings
 
 
 
@@ -699,9 +659,8 @@ Extended version of parse_url
 
 
 
-| param |
-| --- |
-| $table |
+##### param
+* $table
 
 
 
@@ -714,9 +673,8 @@ Extended version of parse_url
 
 
 
-| param |
-| --- |
-| $queryResult |
+##### param
+* $queryResult
 
 
 
@@ -725,9 +683,8 @@ Extended version of parse_url
 
 
 
-| return |
-| --- |
-| ObjectStorage |
+##### return
+* ObjectStorage
 
 
 
@@ -740,10 +697,9 @@ Extended version of parse_url
 
 
 
-| param |
-| --- |
-| $table |
-| $addFrom |
+##### param
+* $table
+* $addFrom
 
 
 
@@ -752,9 +708,8 @@ Extended version of parse_url
 
 
 
-| return |
-| --- |
-| \TYPO3\CMS\Core\Database\Query\QueryBuilder |
+##### return
+* \TYPO3\CMS\Core\Database\Query\QueryBuilder
 
 
 
@@ -766,6 +721,7 @@ Extended version of parse_url
 Persist All
 
 
+---
 
 ##Datastorage
 
@@ -776,9 +732,8 @@ Persist All
 
 
 
-| param |
-| --- |
-| $extension |
+##### param
+* $extension
 
 
 
@@ -787,9 +742,8 @@ Persist All
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -802,10 +756,9 @@ Persist All
 
 
 
-| param |
-| --- |
-| $key |
-| $data |
+##### param
+* $key
+* $data
 
 
 
@@ -818,10 +771,9 @@ Persist All
 
 
 
-| param |
-| --- |
-| $key |
-| $data |
+##### param
+* $key
+* $data
 
 
 
@@ -830,9 +782,8 @@ Persist All
 
 
 
-| return |
-| --- |
-| mixed|bool |
+##### return
+* mixed|bool
 
 
 
@@ -845,9 +796,8 @@ Persist All
 
 
 
-| param |
-| --- |
-| $key |
+##### param
+* $key
 
 
 
@@ -856,15 +806,15 @@ Persist All
 
 
 
-| return |
-| --- |
-| bool |
+##### return
+* bool
 
 
 
 
 
 
+---
 
 ##Debug
 
@@ -875,10 +825,9 @@ Persist All
 
 
 
-| param |
-| --- |
-| $data |
-| bool $split |
+##### param
+* $data
+* bool $split
 
 
 
@@ -891,11 +840,10 @@ Persist All
 
 
 
-| param |
-| --- |
-| $fromEmail |
-| $recipientEmail |
-| $data |
+##### param
+* $fromEmail
+* $recipientEmail
+* $data
 
 
 
@@ -912,9 +860,8 @@ Persist All
 
 
 
-| todo |
-| --- |
-| Testen und aufräumen |
+##### todo
+* Testen und aufräumen
 
 
 
@@ -923,15 +870,15 @@ Persist All
 
 
 
-| param |
-| --- |
-| \TYPO3\CMS\Extbase\Persistence\QueryInterface $query |
+##### param
+* \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
 
 
 
 
 
 
+---
 
 ##Filesystem
 
@@ -943,10 +890,9 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $folder |
-| $fileName |
+##### param
+* $folder
+* $fileName
 
 
 
@@ -955,9 +901,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| bool |
+##### return
+* bool
 
 
 
@@ -966,9 +911,8 @@ Check if file exists in a folder
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException |
+##### throws
+* \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
 
 
 
@@ -981,10 +925,9 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $folder |
-| $fileName |
+##### param
+* $folder
+* $fileName
 
 
 
@@ -993,9 +936,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile |
+##### return
+* null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
 
 
 
@@ -1004,9 +946,8 @@ Check if file exists in a folder
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException |
+##### throws
+* \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
 
 
 
@@ -1019,10 +960,9 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $folder |
-| $fileName |
+##### param
+* $folder
+* $fileName
 
 
 
@@ -1031,9 +971,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| bool|null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile |
+##### return
+* bool|null|\TYPO3\CMS\Core\Resource\File|\TYPO3\CMS\Core\Resource\ProcessedFile
 
 
 
@@ -1042,9 +981,8 @@ Check if file exists in a folder
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException |
+##### throws
+* \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
 
 
 
@@ -1057,9 +995,8 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $id |
+##### param
+* $id
 
 
 
@@ -1068,9 +1005,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| array|bool |
+##### return
+* array|bool
 
 
 
@@ -1083,9 +1019,8 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $id |
+##### param
+* $id
 
 
 
@@ -1094,9 +1029,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| bool|\TYPO3\CMS\Core\Resource\File |
+##### return
+* bool|\TYPO3\CMS\Core\Resource\File
 
 
 
@@ -1109,9 +1043,8 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $folder |
+##### param
+* $folder
 
 
 
@@ -1120,9 +1053,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
@@ -1131,9 +1063,8 @@ Check if file exists in a folder
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException |
+##### throws
+* \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
 
 
 
@@ -1146,9 +1077,8 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $folder |
+##### param
+* $folder
 
 
 
@@ -1157,9 +1087,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
@@ -1168,9 +1097,8 @@ Check if file exists in a folder
 
 
 
-| throws |
-| --- |
-| \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException |
+##### throws
+* \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
 
 
 
@@ -1183,10 +1111,9 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $extension |
-| $path |
+##### param
+* $extension
+* $path
 
 
 
@@ -1195,9 +1122,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
@@ -1210,9 +1136,8 @@ Check if file exists in a folder
 
 
 
-| param |
-| --- |
-| $uid |
+##### param
+* $uid
 
 
 
@@ -1221,9 +1146,8 @@ Check if file exists in a folder
 
 
 
-| return |
-| --- |
-| array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface |
+##### return
+* array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 
 
 
@@ -1237,13 +1161,12 @@ Always Use this AFTER adding a new object to the database - because you need the
 
 
 
-| param |
-| --- |
-| \TYPO3\CMS\Core\Resource\File $file File Object (FAL), the uploaded file |
-| $uid_foreign UID of the element (for example a content element) |
-| $pid Page UID of the page, where the item is stored |
-| $table tha table of the item (for example tt_content) |
-| $fieldname the field name for the relations (for example "assets") |
+##### param
+* \TYPO3\CMS\Core\Resource\File $file File Object (FAL), the uploaded file
+* $uid_foreign UID of the element (for example a content element)
+* $pid Page UID of the page, where the item is stored
+* $table tha table of the item (for example tt_content)
+* $fieldname the field name for the relations (for example "assets")
 
 
 
@@ -1252,9 +1175,8 @@ Always Use this AFTER adding a new object to the database - because you need the
 
 
 
-| return |
-| --- |
-| bool true|false |
+##### return
+* bool true|false
 
 
 
@@ -1268,9 +1190,8 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 
 
-| param |
-| --- |
-| $filename |
+##### param
+* $filename
 
 
 
@@ -1279,9 +1200,8 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
@@ -1292,6 +1212,7 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 
 
+---
 
 ##FrontendUser
 
@@ -1302,9 +1223,8 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 
 
-| return |
-| --- |
-| User |
+##### return
+* User
 
 
 
@@ -1318,9 +1238,8 @@ Get language uid of current user
 
 
 
-| return |
-| --- |
-| int |
+##### return
+* int
 
 
 
@@ -1334,9 +1253,8 @@ Manually login a user
 
 
 
-| param |
-| --- |
-| $username |
+##### param
+* $username
 
 
 
@@ -1345,15 +1263,15 @@ Manually login a user
 
 
 
-| throws |
-| --- |
-| \ReflectionException |
+##### throws
+* \ReflectionException
 
 
 
 
 
 
+---
 
 ##Google
 
@@ -1364,10 +1282,9 @@ Manually login a user
 
 
 
-| param |
-| --- |
-| $googleApiKey |
-| $address |
+##### param
+* $googleApiKey
+* $address
 
 
 
@@ -1376,9 +1293,8 @@ Manually login a user
 
 
 
-| return |
-| --- |
-| array|bool |
+##### return
+* array|bool
 
 
 
@@ -1392,9 +1308,8 @@ Get Youtube video ID from URL
 
 
 
-| param |
-| --- |
-| string $url |
+##### param
+* string $url
 
 
 
@@ -1403,15 +1318,15 @@ Get Youtube video ID from URL
 
 
 
-| return |
-| --- |
-| mixed Youtube video ID or FALSE if not found |
+##### return
+* mixed Youtube video ID or FALSE if not found
 
 
 
 
 
 
+---
 
 ##Html5Patterns
 
@@ -1420,6 +1335,7 @@ Get Youtube video ID from URL
 
 
 
+---
 
 ##Icons
 
@@ -1430,9 +1346,8 @@ Get Youtube video ID from URL
 
 
 
-| param |
-| --- |
-| string $ext Extension name |
+##### param
+* string $ext Extension name
 
 
 
@@ -1441,9 +1356,8 @@ Get Youtube video ID from URL
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -1457,16 +1371,16 @@ Add icon file
 
 
 
-| param |
-| --- |
-| string $icon F.e. Extension.png |
-| string $identifier |
+##### param
+* string $icon F.e. Extension.png
+* string $identifier
 
 
 
 
 
 
+---
 
 ##Injections
 
@@ -1477,9 +1391,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $ext |
+##### param
+* $ext
 
 
 
@@ -1488,9 +1401,8 @@ Add icon file
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -1503,9 +1415,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $filepath |
+##### param
+* $filepath
 
 
 
@@ -1518,9 +1429,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $filepath |
+##### param
+* $filepath
 
 
 
@@ -1533,9 +1443,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $filepath |
+##### param
+* $filepath
 
 
 
@@ -1548,9 +1457,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $filepath |
+##### param
+* $filepath
 
 
 
@@ -1563,9 +1471,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $filepath |
+##### param
+* $filepath
 
 
 
@@ -1578,9 +1485,8 @@ Add icon file
 
 
 
-| param |
-| --- |
-| $filepath |
+##### param
+* $filepath
 
 
 
@@ -1594,15 +1500,15 @@ Add flexform
 
 
 
-| param |
-| --- |
-| $plugin |
+##### param
+* $plugin
 
 
 
 
 
 
+---
 
 ##Language
 
@@ -1614,15 +1520,15 @@ Get the current language
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
 
 
 
+---
 
 ##Mail
 
@@ -1633,15 +1539,14 @@ Get the current language
 
 
 
-| param |
-| --- |
-| $recipient |
-| $senderEmail |
-| $senderName |
-| $subject |
-| $emailBody |
-| array $attachments |
-| bool $priority |
+##### param
+* $recipient
+* $senderEmail
+* $senderName
+* $subject
+* $emailBody
+* array $attachments
+* bool $priority
 
 
 
@@ -1650,9 +1555,8 @@ Get the current language
 
 
 
-| return |
-| --- |
-| bool|mixed |
+##### return
+* bool|mixed
 
 
 
@@ -1665,18 +1569,17 @@ Get the current language
 
 
 
-| param |
-| --- |
-| $recipient |
-| $senderEmail |
-| $senderName |
-| $subject |
-| $extension |
-| $path |
-| array $variables |
-| array $attachments |
-| bool $priority |
-| null $controllerContext $controllerContext In your controller action use $this->controllerContext, important for using translation |
+##### param
+* $recipient
+* $senderEmail
+* $senderName
+* $subject
+* $extension
+* $path
+* array $variables
+* array $attachments
+* bool $priority
+* null $controllerContext $controllerContext In your controller action use $this->controllerContext, important for using translation
 
 
 
@@ -1685,9 +1588,8 @@ Get the current language
 
 
 
-| return |
-| --- |
-| bool|mixed |
+##### return
+* bool|mixed
 
 
 
@@ -1701,18 +1603,17 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| param |
-| --- |
-| $recipient |
-| $senderEmail |
-| $senderName |
-| $subject |
-| $extension |
-| $template |
-| array $variables |
-| array $attachments |
-| bool $priority |
-| null $controllerContext |
+##### param
+* $recipient
+* $senderEmail
+* $senderName
+* $subject
+* $extension
+* $template
+* array $variables
+* array $attachments
+* bool $priority
+* null $controllerContext
 
 
 
@@ -1721,15 +1622,15 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| return |
-| --- |
-| bool|mixed |
+##### return
+* bool|mixed
 
 
 
 
 
 
+---
 
 ##Page
 
@@ -1740,9 +1641,8 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| return |
-| --- |
-| mixed|string |
+##### return
+* mixed|string
 
 
 
@@ -1755,9 +1655,8 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
@@ -1770,10 +1669,9 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| param |
-| --- |
-| $topId |
-| int $depth |
+##### param
+* $topId
+* int $depth
 
 
 
@@ -1782,15 +1680,15 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
 
 
 
+---
 
 ##Password
 
@@ -1805,9 +1703,8 @@ Get the hashed password
 
 
 
-| return |
-| --- |
-| null|string |
+##### return
+* null|string
 
 
 
@@ -1821,9 +1718,8 @@ Check password
 
 
 
-| return |
-| --- |
-| null|string |
+##### return
+* null|string
 
 
 
@@ -1837,10 +1733,9 @@ Create a human readable password
 
 
 
-| param |
-| --- |
-| int $letters |
-| bool $length |
+##### param
+* int $letters
+* bool $length
 
 
 
@@ -1849,15 +1744,15 @@ Create a human readable password
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
 
 
 
+---
 
 ##Session
 
@@ -1882,6 +1777,7 @@ Create a human readable password
 
 
 
+---
 
 ##Settings
 
@@ -1892,10 +1788,9 @@ Create a human readable password
 
 
 
-| param |
-| --- |
-| $extensionName |
-| string $part |
+##### param
+* $extensionName
+* string $part
 
 
 
@@ -1904,9 +1799,8 @@ Create a human readable password
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
@@ -1927,9 +1821,8 @@ Create a human readable password
 
 
 
-| param |
-| --- |
-| bool $part default: false (BE, DB, EXT, MAIL, FE, SYS...) |
+##### param
+* bool $part default: false (BE, DB, EXT, MAIL, FE, SYS...)
 
 
 
@@ -1938,15 +1831,15 @@ Create a human readable password
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
 
 
 
+---
 
 ##Template
 
@@ -1958,12 +1851,11 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| param |
-| --- |
-| string $extension |
-| string $template |
-| array $variables |
-| null $controllerContext |
+##### param
+* string $extension
+* string $template
+* array $variables
+* null $controllerContext
 
 
 
@@ -1972,9 +1864,8 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-| return |
-| --- |
-| string|void |
+##### return
+* string|void
 
 
 
@@ -1988,12 +1879,11 @@ Render a template
 
 
 
-| param |
-| --- |
-| $extension gridelements |
-| $path Resources/Private/Templates/Mytemplate.html |
-| array $variables |
-| null $controllerContext In your controller action use $this->controllerContext, important for using translation |
+##### param
+* $extension gridelements
+* $path Resources/Private/Templates/Mytemplate.html
+* array $variables
+* null $controllerContext In your controller action use $this->controllerContext, important for using translation
 
 
 
@@ -2002,15 +1892,15 @@ Render a template
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
 
 
 
+---
 
 ##Tsfe
 
@@ -2019,6 +1909,7 @@ Render a template
 
 
 
+---
 
 ##Upload
 
@@ -2030,9 +1921,8 @@ Set allowed filetypes
 
 
 
-| param |
-| --- |
-| $filetypes |
+##### param
+* $filetypes
 
 
 
@@ -2041,9 +1931,8 @@ Set allowed filetypes
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -2057,9 +1946,8 @@ Set max filesize, allowed for each file
 
 
 
-| param |
-| --- |
-| $size |
+##### param
+* $size
 
 
 
@@ -2068,9 +1956,8 @@ Set max filesize, allowed for each file
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -2084,9 +1971,8 @@ Enable autonaming of uploaded files with hash values
 
 
 
-| param |
-| --- |
-| $setting |
+##### param
+* $setting
 
 
 
@@ -2095,9 +1981,8 @@ Enable autonaming of uploaded files with hash values
 
 
 
-| return |
-| --- |
-| $this |
+##### return
+* $this
 
 
 
@@ -2111,9 +1996,8 @@ Check uploaded files and set them for upload
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
@@ -2127,9 +2011,8 @@ Get the list of files that will be uploaded
 
 
 
-| return |
-| --- |
-| array |
+##### return
+* array
 
 
 
@@ -2143,15 +2026,15 @@ Upload files to target directory
 
 
 
-| param |
-| --- |
-| $target_folder |
+##### param
+* $target_folder
 
 
 
 
 
 
+---
 
 ##Uri
 
@@ -2167,17 +2050,16 @@ Class Uri
 
 
 
-| param |
-| --- |
-| $pid |
-| $extension |
-| $controller |
-| $action |
-| array $arguments |
-| bool $typeNum |
-| bool $useCacheHash |
-| bool $forceAbsoluteUrl |
-| array $additionalParameters |
+##### param
+* $pid
+* $extension
+* $controller
+* $action
+* array $arguments
+* bool $typeNum
+* bool $useCacheHash
+* bool $forceAbsoluteUrl
+* array $additionalParameters
 
 
 
@@ -2186,15 +2068,15 @@ Class Uri
 
 
 
-| return |
-| --- |
-| string |
+##### return
+* string
 
 
 
 
 
 
+---
 
 ##Website
 
@@ -2206,13 +2088,13 @@ Frontend: Get current Website Root PID
 
 
 
-| return |
-| --- |
-| mixed |
+##### return
+* mixed
 
 
 
 
 
 
+---
 
