@@ -1,8 +1,22 @@
 <?php
-// Set some data
+// --------------------------
+// Example 1
+// --------------------------
+
 $somedata = 'Hello world';
 t3h::Datastorage()->extension('myextension')->set('mykey', $somedata);
 if (t3h::Datastorage()->extension('myextension')->exists('mykey')) {
     echo t3h::Datastorage()->extension('myextension')->get('mykey'); // Output: Hello world
+}
+
+// --------------------------
+// Example 2
+// --------------------------
+
+$somedata = 'Hello world';
+t3h::Datastorage()->extension('myextension');
+t3h::Datastorage()->set('mykey', $somedata);
+if (t3h::Datastorage()->exists('mykey')) {
+    echo t3h::Datastorage()->get('mykey'); // Output: Hello world
 }
 ?>
