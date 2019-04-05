@@ -12,12 +12,23 @@ use TYPO3\CMS\Core\SingletonInterface;
  */
 class Uri implements SingletonInterface {
 
+    /**
+     * Uri constructor.
+     */
     public function __construct() {
         if (TYPO3_MODE == 'BE') {
             t3h::Tsfe()->init();
         }
     }
 
+    /**
+     * Get a page link by PID
+     * @param $pid Page UID
+     * @param bool $useCacheHash
+     * @param bool $forceAbsoluteUrl
+     * @param array $additionalParameters
+     * @return string
+     */
     public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = []) {
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
             'parameter' => intval($pid),

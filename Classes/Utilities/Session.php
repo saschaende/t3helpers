@@ -9,6 +9,10 @@ class Session implements SingletonInterface {
     protected $extension;
     protected $sessiondata = [];
 
+    /**
+     * @param $extension
+     * @return $this
+     */
     public function setExtension($extension) {
         $this->extension = $extension;
         if (!isset($this->sessiondata[$this->extension])) {
@@ -22,6 +26,10 @@ class Session implements SingletonInterface {
         return $this;
     }
 
+    /**
+     * @param null $key
+     * @return bool|mixed
+     */
     public function get($key = null) {
         if($key == null && isset($this->sessiondata[$this->extension])){
             return $this->sessiondata[$this->extension];
@@ -33,6 +41,10 @@ class Session implements SingletonInterface {
         }
     }
 
+    /**
+     * @param null $key
+     * @return bool
+     */
     public function remove($key = null){
         if($key == null && isset($this->sessiondata[$this->extension])){
             $this->sessiondata[$this->extension] = [];
@@ -48,11 +60,19 @@ class Session implements SingletonInterface {
         }
     }
 
+    /**
+     * @param $key
+     * @param $value
+     */
     public function set($key, $value) {
         $this->sessiondata[$this->extension][$key] = $value;
         $this->persist();
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     public function exists($key) {
         if (isset($this->sessiondata[$this->extension][$key])) {
             return true;
@@ -61,6 +81,9 @@ class Session implements SingletonInterface {
         }
     }
 
+    /**
+     * Persist changes into the session
+     */
     private function persist(){
         $GLOBALS['TSFE']->fe_user->setKey('ses', $this->extension, $this->sessiondata[$this->extension]);
         // say TYPO3 to save the new Session Data
