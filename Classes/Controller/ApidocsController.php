@@ -57,6 +57,16 @@ class ApidocsController extends ActionController {
                         continue;
                     }
 
+                    // Example
+                    $exampleFile = PATH_typo3conf . 'ext/t3helpers/Documentation/Examples/'.$className.'_'.$reflectMethod->getName().'.phpexample';
+                    if(file_exists($exampleFile)){
+                        $example = highlight_string(file_get_contents($exampleFile),true);
+                        preg_match_all('/<code>(.*)<\/code>/ms', $example, $output_array);
+                        $example = $output_array[1][0];
+                    }else{
+                        $example = false;
+                    }
+
 
                     $docBlock = $reflectMethod->getDocComment();
                     if (!empty($docBlock)) {
@@ -66,11 +76,16 @@ class ApidocsController extends ActionController {
                             'name' => $reflectMethod->getName(),
                             'paramstring' => $this->parseParameters($reflectMethod->getParameters()),
                             'description' => $docBlock->description,
-                            'params' => $docBlock->all_params
+                            'params' => $docBlock->all_params,
+                            'example'   => $example
                         ];
                     } else {
                         $docComment = [
-                            'name' => $reflectMethod->getName()
+                            'name' => $reflectMethod->getName(),
+                            'paramstring' => $this->parseParameters($reflectMethod->getParameters()),
+                            'description' => false,
+                            'params' => false,
+                            'example'   => $example
                         ];
                     }
 

@@ -1,0 +1,14 @@
+<?php
+
+class MyController extends ActionController {
+
+    public function listAction(){
+        // Choose from all pages
+        $this->myRepository->setDefaultQuerySettings(t3h::Database()->getQuerySettings());
+        // Choose from all pages and ignore disabled field
+        $this->myRepository->setDefaultQuerySettings(t3h::Database()->getQuerySettings(false,true));
+    }
+
+}
+
+?>

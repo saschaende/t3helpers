@@ -65,6 +65,16 @@
                         </div>
                         <div id="collapse{class.name}-{method.name}" class="panel-collapse collapse">
                             <div class="panel-body">
+
+                                <f:if condition="{method.example}">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">PHP Example</div>
+                                        <div class="panel-body">
+                                            <f:format.raw>{method.example}</f:format.raw>
+                                        </div>
+                                    </div><br>
+                                </f:if>
+
                                 <f:format.html>{method.description}</f:format.html>
 
                                 <f:for each="{method.params}" as="params" key="title">
