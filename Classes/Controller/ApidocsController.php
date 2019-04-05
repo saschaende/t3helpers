@@ -84,7 +84,7 @@ class ApidocsController extends ActionController {
                             'name' => $reflectMethod->getName(),
                             'paramstring' => $this->parseParameters($reflectMethod->getParameters()),
                             'description' => false,
-                            'params' => false,
+                            'params' => [],
                             'example'   => $example
                         ];
                     }
