@@ -5,10 +5,10 @@
 # t3helpers Api Docs
 
 <f:for as="class" each="{docs}" key="className">
-## {className}
+# {className}
 {class.description}
 <f:for as="method" each="{class.methods}">
-#### t3h::{className}->{method.name}(<f:format.raw>{method.paramstring}</f:format.raw>)
+## t3h::{className}->{method.name}(<f:format.raw>{method.paramstring}</f:format.raw>)
 {method.description}
 <f:for each="{method.params}" as="params" key="title">
 <f:render section="params" arguments="{title:title,params:params}"/>

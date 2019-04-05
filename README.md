@@ -29,12 +29,12 @@ Look around in this extension, you will find many helpful tools.
 # t3helpers Api Docs
 
 
-## BackendUser
+# BackendUser
 
 Class BackendUser
 Backend Userdata is only available in Backend and on pages where the backend user has permissions. Otherwise this will return null
 
-#### t3h::BackendUser->get()
+## t3h::BackendUser->get()
 
 
 
@@ -48,7 +48,7 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-#### t3h::BackendUser->getGroups()
+## t3h::BackendUser->getGroups()
 
 
 
@@ -62,7 +62,7 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-#### t3h::BackendUser->getAllowedPages()
+## t3h::BackendUser->getAllowedPages()
 
 
 
@@ -76,7 +76,7 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-#### t3h::BackendUser->getAllowedPagesUris()
+## t3h::BackendUser->getAllowedPagesUris()
 
 
 
@@ -92,10 +92,10 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 ---
 
-## Category
+# Category
 
 
-#### t3h::Category->getByString(<span class="label label-danger">$categories</span>, <span class="label label-primary">$delimiter = ","</span>)
+## t3h::Category->getByString(<span class="label label-danger">$categories</span>, <span class="label label-primary">$delimiter = ","</span>)
 
 
 
@@ -130,7 +130,7 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 
 
-#### t3h::Category->getCategoriesForFile(<span class="label label-danger">$uid</span>)
+## t3h::Category->getCategoriesForFile(<span class="label label-danger">$uid</span>)
 
 
 
@@ -156,10 +156,10 @@ Backend Userdata is only available in Backend and on pages where the backend use
 
 ---
 
-## Command
+# Command
 
 
-#### t3h::Command->register(<span class="label label-danger">$class</span>)
+## t3h::Command->register(<span class="label label-danger">$class</span>)
 
 Call this in "ext_localconf.php"
 
@@ -176,11 +176,11 @@ Call this in "ext_localconf.php"
 
 ---
 
-## Configuration
+# Configuration
 
 Class Configuration
 
-#### t3h::Configuration->setExtension(<span class="label label-danger">$ext</span>)
+## t3h::Configuration->setExtension(<span class="label label-danger">$ext</span>)
 
 
 
@@ -204,7 +204,7 @@ Class Configuration
 
 
 
-#### t3h::Configuration->get(<span class="label label-danger">$propertyName</span>)
+## t3h::Configuration->get(<span class="label label-danger">$propertyName</span>)
 
 
 
@@ -238,7 +238,7 @@ Class Configuration
 
 
 
-#### t3h::Configuration->getAll()
+## t3h::Configuration->getAll()
 
 
 
@@ -254,10 +254,10 @@ Class Configuration
 
 ---
 
-## Csv
+# Csv
 
 
-#### t3h::Csv->setFile(<span class="label label-danger">$file</span>)
+## t3h::Csv->setFile(<span class="label label-danger">$file</span>)
 
 
 
@@ -281,7 +281,7 @@ Class Configuration
 
 
 
-#### t3h::Csv->setAutoUTF(<span class="label label-danger">$autoUTF</span>)
+## t3h::Csv->setAutoUTF(<span class="label label-danger">$autoUTF</span>)
 
 
 
@@ -305,7 +305,7 @@ Class Configuration
 
 
 
-#### t3h::Csv->getFileParsed(<span class="label label-primary">$object = false</span>)
+## t3h::Csv->getFileParsed(<span class="label label-primary">$object = false</span>)
 
 Get parsed file
 
@@ -330,7 +330,7 @@ Get parsed file
 
 
 
-#### t3h::Csv->setFormatting(<span class="label label-primary">$delimiter = ","</span>, <span class="label label-primary">$enclosure = """</span>, <span class="label label-primary">$escape = "\"</span>)
+## t3h::Csv->setFormatting(<span class="label label-primary">$delimiter = ","</span>, <span class="label label-primary">$enclosure = """</span>, <span class="label label-primary">$escape = "\"</span>)
 
 
 
@@ -356,7 +356,7 @@ Get parsed file
 
 
 
-#### t3h::Csv->addRule(<span class="label label-danger">$column</span>, <span class="label label-primary">$regex = "any"</span>, <span class="label label-primary">$option = ""</span>, <span class="label label-primary">$emptyAllowed = false</span>, <span class="label label-primary">$pos = null</span>)
+## t3h::Csv->addRule(<span class="label label-danger">$column</span>, <span class="label label-primary">$regex = "any"</span>, <span class="label label-primary">$option = ""</span>, <span class="label label-primary">$emptyAllowed = false</span>, <span class="label label-primary">$pos = null</span>)
 
 
 
@@ -384,7 +384,7 @@ Get parsed file
 
 
 
-#### t3h::Csv->check()
+## t3h::Csv->check()
 
 Check the csv against the rules
 
@@ -401,10 +401,10 @@ Check the csv against the rules
 
 ---
 
-## Data
+# Data
 
 
-#### t3h::Data->sortObjectStorage(<span class="label label-danger">$object</span>, <span class="label label-danger">$function</span>, <span class="label label-primary">$ordering = "asc"</span>)
+## t3h::Data->sortObjectStorage(<span class="label label-danger">$object</span>, <span class="label label-danger">$function</span>, <span class="label label-primary">$ordering = "asc"</span>)
 
 Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
@@ -431,7 +431,7 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-#### t3h::Data->sortArray(<span class="label label-danger">$arr</span>, <span class="label label-danger">$fields</span>)
+## t3h::Data->sortArray(<span class="label label-danger">$arr</span>, <span class="label label-danger">$fields</span>)
 
 
 
@@ -456,7 +456,7 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-#### t3h::Data->arrayToObject(<span class="label label-danger">$array</span>)
+## t3h::Data->arrayToObject(<span class="label label-danger">$array</span>)
 
 
 
@@ -480,7 +480,7 @@ Example: t3h::Data()->sortObjectStorage($users,'getUsername','asc')
 
 
 
-#### t3h::Data->xmlToArray(<span class="label label-danger">$xmldata</span>)
+## t3h::Data->xmlToArray(<span class="label label-danger">$xmldata</span>)
 
 Create an array from xml string - cause GeneralUtility::xml2array is buggy with some xml structures
 
@@ -505,7 +505,7 @@ Create an array from xml string - cause GeneralUtility::xml2array is buggy with 
 
 
 
-#### t3h::Data->arrayToXml(<span class="label label-danger">$data</span>, <span class="label label-primary">$rootNodeName = "data"</span>, <span class="label label-primary">$xml = null</span>)
+## t3h::Data->arrayToXml(<span class="label label-danger">$data</span>, <span class="label label-primary">$rootNodeName = "data"</span>, <span class="label label-primary">$xml = null</span>)
 
 The main function for converting to an XML document.
 Pass in a multi dimensional array and this recrusively loops through and builds up an XML document.
@@ -533,7 +533,7 @@ Pass in a multi dimensional array and this recrusively loops through and builds 
 
 
 
-#### t3h::Data->formatRTE(<span class="label label-danger">$str</span>)
+## t3h::Data->formatRTE(<span class="label label-danger">$str</span>)
 
 Format html code with RTE features
 
@@ -558,7 +558,7 @@ Format html code with RTE features
 
 
 
-#### t3h::Data->autoUTF(<span class="label label-danger">$s</span>)
+## t3h::Data->autoUTF(<span class="label label-danger">$s</span>)
 
 automatic convertion info utf-8 string
 
@@ -583,7 +583,7 @@ automatic convertion info utf-8 string
 
 
 
-#### t3h::Data->get_youtube_id_from_url(<span class="label label-danger">$url</span>)
+## t3h::Data->get_youtube_id_from_url(<span class="label label-danger">$url</span>)
 
 
 
@@ -607,7 +607,7 @@ automatic convertion info utf-8 string
 
 
 
-#### t3h::Data->parse_url(<span class="label label-danger">$url</span>)
+## t3h::Data->parse_url(<span class="label label-danger">$url</span>)
 
 Extended version of parse_url
 
@@ -624,10 +624,10 @@ Extended version of parse_url
 
 ---
 
-## Database
+# Database
 
 
-#### t3h::Database->getQuerySettings(<span class="label label-primary">$setRespectStoragePage = false</span>, <span class="label label-primary">$setIgnoreEnableFields = false</span>, <span class="label label-primary">$setIncludeDeleted = false</span>)
+## t3h::Database->getQuerySettings(<span class="label label-primary">$setRespectStoragePage = false</span>, <span class="label label-primary">$setIgnoreEnableFields = false</span>, <span class="label label-primary">$setIncludeDeleted = false</span>)
 
 
 
@@ -653,7 +653,7 @@ Extended version of parse_url
 
 
 
-#### t3h::Database->truncateTable(<span class="label label-danger">$table</span>)
+## t3h::Database->truncateTable(<span class="label label-danger">$table</span>)
 
 
 
@@ -667,7 +667,7 @@ Extended version of parse_url
 
 
 
-#### t3h::Database->getObjectStorageByQueryResult(<span class="label label-danger">$queryResult</span>)
+## t3h::Database->getObjectStorageByQueryResult(<span class="label label-danger">$queryResult</span>)
 
 
 
@@ -691,7 +691,7 @@ Extended version of parse_url
 
 
 
-#### t3h::Database->getQuerybuilder(<span class="label label-danger">$table</span>, <span class="label label-primary">$addFrom = true</span>)
+## t3h::Database->getQuerybuilder(<span class="label label-danger">$table</span>, <span class="label label-primary">$addFrom = true</span>)
 
 
 
@@ -716,17 +716,17 @@ Extended version of parse_url
 
 
 
-#### t3h::Database->persistAll()
+## t3h::Database->persistAll()
 
 Persist All
 
 
 ---
 
-## Datastorage
+# Datastorage
 
 
-#### t3h::Datastorage->extension(<span class="label label-danger">$extension</span>)
+## t3h::Datastorage->extension(<span class="label label-danger">$extension</span>)
 
 
 
@@ -750,7 +750,7 @@ Persist All
 
 
 
-#### t3h::Datastorage->set(<span class="label label-danger">$key</span>, <span class="label label-danger">$data</span>)
+## t3h::Datastorage->set(<span class="label label-danger">$key</span>, <span class="label label-danger">$data</span>)
 
 
 
@@ -765,7 +765,7 @@ Persist All
 
 
 
-#### t3h::Datastorage->get(<span class="label label-danger">$key</span>, <span class="label label-danger">$data</span>)
+## t3h::Datastorage->get(<span class="label label-danger">$key</span>, <span class="label label-danger">$data</span>)
 
 
 
@@ -790,7 +790,7 @@ Persist All
 
 
 
-#### t3h::Datastorage->exists(<span class="label label-danger">$key</span>)
+## t3h::Datastorage->exists(<span class="label label-danger">$key</span>)
 
 
 
@@ -816,10 +816,10 @@ Persist All
 
 ---
 
-## Debug
+# Debug
 
 
-#### t3h::Debug->dump(<span class="label label-danger">$data</span>, <span class="label label-primary">$split = false</span>)
+## t3h::Debug->dump(<span class="label label-danger">$data</span>, <span class="label label-primary">$split = false</span>)
 
 
 
@@ -834,7 +834,7 @@ Persist All
 
 
 
-#### t3h::Debug->mail(<span class="label label-danger">$fromEmail</span>, <span class="label label-danger">$recipientEmail</span>, <span class="label label-danger">$data</span>)
+## t3h::Debug->mail(<span class="label label-danger">$fromEmail</span>, <span class="label label-danger">$recipientEmail</span>, <span class="label label-danger">$data</span>)
 
 
 
@@ -850,11 +850,11 @@ Persist All
 
 
 
-#### t3h::Debug->dumpFullTyposcript()
+## t3h::Debug->dumpFullTyposcript()
 
 
 
-#### t3h::Debug->query(<span class="label label-danger">$query</span>)
+## t3h::Debug->query(<span class="label label-danger">$query</span>)
 
 
 
@@ -880,10 +880,10 @@ Persist All
 
 ---
 
-## Filesystem
+# Filesystem
 
 
-#### t3h::Filesystem->fileExists(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
+## t3h::Filesystem->fileExists(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
 
 Check if file exists in a folder
 
@@ -919,7 +919,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getFileByName(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
+## t3h::Filesystem->getFileByName(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
 
 
 
@@ -954,7 +954,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->deleteFileByName(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
+## t3h::Filesystem->deleteFileByName(<span class="label label-danger">$folder</span>, <span class="label label-danger">$fileName</span>)
 
 
 
@@ -989,7 +989,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getFileByID(<span class="label label-danger">$id</span>)
+## t3h::Filesystem->getFileByID(<span class="label label-danger">$id</span>)
 
 
 
@@ -1013,7 +1013,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getFileObjectByID(<span class="label label-danger">$id</span>)
+## t3h::Filesystem->getFileObjectByID(<span class="label label-danger">$id</span>)
 
 
 
@@ -1037,7 +1037,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getFilesByFolder(<span class="label label-danger">$folder</span>)
+## t3h::Filesystem->getFilesByFolder(<span class="label label-danger">$folder</span>)
 
 
 
@@ -1071,7 +1071,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getFileObjectsByFolder(<span class="label label-danger">$folder</span>)
+## t3h::Filesystem->getFileObjectsByFolder(<span class="label label-danger">$folder</span>)
 
 
 
@@ -1105,7 +1105,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getFileExtPath(<span class="label label-danger">$extension</span>, <span class="label label-danger">$path</span>)
+## t3h::Filesystem->getFileExtPath(<span class="label label-danger">$extension</span>, <span class="label label-danger">$path</span>)
 
 
 
@@ -1130,7 +1130,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->getCategoriesForFile(<span class="label label-danger">$uid</span>)
+## t3h::Filesystem->getCategoriesForFile(<span class="label label-danger">$uid</span>)
 
 
 
@@ -1154,7 +1154,7 @@ Check if file exists in a folder
 
 
 
-#### t3h::Filesystem->setFileReference(<span class="label label-danger">$file</span>, <span class="label label-danger">$uid_foreign</span>, <span class="label label-danger">$pid</span>, <span class="label label-danger">$table</span>, <span class="label label-danger">$fieldname</span>)
+## t3h::Filesystem->setFileReference(<span class="label label-danger">$file</span>, <span class="label label-danger">$uid_foreign</span>, <span class="label label-danger">$pid</span>, <span class="label label-danger">$table</span>, <span class="label label-danger">$fieldname</span>)
 
 Always Use this AFTER adding a new object to the database - because you need the $uid_foreign of this object :)
 
@@ -1183,7 +1183,7 @@ Always Use this AFTER adding a new object to the database - because you need the
 
 
 
-#### t3h::Filesystem->getFileExtension(<span class="label label-danger">$filename</span>)
+## t3h::Filesystem->getFileExtension(<span class="label label-danger">$filename</span>)
 
 Get the file extension (f.e. mp3, doc, zip...)
 
@@ -1208,16 +1208,16 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 
 
-#### t3h::Filesystem->getUniqueFilename()
+## t3h::Filesystem->getUniqueFilename()
 
 
 
 ---
 
-## FrontendUser
+# FrontendUser
 
 
-#### t3h::FrontendUser->getCurrentUser()
+## t3h::FrontendUser->getCurrentUser()
 
 
 
@@ -1231,7 +1231,7 @@ Get the file extension (f.e. mp3, doc, zip...)
 
 
 
-#### t3h::FrontendUser->getLanguage()
+## t3h::FrontendUser->getLanguage()
 
 Get language uid of current user
 
@@ -1246,7 +1246,7 @@ Get language uid of current user
 
 
 
-#### t3h::FrontendUser->loginUser(<span class="label label-danger">$username</span>)
+## t3h::FrontendUser->loginUser(<span class="label label-danger">$username</span>)
 
 Manually login a user
 
@@ -1273,10 +1273,10 @@ Manually login a user
 
 ---
 
-## Google
+# Google
 
 
-#### t3h::Google->getGeoCoordinates(<span class="label label-danger">$googleApiKey</span>, <span class="label label-danger">$address</span>)
+## t3h::Google->getGeoCoordinates(<span class="label label-danger">$googleApiKey</span>, <span class="label label-danger">$address</span>)
 
 
 
@@ -1301,7 +1301,7 @@ Manually login a user
 
 
 
-#### t3h::Google->getYoutubeVideoIdByUrl(<span class="label label-danger">$url</span>)
+## t3h::Google->getYoutubeVideoIdByUrl(<span class="label label-danger">$url</span>)
 
 Get Youtube video ID from URL
 
@@ -1328,19 +1328,19 @@ Get Youtube video ID from URL
 
 ---
 
-## Html5Patterns
+# Html5Patterns
 
 
-#### t3h::Html5Patterns->get()
+## t3h::Html5Patterns->get()
 
 
 
 ---
 
-## Icons
+# Icons
 
 
-#### t3h::Icons->setExtension(<span class="label label-danger">$ext</span>)
+## t3h::Icons->setExtension(<span class="label label-danger">$ext</span>)
 
 
 
@@ -1364,7 +1364,7 @@ Get Youtube video ID from URL
 
 
 
-#### t3h::Icons->add(<span class="label label-danger">$icon</span>, <span class="label label-danger">$identifier</span>)
+## t3h::Icons->add(<span class="label label-danger">$icon</span>, <span class="label label-danger">$identifier</span>)
 
 Add icon file
 
@@ -1382,10 +1382,10 @@ Add icon file
 
 ---
 
-## Injections
+# Injections
 
 
-#### t3h::Injections->setExtension(<span class="label label-danger">$ext</span>)
+## t3h::Injections->setExtension(<span class="label label-danger">$ext</span>)
 
 
 
@@ -1409,7 +1409,7 @@ Add icon file
 
 
 
-#### t3h::Injections->phpFile(<span class="label label-danger">$filepath</span>)
+## t3h::Injections->phpFile(<span class="label label-danger">$filepath</span>)
 
 
 
@@ -1423,7 +1423,7 @@ Add icon file
 
 
 
-#### t3h::Injections->jsFile(<span class="label label-danger">$filepath</span>)
+## t3h::Injections->jsFile(<span class="label label-danger">$filepath</span>)
 
 
 
@@ -1437,7 +1437,7 @@ Add icon file
 
 
 
-#### t3h::Injections->jsFooterFile(<span class="label label-danger">$filepath</span>)
+## t3h::Injections->jsFooterFile(<span class="label label-danger">$filepath</span>)
 
 
 
@@ -1451,7 +1451,7 @@ Add icon file
 
 
 
-#### t3h::Injections->jsLibraryFile(<span class="label label-danger">$filepath</span>)
+## t3h::Injections->jsLibraryFile(<span class="label label-danger">$filepath</span>)
 
 
 
@@ -1465,7 +1465,7 @@ Add icon file
 
 
 
-#### t3h::Injections->cssFile(<span class="label label-danger">$filepath</span>)
+## t3h::Injections->cssFile(<span class="label label-danger">$filepath</span>)
 
 
 
@@ -1479,7 +1479,7 @@ Add icon file
 
 
 
-#### t3h::Injections->cssLibraryFile(<span class="label label-danger">$filepath</span>)
+## t3h::Injections->cssLibraryFile(<span class="label label-danger">$filepath</span>)
 
 
 
@@ -1493,7 +1493,7 @@ Add icon file
 
 
 
-#### t3h::Injections->addFlexform(<span class="label label-danger">$plugin</span>)
+## t3h::Injections->addFlexform(<span class="label label-danger">$plugin</span>)
 
 Add flexform
 
@@ -1510,10 +1510,10 @@ Add flexform
 
 ---
 
-## Language
+# Language
 
 
-#### t3h::Language->getCurrent()
+## t3h::Language->getCurrent()
 
 Get the current language
 
@@ -1530,10 +1530,10 @@ Get the current language
 
 ---
 
-## Mail
+# Mail
 
 
-#### t3h::Mail->send(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$emailBody</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>)
+## t3h::Mail->send(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$emailBody</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>)
 
 
 
@@ -1563,7 +1563,7 @@ Get the current language
 
 
 
-#### t3h::Mail->sendTemplate(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$extension</span>, <span class="label label-danger">$path</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>, <span class="label label-primary">$controllerContext = null</span>)
+## t3h::Mail->sendTemplate(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$extension</span>, <span class="label label-danger">$path</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>, <span class="label label-primary">$controllerContext = null</span>)
 
 
 
@@ -1596,7 +1596,7 @@ Get the current language
 
 
 
-#### t3h::Mail->sendDynamicTemplate(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$extension</span>, <span class="label label-danger">$template</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>, <span class="label label-primary">$controllerContext = null</span>)
+## t3h::Mail->sendDynamicTemplate(<span class="label label-danger">$recipient</span>, <span class="label label-danger">$senderEmail</span>, <span class="label label-danger">$senderName</span>, <span class="label label-danger">$subject</span>, <span class="label label-danger">$extension</span>, <span class="label label-danger">$template</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$attachments = []</span>, <span class="label label-primary">$priority = false</span>, <span class="label label-primary">$controllerContext = null</span>)
 
 Render a template, it will be called dynamically depending on template, layout and partials paths. This will not work without TYPOSCRIPT settings
 
@@ -1632,10 +1632,10 @@ Render a template, it will be called dynamically depending on template, layout a
 
 ---
 
-## Page
+# Page
 
 
-#### t3h::Page->getPid()
+## t3h::Page->getPid()
 
 
 
@@ -1649,7 +1649,7 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-#### t3h::Page->getTitle()
+## t3h::Page->getTitle()
 
 
 
@@ -1663,7 +1663,7 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-#### t3h::Page->getPagetree(<span class="label label-danger">$topId</span>, <span class="label label-primary">$depth = 1000000</span>)
+## t3h::Page->getPagetree(<span class="label label-danger">$topId</span>, <span class="label label-primary">$depth = 1000000</span>)
 
 
 
@@ -1690,13 +1690,13 @@ Render a template, it will be called dynamically depending on template, layout a
 
 ---
 
-## Password
+# Password
 
 TYPO3 9:
 $hashInstance = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::class)->getDefaultHashInstance('FE');
 $user->setPassword($hashInstance->getHashedPassword($user->getPassword()));
 
-#### t3h::Password->getHashedPassword(<span class="label label-danger">$password</span>)
+## t3h::Password->getHashedPassword(<span class="label label-danger">$password</span>)
 
 Get the hashed password
 
@@ -1711,7 +1711,7 @@ Get the hashed password
 
 
 
-#### t3h::Password->checkPassword(<span class="label label-danger">$plainPW</span>, <span class="label label-danger">$saltedHashPW</span>)
+## t3h::Password->checkPassword(<span class="label label-danger">$plainPW</span>, <span class="label label-danger">$saltedHashPW</span>)
 
 Check password
 
@@ -1726,7 +1726,7 @@ Check password
 
 
 
-#### t3h::Password->createReadablePassword(<span class="label label-primary">$letters = 8</span>, <span class="label label-primary">$length = false</span>)
+## t3h::Password->createReadablePassword(<span class="label label-primary">$letters = 8</span>, <span class="label label-primary">$length = false</span>)
 
 Create a human readable password
 
@@ -1754,35 +1754,35 @@ Create a human readable password
 
 ---
 
-## Session
+# Session
 
 
-#### t3h::Session->setExtension()
-
-
-
-#### t3h::Session->get()
+## t3h::Session->setExtension()
 
 
 
-#### t3h::Session->remove()
+## t3h::Session->get()
 
 
 
-#### t3h::Session->set()
+## t3h::Session->remove()
 
 
 
-#### t3h::Session->exists()
+## t3h::Session->set()
+
+
+
+## t3h::Session->exists()
 
 
 
 ---
 
-## Settings
+# Settings
 
 
-#### t3h::Settings->getExtension(<span class="label label-danger">$extensionName</span>, <span class="label label-primary">$part = "settings"</span>)
+## t3h::Settings->getExtension(<span class="label label-danger">$extensionName</span>, <span class="label label-primary">$part = "settings"</span>)
 
 
 
@@ -1807,15 +1807,15 @@ Create a human readable password
 
 
 
-#### t3h::Settings->getPlugin()
+## t3h::Settings->getPlugin()
 
 
 
-#### t3h::Settings->getFullTyposcript()
+## t3h::Settings->getFullTyposcript()
 
 
 
-#### t3h::Settings->getTypo3Configuration(<span class="label label-primary">$part = false</span>)
+## t3h::Settings->getTypo3Configuration(<span class="label label-primary">$part = false</span>)
 
 
 
@@ -1841,10 +1841,10 @@ Create a human readable password
 
 ---
 
-## Template
+# Template
 
 
-#### t3h::Template->renderDynamic(<span class="label label-primary">$extension = "tx_myextension"</span>, <span class="label label-primary">$template = "Default"</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$controllerContext = null</span>)
+## t3h::Template->renderDynamic(<span class="label label-primary">$extension = "tx_myextension"</span>, <span class="label label-primary">$template = "Default"</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$controllerContext = null</span>)
 
 Render a template, it will be called dynamically depending on template, layout and partials paths. This will not work without TYPOSCRIPT settings.
 
@@ -1872,7 +1872,7 @@ Render a template, it will be called dynamically depending on template, layout a
 
 
 
-#### t3h::Template->render(<span class="label label-danger">$extension</span>, <span class="label label-danger">$path</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$controllerContext = null</span>)
+## t3h::Template->render(<span class="label label-danger">$extension</span>, <span class="label label-danger">$path</span>, <span class="label label-primary">$variables = []</span>, <span class="label label-primary">$controllerContext = null</span>)
 
 Render a template
 
@@ -1902,19 +1902,19 @@ Render a template
 
 ---
 
-## Tsfe
+# Tsfe
 
 
-#### t3h::Tsfe->init()
+## t3h::Tsfe->init()
 
 
 
 ---
 
-## Upload
+# Upload
 
 
-#### t3h::Upload->setAllowedFiletypes(<span class="label label-danger">$filetypes</span>)
+## t3h::Upload->setAllowedFiletypes(<span class="label label-danger">$filetypes</span>)
 
 Set allowed filetypes
 
@@ -1939,7 +1939,7 @@ Set allowed filetypes
 
 
 
-#### t3h::Upload->setMaxFilesize(<span class="label label-danger">$size</span>)
+## t3h::Upload->setMaxFilesize(<span class="label label-danger">$size</span>)
 
 Set max filesize, allowed for each file
 
@@ -1964,7 +1964,7 @@ Set max filesize, allowed for each file
 
 
 
-#### t3h::Upload->setAutofilenames(<span class="label label-danger">$setting</span>)
+## t3h::Upload->setAutofilenames(<span class="label label-danger">$setting</span>)
 
 Enable autonaming of uploaded files with hash values
 
@@ -1989,7 +1989,7 @@ Enable autonaming of uploaded files with hash values
 
 
 
-#### t3h::Upload->check()
+## t3h::Upload->check()
 
 Check uploaded files and set them for upload
 
@@ -2004,7 +2004,7 @@ Check uploaded files and set them for upload
 
 
 
-#### t3h::Upload->getFiles()
+## t3h::Upload->getFiles()
 
 Get the list of files that will be uploaded
 
@@ -2019,7 +2019,7 @@ Get the list of files that will be uploaded
 
 
 
-#### t3h::Upload->execute(<span class="label label-primary">$target_folder = false</span>)
+## t3h::Upload->execute(<span class="label label-primary">$target_folder = false</span>)
 
 Upload files to target directory
 
@@ -2036,15 +2036,15 @@ Upload files to target directory
 
 ---
 
-## Uri
+# Uri
 
 Class Uri
 
-#### t3h::Uri->getByPid()
+## t3h::Uri->getByPid()
 
 
 
-#### t3h::Uri->getByAction(<span class="label label-danger">$pid</span>, <span class="label label-danger">$extension</span>, <span class="label label-danger">$controller</span>, <span class="label label-danger">$action</span>, <span class="label label-primary">$arguments = []</span>, <span class="label label-primary">$typeNum = false</span>, <span class="label label-primary">$useCacheHash = true</span>, <span class="label label-primary">$forceAbsoluteUrl = true</span>, <span class="label label-primary">$additionalParameters = []</span>)
+## t3h::Uri->getByAction(<span class="label label-danger">$pid</span>, <span class="label label-danger">$extension</span>, <span class="label label-danger">$controller</span>, <span class="label label-danger">$action</span>, <span class="label label-primary">$arguments = []</span>, <span class="label label-primary">$typeNum = false</span>, <span class="label label-primary">$useCacheHash = true</span>, <span class="label label-primary">$forceAbsoluteUrl = true</span>, <span class="label label-primary">$additionalParameters = []</span>)
 
 
 
@@ -2078,10 +2078,10 @@ Class Uri
 
 ---
 
-## Website
+# Website
 
 
-#### t3h::Website->getWebsiteRootPid()
+## t3h::Website->getWebsiteRootPid()
 
 Frontend: Get current Website Root PID
 
