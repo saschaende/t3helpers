@@ -26,6 +26,9 @@ t3helpers\Classes\Utilities
 
 Look around in this extension, you will find many helpful tools.
 
+![plugin](Documentation/screenshot.jpg)
+
+
 # t3helpers Api Docs
 
 
