@@ -22,6 +22,21 @@ class FrontendUser implements SingletonInterface  {
     }
 
     /**
+     * Check if the logged in user has a specific role
+     * @param $role
+     * @return bool
+     */
+    public function hasRole($role){
+        if (!isset($GLOBALS['TSFE']) || !$GLOBALS['TSFE']->loginUser) {
+            return false;
+        }
+        if (is_numeric($role)) {
+            return is_array($GLOBALS['TSFE']->fe_user->groupData['uid']) && in_array($role, $GLOBALS['TSFE']->fe_user->groupData['uid']);
+        }
+        return is_array($GLOBALS['TSFE']->fe_user->groupData['title']) && in_array($role, $GLOBALS['TSFE']->fe_user->groupData['title']);
+    }
+
+    /**
      * Manually login a user
      * @param $username
      * @throws \ReflectionException
