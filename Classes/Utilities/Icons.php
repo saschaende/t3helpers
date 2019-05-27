@@ -26,7 +26,7 @@ class Icons implements SingletonInterface {
         $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 
         $iconRegistry->registerIcon(
-            'users',
+            $identifier,
             \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
             ['source' => 'EXT:'.$this->extension.'/Resources/Public/Icons/'.$icon]
         );
