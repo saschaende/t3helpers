@@ -42,6 +42,7 @@ class Request {
     /**
      * Get a new fresh cookie session
      * @return string|null
+     * @todo Set TYPO3 temp path here
      */
     protected function getCookieSession() {
 
