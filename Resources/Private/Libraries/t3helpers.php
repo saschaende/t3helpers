@@ -21,6 +21,7 @@ use SaschaEnde\T3helpers\Utilities\Language;
 use SaschaEnde\T3helpers\Utilities\Mail;
 use SaschaEnde\T3helpers\Utilities\Page;
 use SaschaEnde\T3helpers\Utilities\Password;
+use SaschaEnde\T3helpers\Utilities\Request;
 use SaschaEnde\T3helpers\Utilities\Session;
 use SaschaEnde\T3helpers\Utilities\Settings;
 use SaschaEnde\T3helpers\Utilities\Template;
@@ -221,6 +222,13 @@ class t3h {
      */
     public static function Website(){
         return self::injectClass(Website::class);
+    }
+
+    /**
+     * @return Request
+     */
+    public static function Request(){
+        return self::injectClass(Request::class);
     }
 
     // ---------------------------------------------------------------------------------
