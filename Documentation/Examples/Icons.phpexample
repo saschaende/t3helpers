@@ -1,0 +1,5 @@
+<?php
+// Use this in your ext_localconf.php
+// Icon will be located in EXT:users/Resources/Public/Icons/Extension.png
+// So you will be able to use this icon with the identifier "users"
+\t3h\t3h::Icons()->setExtension('users')->add('Extension.png','users');
