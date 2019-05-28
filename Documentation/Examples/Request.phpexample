@@ -1,0 +1,8 @@
+<?php
+$result = t3h::Request()
+    ->setUrl('http://www.google.de')
+    ->setType('POST')
+    ->setPostData(['token'=>'ABCDEFG','id'=>'123456'])
+    ->setJson()
+    ->request()
+    ->getResult();
