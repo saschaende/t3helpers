@@ -86,6 +86,18 @@ class Data implements SingletonInterface {
     }
 
     /**
+     * @param $array
+     * @return \stdClass
+     */
+    public function arrayToObjectStorage($array) {
+        $obj = new ObjectStorage();
+        foreach ($array as $element) {
+            $obj->attach($element);
+        }
+        return $obj;
+    }
+
+    /**
      * Create an array from xml string - cause GeneralUtility::xml2array is buggy with some xml structures
      * @param $xmldata
      * @return \t3h\DOMDocument
@@ -248,5 +260,35 @@ class Data implements SingletonInterface {
 
 
         return $parseData;
+    }
+
+    /**
+     * Recursive Generate Array from Object(supports ObjectStorage and Domain Models)
+     * @param $obj
+     * @return array
+     */
+    public function objectToArray($obj){
+        //only process if it's an object or array being passed to the function
+        if(is_object($obj) || is_array($obj)) {
+            if(method_exists($obj,'getArray')){
+                $ret = $obj->getArray();
+            }
+            elseif(method_exists($obj,'_getProperties')){
+                $ret = $obj->_getProperties();
+            }
+            else{
+                $ret = (array) $obj;
+            }
+
+            foreach($ret as &$item) {
+                //recursively process EACH element regardless of type
+                $item = $this->recursiveToArray($item);
+            }
+            return $ret;
+        }
+        //otherwise (i.e. for scalar values) return without modification
+        else {
+            return $obj;
+        }
     }
 }
