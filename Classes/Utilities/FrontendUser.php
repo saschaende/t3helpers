@@ -14,6 +14,14 @@ class FrontendUser implements SingletonInterface  {
     }
 
     /**
+     * Check if the user is logged
+     * @return bool
+     */
+    public function isLogged(){
+        return isset($GLOBALS['TSFE']) && $GLOBALS['TSFE']->loginUser;
+    }
+
+    /**
      * Get language uid of current user
      * @return int
      */
