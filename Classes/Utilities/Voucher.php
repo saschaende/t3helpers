@@ -2,7 +2,10 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
-
+/**
+ * Generate Voucher codes for software or online shops
+ * @package SaschaEnde\T3helpers\Utilities
+ */
 class Voucher {
 
     private $key = '3PFQHN964Y1BRTAX7WSCUZG8M2ED5LV';
