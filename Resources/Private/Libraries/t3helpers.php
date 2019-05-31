@@ -28,6 +28,7 @@ use SaschaEnde\T3helpers\Utilities\Template;
 use SaschaEnde\T3helpers\Utilities\Tsfe;
 use SaschaEnde\T3helpers\Utilities\Upload;
 use SaschaEnde\T3helpers\Utilities\Uri;
+use SaschaEnde\T3helpers\Utilities\Voucher;
 use SaschaEnde\T3helpers\Utilities\Website;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -229,6 +230,13 @@ class t3h {
      */
     public static function Request(){
         return self::injectClass(Request::class);
+    }
+
+    /**
+     * @return Voucher
+     */
+    public static function Voucher(){
+        return self::injectClass(Voucher::class);
     }
 
     // ---------------------------------------------------------------------------------
