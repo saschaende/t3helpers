@@ -77,4 +77,11 @@ class Uri implements SingletonInterface {
         ]);
     }
 
+
+    function getSlug($text)
+    {
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        return strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $text));
+    }
+
 }
