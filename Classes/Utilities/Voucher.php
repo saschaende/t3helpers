@@ -5,18 +5,18 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 class Voucher {
 
-    private static $key = '3PFQHN964Y1BRTAX7WSCUZG8M2ED5LV';
+    private $key = '3PFQHN964Y1BRTAX7WSCUZG8M2ED5LV';
 
-    public static function setBase($base){
-        self::$key = $base;
+    public function setBase($base){
+        $this->key = $base;
     }
 
-    public static function encode($num) {
+    public function encode($num) {
 
         $num = $num+1000;
 
-        $base = strlen(self::$key);
-        $index = substr(self::$key, 0, $base);
+        $base = strlen($this->key);
+        $index = substr($this->key, 0, $base);
 
         $out = "";
         for ($t = floor(log10($num) / log10($base)); $t >= 0; $t--) {
@@ -27,7 +27,7 @@ class Voucher {
 
         $result = strrev($out);
 
-        $randomstring = self::generateBase();
+        $randomstring = $this->generateBase();
 
         $export = [];
         $export[] = $result;
@@ -42,15 +42,15 @@ class Voucher {
 
     }
 
-    public static function decode($num) {
+    public function decode($num) {
 
         $parts = explode('-',$num);
         $num = $parts[0];
 
         $num = strrev($num);
 
-        $base = strlen(self::$key);
-        $index = substr(self::$key, 0, $base);
+        $base = strlen($this->key);
+        $index = substr($this->key, 0, $base);
 
         $out = 0;
         $len = strlen($num) - 1;
@@ -60,7 +60,7 @@ class Voucher {
         return $out-1000;
     }
 
-    public static function generateBase() {
+    public function generateBase() {
         $D = explode(',','A,B,C,D,E,F,G,H,L,M,N,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9');
         shuffle($D);
         $str = implode("", $D);

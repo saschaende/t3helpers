@@ -1,0 +1,7 @@
+<?php
+
+$code = t3h::Voucher()->encode(10);
+$res = t3h::Voucher()->decode($code);
+
+echo $code; // Output: SPP-WZT-BVM-2PD
+echo $res; // Output: 10
