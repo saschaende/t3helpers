@@ -282,7 +282,7 @@ class Data implements SingletonInterface {
 
             foreach($ret as &$item) {
                 //recursively process EACH element regardless of type
-                $item = $this->recursiveToArray($item);
+                $item = $this->objectToArray($item);
             }
             return $ret;
         }
