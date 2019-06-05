@@ -18,7 +18,7 @@ class Request {
     protected $json = false;
     protected $err;
     protected $errmsg;
-
+    protected $cookies;
 
     protected function log($url,$input,$output){
         $input = @htmlspecialchars($input);
@@ -34,15 +34,18 @@ class Request {
 
     /**
      * @param bool $usecookiesession
+     * @return $this
      */
-    public function setUsecookiesession(bool $usecookiesession): void {
+    public function setUsecookiesession(bool $usecookiesession) {
         $this->usecookiesession = $usecookiesession;
+        return $this;
     }
 
     /**
      * Get a new fresh cookie session
      * @return string|null
      * @todo Set TYPO3 temp path here
+     * @deprecated
      */
     protected function getCookieSession() {
 
@@ -72,15 +75,17 @@ class Request {
      */
     public function setDebug($debug) {
         $this->debug = $debug;
+        return $this;
     }
 
 
     /**
      * Delete cookie session when deconstructing
+     * @deprecated
      */
     public function __destruct() {
         if($this->usecookiesession){
-            unlink($this->getCookieSession());
+            //unlink($this->getCookieSession());
         }
     }
 
@@ -101,11 +106,13 @@ class Request {
     /**
      * Inject the cookie session into the curl request
      * @param $handle
+     * @deprecated Put this line directly into the request function
      */
     protected function injectCookieSession(&$handle){
+        curl_setopt($handle, CURLOPT_COOKIE, $this->cookies);
         // additional for storing cookie
-        curl_setopt($handle, CURLOPT_COOKIEJAR, $this->getCookieSession());
-        curl_setopt($handle, CURLOPT_COOKIEFILE, $this->getCookieSession());
+        #curl_setopt($handle, CURLOPT_COOKIEJAR, $this->getCookieSession());
+        #curl_setopt($handle, CURLOPT_COOKIEFILE, $this->getCookieSession());
     }
 
     /**
@@ -117,7 +124,6 @@ class Request {
 
         $options = array(
             CURLOPT_RETURNTRANSFER => true, // to return web page
-            CURLOPT_HTTPHEADER => $this->getHeaders(),
             CURLOPT_HEADER => true, // to return headers in addition to content
             CURLOPT_FOLLOWLOCATION => $this->isFollowLocation(), // to follow redirects
             CURLOPT_ENCODING => "",   // to handle all encodings
@@ -128,18 +134,22 @@ class Request {
             CURLINFO_HEADER_OUT => true, // no header out
             CURLOPT_SSL_VERIFYPEER => false,// to disable SSL Cert checks
             CURLOPT_USERAGENT => $this->getUserAgent(), // Set User Agent
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_COOKIE => $this->getAdditionalCookies()
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
         );
         curl_setopt_array($handle, $options);
 
         if($this->getType() == 'POST'){
+            $postfields = http_build_query($this->getPostData());
+            $contentlength = strlen($postfields);
+            $this->headers[] = 'Content-Length: '.$contentlength;
             curl_setopt($handle,CURLOPT_CUSTOMREQUEST,'POST');
             curl_setopt($handle,CURLOPT_POST,true);
-            curl_setopt($handle,CURLOPT_POSTFIELDS,http_build_query($this->getPostData()));
+            curl_setopt($handle,CURLOPT_POSTFIELDS,$postfields);
         }else{
             curl_setopt($handle,CURLOPT_CUSTOMREQUEST,$this->type);
         }
+
+        curl_setopt($handle,CURLOPT_HTTPHEADER,$this->getHeaders());
 
         // additional for storing cookie
         if($this->usecookiesession){
@@ -157,18 +167,12 @@ class Request {
         $header_content = substr($raw_content, 0, $header['header_size']);
         $body_content = trim(str_replace($header_content, '', $raw_content));
 
-        // let's extract cookie from raw content for the viewing purpose
-        $cookiepattern = "#Set-Cookie:\\s+(?<cookie>[^=]+=[^;]+)#m";
-        preg_match_all($cookiepattern, $header_content, $matches);
-        $cookies = [];
-        foreach($matches['cookie'] as $match){
-            preg_match('/(.*)=(.*)/', $match, $cookieParsed);
-            $cookies[$cookieParsed[1]] = $cookieParsed[2];
-        }
+        preg_match_all('|Set-Cookie: (.*);|U', $header_content, $matches);
+        $this->cookies = implode('; ', $matches[1]);
 
         $header['headers'] = $header_content;
         $header['content'] = $body_content;
-        $header['cookies'] = $cookies;
+        $header['cookies'] = $this->cookies;
 
         $this->log($this->url,$this->postData,$header['content']);
 
