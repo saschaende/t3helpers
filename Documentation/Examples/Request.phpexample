@@ -1,6 +1,6 @@
 <?php
 $result = t3h::Request()
-    ->setUrl('http://www.google.de')
+    ->setUrl('http://www.google.de') // always call at first (resets everything)
     ->setType('POST')
     ->setPostData(['token'=>'ABCDEFG','id'=>'123456'])
     ->setJson()
