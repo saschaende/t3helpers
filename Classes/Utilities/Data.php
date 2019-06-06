@@ -116,44 +116,36 @@ class Data implements SingletonInterface {
      * @param SimpleXMLElement $xml - should only be used recursively
      * @return string XML
      */
-    public function arrayToXml($data, $rootNodeName = 'data', $xml=null)
-    {
+    public function arrayToXml($data, $rootNodeName = 'data', $xml = null) {
         // turn off compatibility mode as simple xml throws a wobbly if you don't.
-        if (ini_get('zend.ze1_compatibility_mode') == 1)
-        {
-            ini_set ('zend.ze1_compatibility_mode', 0);
+        if (ini_get('zend.ze1_compatibility_mode') == 1) {
+            ini_set('zend.ze1_compatibility_mode', 0);
         }
 
-        if ($xml == null)
-        {
+        if ($xml == null) {
             $xml = simplexml_load_string("<?xml version='1.0' encoding='utf-8'?><$rootNodeName />");
         }
 
         // loop through the data passed in.
-        foreach($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
             // no numeric keys in our xml please!
-            if (is_numeric($key))
-            {
+            if (is_numeric($key)) {
                 // make string key...
-                $key = "entry". (string) $key;
+                $key = "entry" . (string)$key;
             }
 
             // replace anything not alpha numeric
             $key = preg_replace('/[^a-z]/i', '', $key);
 
             // if there is another array found recrusively call this function
-            if (is_array($value))
-            {
+            if (is_array($value)) {
                 $node = $xml->addChild($key);
                 // recrusive call.
                 $this->arrayToXml($value, $rootNodeName, $node);
-            }
-            else
-            {
+            } else {
                 // add single node.
-                $value = htmlentities($value,ENT_XML1);
-                $xml->addChild($key,$value);
+                $value = htmlentities($value, ENT_XML1);
+                $xml->addChild($key, $value);
             }
 
         }
@@ -176,11 +168,10 @@ class Data implements SingletonInterface {
 
     /**
      * automatic convertion info utf-8 string
-     * @param   string  $s
+     * @param string $s
      * @return  string
      */
-    public function autoUTF($s)
-    {
+    public function autoUTF($s) {
         return Encoding::toUTF8($s);
     }
 
@@ -197,64 +188,64 @@ class Data implements SingletonInterface {
      * Extended version of parse_url
      * @param $url
      */
-    public function parse_url($url){
+    public function parse_url($url) {
         $parseData = parse_url($url);
 
         // google Webcache?
-        if($parseData['host'] == 'webcache.googleusercontent.com'){
+        if ($parseData['host'] == 'webcache.googleusercontent.com') {
             $querydata = parse_query($parseData['query']);
-            $domain = explode(':',$querydata['q']);
+            $domain = explode(':', $querydata['q']);
             $domain = array_slice($domain, 2);
-            $domain = urldecode(trim(implode(':',$domain)));
+            $domain = urldecode(trim(implode(':', $domain)));
 
-            if(substr($domain,0,4) != 'http'){
-                $domain = 'http://'.$domain;
+            if (substr($domain, 0, 4) != 'http') {
+                $domain = 'http://' . $domain;
             }
             $parseData = parse_url($domain);
         }
 
-        if($parseData['scheme'] == 'https'){
+        if ($parseData['scheme'] == 'https') {
             $parseData['ssl'] = true;
-        }else{
+        } else {
             $parseData['ssl'] = false;
         }
 
         // Queries
-        if(isset($parseData['query'])) {
+        if (isset($parseData['query'])) {
             $parseData['queryData'] = parse_query($parseData['query']);
-        }else{
+        } else {
             $parseData['queryData'] = [];
         }
 
         // Extract Subdomain
-        $domainparts = explode('.',$parseData['host']);
-        $parseData['domain'] = $domainparts[count($domainparts)-2].'.'.$domainparts[count($domainparts)-1];
+        $domainparts = explode('.', $parseData['host']);
+        $parseData['domain'] = $domainparts[count($domainparts) - 2] . '.' . $domainparts[count($domainparts) - 1];
 
-        if(count($domainparts) > 2){
-            $parseData['subdomain'] = str_replace('.'.$parseData['domain'],'',$parseData['host']);
-        }else{
+        if (count($domainparts) > 2) {
+            $parseData['subdomain'] = str_replace('.' . $parseData['domain'], '', $parseData['host']);
+        } else {
             $parseData['subdomain'] = '';
         }
 
 
         // URI 1
-        $uri = $parseData['domain'].$parseData['path'];
-        if(isset($parseData['query'])){
-            $uri .= '?'.$parseData['query'];
+        $uri = $parseData['domain'] . $parseData['path'];
+        if (isset($parseData['query'])) {
+            $uri .= '?' . $parseData['query'];
         }
         $parseData['domainPath'] = $uri;
 
         // URI 2
-        $uri = $parseData['host'].$parseData['path'];
-        if(isset($parseData['query'])){
-            $uri .= '?'.$parseData['query'];
+        $uri = $parseData['host'] . $parseData['path'];
+        if (isset($parseData['query'])) {
+            $uri .= '?' . $parseData['query'];
         }
         $parseData['hostPath'] = $uri;
 
         // URI 3
         $uri = $parseData['path'];
-        if(isset($parseData['query'])){
-            $uri .= '?'.$parseData['query'];
+        if (isset($parseData['query'])) {
+            $uri .= '?' . $parseData['query'];
         }
         $parseData['queryPath'] = $uri;
 
@@ -265,30 +256,54 @@ class Data implements SingletonInterface {
     /**
      * Recursive Generate Array from Object(supports ObjectStorage and Domain Models)
      * @param $obj
-     * @return array
+     * @param int $maxlevels
+     * @param array $unwanted_keys
+     * @param int $level
+     * @return array|mixed
      */
-    public function objectToArray($obj){
+    public function objectToArray($obj, $maxlevels = 999, $unwanted_keys = [], $level = 1) {
         //only process if it's an object or array being passed to the function
-        if(is_object($obj) || is_array($obj)) {
-            if(method_exists($obj,'getArray')){
+        if (is_object($obj) || is_array($obj)) {
+            if (method_exists($obj, 'getArray')) {
                 $ret = $obj->getArray();
-            }
-            elseif(method_exists($obj,'_getProperties')){
+            } elseif (method_exists($obj, '_getProperties')) {
                 $ret = $obj->_getProperties();
-            }
-            else{
+            } else {
                 $ret = (array) $obj;
             }
 
-            foreach($ret as &$item) {
-                //recursively process EACH element regardless of type
-                $item = $this->objectToArray($item);
+            foreach ($ret as &$item) {
+                if ($level < $maxlevels) {
+                    //recursively process EACH element regardless of type
+                    $item = $this->objectToArray($item, $maxlevels, $unwanted_keys,$level + 1);
+                }
             }
+
+            $this->recursiveUnset($ret,$unwanted_keys);
+
+            $ret = json_decode(json_encode($ret),true);
+            $this->recursiveUnset($ret,$unwanted_keys);
             return $ret;
         }
         //otherwise (i.e. for scalar values) return without modification
         else {
             return $obj;
+        }
+    }
+
+    /**
+     * Rekuscive unset of keys from an array
+     * @param $array
+     * @param array $unwanted_keys
+     */
+    public function recursiveUnset(&$array, $unwanted_keys = []) {
+        foreach($unwanted_keys as $key){
+            unset($array[$key]);
+        }
+        foreach ($array as &$value) {
+            if (is_array($value)) {
+                $this->recursiveUnset($value, $unwanted_keys);
+            }
         }
     }
 }
