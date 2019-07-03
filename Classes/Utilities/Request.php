@@ -2,6 +2,8 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 class Request {
 
     protected $cookiesession = null;
@@ -16,6 +18,7 @@ class Request {
     protected $result = [];
     protected $headers = [];
     protected $json = false;
+    protected $submitjson = false;
     protected $err;
     protected $errmsg;
     protected $cookies;
@@ -138,17 +141,26 @@ class Request {
         );
         curl_setopt_array($handle, $options);
 
+        // Post
         if($this->getType() == 'POST'){
-            $postfields = http_build_query($this->getPostData());
-            $contentlength = strlen($postfields);
-            $this->headers[] = 'Content-Length: '.$contentlength;
-            curl_setopt($handle,CURLOPT_CUSTOMREQUEST,'POST');
-            curl_setopt($handle,CURLOPT_POST,true);
-            curl_setopt($handle,CURLOPT_POSTFIELDS,$postfields);
-        }else{
-            curl_setopt($handle,CURLOPT_CUSTOMREQUEST,$this->type);
+            //curl_setopt($handle,CURLOPT_POST,true);
         }
 
+        // Set Request Type
+        curl_setopt($handle,CURLOPT_CUSTOMREQUEST,$this->getType());
+
+        // Postfields
+        if(!empty($this->getPostData())){
+            if($this->submitjson){
+                $postfields = json_encode($this->getPostData());
+                $this->headers[] = 'Content-Type: application/json';
+            }else{
+                $postfields = http_build_query($this->getPostData());
+            }
+            curl_setopt($handle,CURLOPT_POSTFIELDS,$postfields);
+        }
+
+        // Set headers
         curl_setopt($handle,CURLOPT_HTTPHEADER,$this->getHeaders());
 
         // additional for storing cookie
@@ -294,7 +306,7 @@ class Request {
      * @return array
      */
     public function getResult($type = 'content') {
-        if($this->isJson()){
+        if($this->json){
             return json_decode($this->result[$type],true);
         }
         return $this->result[$type];
@@ -308,18 +320,12 @@ class Request {
     }
 
     /**
-     * @return bool
-     */
-    protected function isJson() {
-        return $this->json;
-    }
-
-    /**
      * @param $jsonDecode
      * @return $this
      */
-    public function setJson() {
-        $this->json = true;
+    public function setJson($response = true, $request = false) {
+        $this->json = $response;
+        $this->submitjson = $request;
         return $this;
     }
 
