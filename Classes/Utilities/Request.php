@@ -22,16 +22,15 @@ class Request {
     protected $err;
     protected $errmsg;
     protected $cookies;
+    protected $hasFiles = false;
 
     protected function log($url,$input,$output){
         $input = @htmlspecialchars($input);
         $output = @htmlspecialchars($output);
         if($this->isDebug()){
-            echo '<p>';
-            echo '<b>'.$url.'</b>';
-            echo '<p>INPUT: '.print_r($input,true).'</p>';
-            echo '<p>OUTPUT: '.print_r($output,true).'</p>';
-            echo '</p><hr>';
+            DebuggerUtility::var_dump($url);
+            DebuggerUtility::var_dump($input);
+            DebuggerUtility::var_dump($output);
         }
     }
 
@@ -41,6 +40,18 @@ class Request {
      */
     public function setUsecookiesession(bool $usecookiesession) {
         $this->usecookiesession = $usecookiesession;
+        return $this;
+    }
+
+    /**
+     * Add a file
+     * @param $name
+     * @param $filePath
+     * @return $this
+     */
+    public function addFile($name, $filePath){
+        $this->postData[$name] = new \CurlFile($filePath);
+        $this->hasFiles = true;
         return $this;
     }
 
@@ -155,7 +166,12 @@ class Request {
                 $postfields = json_encode($this->getPostData());
                 $this->headers[] = 'Content-Type: application/json';
             }else{
-                $postfields = http_build_query($this->getPostData());
+                if($this->hasFiles){
+                    $postfields = $this->getPostData();
+                }else{
+                    $postfields = http_build_query($this->getPostData());
+                }
+
             }
             curl_setopt($handle,CURLOPT_POSTFIELDS,$postfields);
         }
@@ -320,7 +336,8 @@ class Request {
     }
 
     /**
-     * @param $jsonDecode
+     * @param bool $response
+     * @param bool $request
      * @return $this
      */
     public function setJson($response = true, $request = false) {
