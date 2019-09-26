@@ -8,7 +8,7 @@ class Request {
 
     protected $cookiesession = null;
     protected $usecookiesession = false;
-    protected $userAgent = '';
+    protected $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36';
     protected $debug = false;
     protected $postData = [];
     protected $type = 'GET';
@@ -154,7 +154,7 @@ class Request {
 
         // Post
         if($this->getType() == 'POST'){
-            //curl_setopt($handle,CURLOPT_POST,true);
+            curl_setopt($handle,CURLOPT_POST,true);
         }
 
         // Set Request Type
