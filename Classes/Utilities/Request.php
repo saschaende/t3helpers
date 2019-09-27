@@ -56,28 +56,6 @@ class Request {
     }
 
     /**
-     * Get a new fresh cookie session
-     * @return string|null
-     * @todo Set TYPO3 temp path here
-     * @deprecated
-     */
-    protected function getCookieSession() {
-
-        $dir = dirname(__FILE__) . '/cookies/';
-        $cookiePath = $dir.uniqid() . '.txt';
-
-        if(!is_writable($dir)){
-            echo '<b>Cookie caching:</b> '.$dir.' has no write access<br>';
-            exit;
-        }
-
-        if ($this->cookiesession === null) {
-            $this->setCookiesession($cookiePath);
-        }
-        return $this->cookiesession;
-    }
-
-    /**
      * @return bool
      */
     public function isDebug() {
@@ -92,17 +70,6 @@ class Request {
         return $this;
     }
 
-
-    /**
-     * Delete cookie session when deconstructing
-     * @deprecated
-     */
-    public function __destruct() {
-        if($this->usecookiesession){
-            //unlink($this->getCookieSession());
-        }
-    }
-
     /**
      * @param null $cookiesession
      */
@@ -115,18 +82,6 @@ class Request {
      */
     protected function getUserAgent() {
         return $this->userAgent;
-    }
-
-    /**
-     * Inject the cookie session into the curl request
-     * @param $handle
-     * @deprecated Put this line directly into the request function
-     */
-    protected function injectCookieSession(&$handle){
-        curl_setopt($handle, CURLOPT_COOKIE, $this->cookies);
-        // additional for storing cookie
-        #curl_setopt($handle, CURLOPT_COOKIEJAR, $this->getCookieSession());
-        #curl_setopt($handle, CURLOPT_COOKIEFILE, $this->getCookieSession());
     }
 
     /**
@@ -181,7 +136,7 @@ class Request {
 
         // additional for storing cookie
         if($this->usecookiesession){
-            $this->injectCookieSession($handle);
+            curl_setopt($handle, CURLOPT_COOKIE, $this->cookies);
         }
 
         $raw_content = curl_exec($handle);
