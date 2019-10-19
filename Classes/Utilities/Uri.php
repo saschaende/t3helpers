@@ -13,15 +13,6 @@ use TYPO3\CMS\Core\SingletonInterface;
 class Uri implements SingletonInterface {
 
     /**
-     * Uri constructor.
-     */
-    public function __construct() {
-        if (TYPO3_MODE == 'BE') {
-            t3h::Tsfe()->init();
-        }
-    }
-
-    /**
      * Get a page link by PID
      * @param $pid Page UID
      * @param bool $useCacheHash
@@ -29,7 +20,12 @@ class Uri implements SingletonInterface {
      * @param array $additionalParameters
      * @return string
      */
-    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = []) {
+    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = [], $root_id = 0) {
+
+        if (TYPO3_MODE == 'BE') {
+            t3h::Tsfe()->init($root_id);
+        }
+
         return $GLOBALS['TSFE']->cObj->typoLink_URL([
             'parameter' => intval($pid),
             'useCacheHash' => $useCacheHash,
@@ -51,7 +47,11 @@ class Uri implements SingletonInterface {
      * @param array $additionalParameters
      * @return string
      */
-    public function getByAction($pid, $extension, $controller, $action, $arguments = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = []) {
+    public function getByAction($pid, $extension, $controller, $action, $arguments = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = [], $root_id = 0) {
+
+        if (TYPO3_MODE == 'BE') {
+            t3h::Tsfe()->init($root_id);
+        }
 
         $arguments['controller'] = $controller;
         $arguments['action'] = $action;
