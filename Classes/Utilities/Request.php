@@ -151,6 +151,12 @@ class Request {
         $body_content = trim(str_replace($header_content, '', $raw_content));
 
         preg_match_all('|Set-Cookie: (.*);|U', $header_content, $matches);
+        foreach ($matches[1] as $cookie){
+            $cookiedata = explode("=",$cookie);
+            $cookieName = array_shift($cookiedata);
+            $header['cookies_parsed'][$cookieName] = implode('=',$cookiedata);
+        }
+
         $this->cookies = implode('; ', $matches[1]);
 
         $header['headers'] = $header_content;
