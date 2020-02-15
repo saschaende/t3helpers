@@ -9,11 +9,13 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
  */
 class TimeAgoViewHelper extends AbstractTagBasedViewHelper {
 
-    /**
-     * @param \DateTime $date
-     * @return mixed
-     */
-    public function render(\DateTime $date) {
+    public function initializeArguments()
+    {
+        $this->registerArgument('date', 'mixed', 'DateTime', true);
+    }
+
+    public function render() {
+        $date = $this->arguments['date'];
         return $this->time_ago($date->getTimestamp());
     }
 
