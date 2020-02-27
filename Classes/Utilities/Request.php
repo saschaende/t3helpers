@@ -159,6 +159,7 @@ class Request {
 
         $this->cookies = implode('; ', $matches[1]);
 
+        $header['headers_parsed'] = $header;
         $header['headers'] = $header_content;
         $header['content'] = $body_content;
         $header['cookies'] = $this->cookies;
