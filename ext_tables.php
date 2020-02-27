@@ -14,6 +14,7 @@ require_once($composerAutoloadFile);
 
 
 // Add admin module
+/**
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
     'SaschaEnde.t3helpers',
     'tools', // Make module a submodule of 'tools'
@@ -28,3 +29,4 @@ require_once($composerAutoloadFile);
         'labels' => 'LLL:EXT:t3helpers/Resources/Private/Language/locallang_docs.xlf',
     ]
 );
+ * **/
