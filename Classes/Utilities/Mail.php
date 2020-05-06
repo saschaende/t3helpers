@@ -2,12 +2,23 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use Pelago\Emogrifier\CssInliner;
 use t3h\t3h;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Mail implements SingletonInterface {
+
+    protected $inlinecss = true;
+
+    /**
+     * @return $this
+     */
+    public function disableInlineCssConverter(){
+        $this->inlinecss = false;
+        return $this;
+    }
 
     /**
      * @param $recipient
@@ -29,6 +40,10 @@ class Mail implements SingletonInterface {
 
         if($priority){
             $message->setPriority($priority);
+        }
+
+        if($this->inlinecss){
+            $emailBody = CssInliner::fromHtml($emailBody)->inlineCss()->render();
         }
 
         $message->setBody($emailBody, 'text/html');

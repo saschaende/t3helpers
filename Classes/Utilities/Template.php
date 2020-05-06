@@ -33,6 +33,7 @@ class Template implements SingletonInterface {
 
         // Templates
         $cfg = t3h::Settings()->getExtension($extension,'view');
+
         $emailView->setLayoutRootPaths($cfg['layoutRootPaths.']);
         $emailView->setPartialRootPaths($cfg['partialRootPaths.']);
         $emailView->setTemplateRootPaths($cfg['templateRootPaths.']);

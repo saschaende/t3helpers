@@ -19,6 +19,10 @@ class ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c
             'Symfony\\Component\\DomCrawler\\' => 29,
             'Symfony\\Component\\CssSelector\\' => 30,
         ),
+        'P' => 
+        array (
+            'Pelago\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -37,6 +41,10 @@ class ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c
         'Symfony\\Component\\CssSelector\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
+        ),
+        'Pelago\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pelago/emogrifier/src',
         ),
     );
 
