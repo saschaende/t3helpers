@@ -33,11 +33,19 @@ class Password implements SingletonInterface {
      * @return null|string
      */
     public function checkPassword($plainPW,$saltedHashPW) {
+
+        $result = false;
+
         if (SaltedPasswordsUtility::isUsageEnabled('FE')) {
             $objSalt = SaltFactory::getSaltingInstance($saltedHashPW);
-            return $objSalt->checkPassword($plainPW, $saltedHashPW);
+            $result = $objSalt->checkPassword($plainPW, $saltedHashPW);
         }
-        return false;
+
+        /** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */
+        $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
+        $signalSlotDispatcher->dispatch(__CLASS__, 'checkPassword', [$plainPW, $saltedHashPW, &$result]);
+
+        return $result;
     }
 
     /**
