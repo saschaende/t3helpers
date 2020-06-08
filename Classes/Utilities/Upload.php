@@ -7,6 +7,11 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+/**
+ * Class Upload
+ * @package SaschaEnde\T3helpers\Utilities
+ * @deprecated Will be deleted in one of the next versions, please do not use and migrate to the simpler solution t3h::Filesystem()->uploadFileAndGetFileReference($table,$tmp_name,$targetFolder,$target_filename)
+ */
 class Upload implements SingletonInterface {
 
     protected $maxFiles = null;

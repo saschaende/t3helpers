@@ -192,6 +192,7 @@ class t3h {
 
     /**
      * @return Upload
+     * @deprecated Will be deleted in one of the next versions, please do not use and migrate to the simpler solution t3h::Filesystem()->uploadFileAndGetFileReference($table,$tmp_name,$targetFolder,$target_filename)
      */
     public static function Upload(){
         return self::injectClass(Upload::class);
