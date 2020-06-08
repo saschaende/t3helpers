@@ -1,6 +1,14 @@
 config.tx_extbase {
     persistence {
         classes {
+            SaschaEnde\T3helpers\Helpers\FileReference {
+                mapping {
+                    tableName = sys_file_reference
+                    columns {
+                        uid_local.mapOnProperty = originalFileIdentifier
+                    }
+                }
+            }
             SaschaEnde\T3helpers\Domain\Model\Pages {
                 mapping {
                     tableName = pages

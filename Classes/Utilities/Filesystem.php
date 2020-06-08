@@ -2,9 +2,11 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use SaschaEnde\T3helpers\Helpers\FileReference;
 use t3h\t3h;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Exception;
+use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -193,6 +195,35 @@ class Filesystem implements SingletonInterface {
         } else {
             return false;
         }
+    }
+
+    /**
+     * Upload and move a file to a directory and get a file reference
+     * @param $table The target table
+     * @param $tmp_name From $_FILES['tmp_name']
+     * @param $targetFolder 1:/my_upload_folder/
+     * @param $target_filename upload.jpg
+     * @return FileReference
+     */
+    public function uploadFileAndGetFileReference($table,$tmp_name,$targetFolder,$target_filename)
+    {
+        // Erhalte Objekt mit Ziel Ordner
+        $resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+        $targetFolder = $resourceFactory->getFolderObjectFromCombinedIdentifier($targetFolder);
+
+        # add uploaded file
+        $file = $targetFolder->addFile(
+            $tmp_name,
+            $target_filename,
+            DuplicationBehavior::RENAME
+        );
+
+        /** @var FileReference $newFileReference */
+        $newFileReference = t3h::injectClass(FileReference::class);
+        $newFileReference->setTablenames($table);
+        $newFileReference->setFile($file);
+
+        return $newFileReference;
     }
 
     /**
