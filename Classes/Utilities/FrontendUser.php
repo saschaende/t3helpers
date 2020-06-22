@@ -69,7 +69,6 @@ class FrontendUser implements SingletonInterface  {
         $loginSuccess = $GLOBALS['TSFE']->fe_user->compareUident($user, $loginData);
 
         setcookie('fe_typo_user', $session_data['ses_id'], time() + (86400 * 30), "/");
-        setcookie('nc_staticfilecache', 'fe_typo_user_logged_in', time() + (86400 * 30), "/");
     }
 
 }
