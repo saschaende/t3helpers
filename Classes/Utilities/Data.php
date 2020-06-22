@@ -324,26 +324,4 @@ class Data implements SingletonInterface
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
         return strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $text));
     }
-
-    /**
-     * @param array $a
-     * @param $path
-     * @param null $default
-     * @return array|mixed|null
-     */
-    public function dotQuery(array $a, $path, $default = null)
-    {
-        $current = $a;
-        $p = strtok($path, '.');
-
-        while ($p !== false) {
-            if (!isset($current[$p])) {
-                return $default;
-            }
-            $current = $current[$p];
-            $p = strtok('.');
-        }
-
-        return $current;
-    }
 }

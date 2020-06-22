@@ -31,7 +31,7 @@ class GetViewHelper extends AbstractViewHelper
             /** @var TypoScriptService $typoScriptService */
             $typoScriptService = t3h::injectClass(TypoScriptService::class);
             $extbaseFrameworkConfiguration = $typoScriptService->convertTypoScriptArrayToPlainArray($extbaseFrameworkConfiguration);
-            $res = t3h::Data()->dotQuery($extbaseFrameworkConfiguration, $this->arguments['path']);
+            $res = t3h::Arr()->get($extbaseFrameworkConfiguration, $this->arguments['path']);
             t3h::Datastorage()->extension('SaschaEnde\T3helpers\ViewHelpers\Typoscript\Get')->set($this->arguments['path'],$res);
         }
         return $res;

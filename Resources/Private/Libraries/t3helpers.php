@@ -2,6 +2,7 @@
 
 namespace t3h;
 
+use SaschaEnde\T3helpers\Utilities\Arr;
 use SaschaEnde\T3helpers\Utilities\BackendUser;
 use SaschaEnde\T3helpers\Utilities\Category;
 use SaschaEnde\T3helpers\Utilities\Command;
@@ -34,6 +35,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class t3h {
+
+    /**
+     * @return Arr
+     */
+    public static function Arr() {
+        return self::injectClass(Arr::class);
+    }
 
     /**
      * @return Filesystem
