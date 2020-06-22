@@ -11,7 +11,8 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Data implements SingletonInterface {
+class Data implements SingletonInterface
+{
 
     protected $xml;
 
@@ -22,7 +23,8 @@ class Data implements SingletonInterface {
      * @param string $ordering
      * @return ObjectStorage
      */
-    public function sortObjectStorage($object, $function, $ordering = 'asc') {
+    public function sortObjectStorage($object, $function, $ordering = 'asc')
+    {
         $array = [];
         foreach ($object as $elm) {
             $array[] = [
@@ -44,7 +46,8 @@ class Data implements SingletonInterface {
      * @param $fields
      * @return mixed
      */
-    public function sortArray($arr, $fields) {
+    public function sortArray($arr, $fields)
+    {
         $sortFields = array();
         $args = array();
 
@@ -77,7 +80,8 @@ class Data implements SingletonInterface {
      * @param $array
      * @return \stdClass
      */
-    public function arrayToObject($array) {
+    public function arrayToObject($array)
+    {
         $obj = new \stdClass();
         foreach ($array as $key => $value) {
             $obj->{$key} = $value;
@@ -89,7 +93,8 @@ class Data implements SingletonInterface {
      * @param $array
      * @return \stdClass
      */
-    public function arrayToObjectStorage($array) {
+    public function arrayToObjectStorage($array)
+    {
         $obj = new ObjectStorage();
         foreach ($array as $element) {
             $obj->attach($element);
@@ -102,7 +107,8 @@ class Data implements SingletonInterface {
      * @param $xmldata
      * @return \t3h\DOMDocument
      */
-    public function xmlToArray($xmldata) {
+    public function xmlToArray($xmldata)
+    {
         t3h::Inject()->setExtension('t3helpers')->phpFile('Resources/Private/Libraries/XML2Array.php');
         return XML2Array::createArray($xmldata);
     }
@@ -116,7 +122,8 @@ class Data implements SingletonInterface {
      * @param SimpleXMLElement $xml - should only be used recursively
      * @return string XML
      */
-    public function arrayToXml($data, $rootNodeName = 'data', $xml = null) {
+    public function arrayToXml($data, $rootNodeName = 'data', $xml = null)
+    {
         // turn off compatibility mode as simple xml throws a wobbly if you don't.
         if (ini_get('zend.ze1_compatibility_mode') == 1) {
             ini_set('zend.ze1_compatibility_mode', 0);
@@ -159,7 +166,8 @@ class Data implements SingletonInterface {
      * @param $str
      * @return string
      */
-    public function formatRTE($str) {
+    public function formatRTE($str)
+    {
         /** @var ConfigurationManagerInterface $configurationManager */
         $configurationManager = t3h::injectClass(ConfigurationManagerInterface::class);
         $output = $configurationManager->getContentObject()->parseFunc($str, array(), '< lib.parseFunc_RTE');
@@ -171,7 +179,8 @@ class Data implements SingletonInterface {
      * @param string $s
      * @return  string
      */
-    public function autoUTF($s) {
+    public function autoUTF($s)
+    {
         return Encoding::toUTF8($s);
     }
 
@@ -179,7 +188,8 @@ class Data implements SingletonInterface {
      * @param $url
      * @return mixed
      */
-    public function get_youtube_id_from_url($url) {
+    public function get_youtube_id_from_url($url)
+    {
         preg_match('/(http(s|):|)\/\/(www\.|)yout(.*?)\/(embed\/|watch.*?v=|)([a-z_A-Z0-9\-]{11})/i', $url, $results);
         return $results[6];
     }
@@ -188,7 +198,8 @@ class Data implements SingletonInterface {
      * Extended version of parse_url
      * @param $url
      */
-    public function parse_url($url) {
+    public function parse_url($url)
+    {
         $parseData = parse_url($url);
 
         // google Webcache?
@@ -261,7 +272,8 @@ class Data implements SingletonInterface {
      * @param int $level
      * @return array|mixed
      */
-    public function objectToArray($obj, $maxlevels = 999, $unwanted_keys = [], $level = 1) {
+    public function objectToArray($obj, $maxlevels = 999, $unwanted_keys = [], $level = 1)
+    {
         //only process if it's an object or array being passed to the function
         if (is_object($obj) || is_array($obj)) {
             if (method_exists($obj, 'getArray')) {
@@ -269,23 +281,22 @@ class Data implements SingletonInterface {
             } elseif (method_exists($obj, '_getProperties')) {
                 $ret = $obj->_getProperties();
             } else {
-                $ret = (array) $obj;
+                $ret = (array)$obj;
             }
 
             foreach ($ret as &$item) {
                 if ($level < $maxlevels) {
                     //recursively process EACH element regardless of type
-                    $item = $this->objectToArray($item, $maxlevels, $unwanted_keys,$level + 1);
+                    $item = $this->objectToArray($item, $maxlevels, $unwanted_keys, $level + 1);
                 }
             }
 
-            $this->recursiveUnset($ret,$unwanted_keys);
+            $this->recursiveUnset($ret, $unwanted_keys);
 
-            $ret = json_decode(json_encode($ret),true);
-            $this->recursiveUnset($ret,$unwanted_keys);
+            $ret = json_decode(json_encode($ret), true);
+            $this->recursiveUnset($ret, $unwanted_keys);
             return $ret;
-        }
-        //otherwise (i.e. for scalar values) return without modification
+        } //otherwise (i.e. for scalar values) return without modification
         else {
             return $obj;
         }
@@ -296,8 +307,9 @@ class Data implements SingletonInterface {
      * @param $array
      * @param array $unwanted_keys
      */
-    public function recursiveUnset(&$array, $unwanted_keys = []) {
-        foreach($unwanted_keys as $key){
+    public function recursiveUnset(&$array, $unwanted_keys = [])
+    {
+        foreach ($unwanted_keys as $key) {
             unset($array[$key]);
         }
         foreach ($array as &$value) {
@@ -307,9 +319,31 @@ class Data implements SingletonInterface {
         }
     }
 
-    function getSlug($text)
+    public function getSlug($text)
     {
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
         return strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $text));
+    }
+
+    /**
+     * @param array $a
+     * @param $path
+     * @param null $default
+     * @return array|mixed|null
+     */
+    public function dotQuery(array $a, $path, $default = null)
+    {
+        $current = $a;
+        $p = strtok($path, '.');
+
+        while ($p !== false) {
+            if (!isset($current[$p])) {
+                return $default;
+            }
+            $current = $current[$p];
+            $p = strtok('.');
+        }
+
+        return $current;
     }
 }
