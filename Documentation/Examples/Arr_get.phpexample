@@ -1,0 +1,17 @@
+<?php
+
+$array = [
+    'test' => [
+        'a' => 1,
+        'b' => 2
+    ],
+    'test2' => [
+        'a' => 1,
+        'b' => 2,
+        'sub' => [
+            'a' => 1
+        ]
+    ]
+];
+
+$res = t3h::Arr()->get($array,'test2.sub.a'); // ==> 1
