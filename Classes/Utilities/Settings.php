@@ -4,6 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -44,6 +45,14 @@ class Settings implements SingletonInterface {
             $configurationManager = t3h::injectClass(ConfigurationManager::class);
             $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
             return $extbaseFrameworkConfiguration;
+    }
+
+    public function getByPath($path){
+        $extbaseFrameworkConfiguration = $this->getFullTyposcript();
+        /** @var TypoScriptService $typoScriptService */
+        $typoScriptService = t3h::injectClass(TypoScriptService::class);
+        $extbaseFrameworkConfiguration = $typoScriptService->convertTypoScriptArrayToPlainArray($extbaseFrameworkConfiguration);
+        return t3h::Arr()->get($extbaseFrameworkConfiguration, $path);
     }
 
     /**
