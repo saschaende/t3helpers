@@ -160,33 +160,33 @@ class Csv implements SingletonInterface {
         return $errors;
     }
 
+
     /**
      * @return array|bool
      */
-    private function parseFile() {
+    private function parseFile()
+    {
         if (!file_exists($this->file) || !is_readable($this->file)) {
             return FALSE;
         }
 
-        $data = [];
+        $handle = fopen($this->file, "r");
 
-        if (($handle = fopen($this->file, 'r')) !== FALSE) {
+        $rows = [];
 
-            while (($buffer = fgets($handle)) !== false) {
+        while (($data = fgetcsv($handle, 0, $this->delimiter,$this->enclosure,$this->escape)) !== FALSE) {
 
-                if ($this->autoUTF) {
-                    $buffer = t3h::Data()->autoUTF($buffer);
-                }
-
-                $row = str_getcsv($buffer, $this->delimiter, $this->enclosure, $this->escape);
-                $row = array_map('trim', $row); // trim every column
-
-                $data[] = $row;
+            $cols = [];
+            foreach($data as $col){
+                $cols[] = trim(t3h::Data()->autoUTF($col));
             }
 
-            fclose($handle);
+            $rows[] = $cols;
+
         }
-        return $data;
+        fclose($handle);
+
+        return $rows;
     }
 
 }
