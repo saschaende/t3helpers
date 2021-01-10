@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
 
 class FrontendUser implements SingletonInterface  {
@@ -49,7 +50,11 @@ class FrontendUser implements SingletonInterface  {
      * @return mixed
      */
     public function getGroups(){
-        return $GLOBALS['TSFE']->fe_user->groupData['uid'];
+        if($this->isLogged()){
+            return $GLOBALS['TSFE']->fe_user->groupData['uid'];
+        }else{
+            return [];
+        }
     }
 
     /**
