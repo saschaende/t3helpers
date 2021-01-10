@@ -45,6 +45,14 @@ class FrontendUser implements SingletonInterface  {
     }
 
     /**
+     * Get all group ids of a user, including subgroups
+     * @return mixed
+     */
+    public function getGroups(){
+        return $GLOBALS['TSFE']->fe_user->groupData['uid'];
+    }
+
+    /**
      * Manually login a user
      * @param $username
      * @throws \ReflectionException
