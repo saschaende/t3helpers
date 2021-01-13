@@ -236,9 +236,15 @@ class Filesystem implements SingletonInterface {
         return strtolower($pathinfo['extension']);
     }
 
-    public function getUniqueFilename($originFilename) {
+    /**
+     * Get a unique filename
+     * @param $originFilename
+     * @return string
+     */
+    public function getUniqueFilename($originFilename)
+    {
         $path_parts = pathinfo($originFilename);
-        return uniqid() . time() . '.' . $path_parts['extension'];
+        return uniqid() . time() . md5($originFilename) . '.' . $path_parts['extension'];
     }
 
 }
