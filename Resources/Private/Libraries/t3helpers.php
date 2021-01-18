@@ -17,6 +17,7 @@ use SaschaEnde\T3helpers\Utilities\FrontendUser;
 use SaschaEnde\T3helpers\Utilities\Google;
 use SaschaEnde\T3helpers\Utilities\Html5Patterns;
 use SaschaEnde\T3helpers\Utilities\Icons;
+use SaschaEnde\T3helpers\Utilities\Image;
 use SaschaEnde\T3helpers\Utilities\Injections;
 use SaschaEnde\T3helpers\Utilities\Language;
 use SaschaEnde\T3helpers\Utilities\Mail;
@@ -29,6 +30,7 @@ use SaschaEnde\T3helpers\Utilities\Template;
 use SaschaEnde\T3helpers\Utilities\Tsfe;
 use SaschaEnde\T3helpers\Utilities\Upload;
 use SaschaEnde\T3helpers\Utilities\Uri;
+use SaschaEnde\T3helpers\Utilities\Video;
 use SaschaEnde\T3helpers\Utilities\Voucher;
 use SaschaEnde\T3helpers\Utilities\Website;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -246,6 +248,20 @@ class t3h {
      */
     public static function Voucher(){
         return self::injectClass(Voucher::class);
+    }
+
+    /**
+     * @return Image
+     */
+    public static function Image(){
+        return self::injectClass(Image::class);
+    }
+
+    /**
+     * @return Video
+     */
+    public static function Video(){
+        return self::injectClass(Video::class);
     }
 
     // ---------------------------------------------------------------------------------
