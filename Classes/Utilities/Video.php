@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 
 class Video implements SingletonInterface
 {
-    public function thumbnal($source, $destination, $maxWidth = 200, $maxHeight = 200)
+    public function thumbnail($source, $destination, $maxWidth = 200, $maxHeight = 200)
     {
         // Settings
         $second             = 1;
@@ -25,8 +25,8 @@ class Video implements SingletonInterface
         }
         else
         {
-            t3h::Image()->thumbnal($destination,$destination,$maxWidth,$maxHeight);
-            return true;
+            t3h::Image()->thumbnail($destination,$destination,$maxWidth,$maxHeight);
+            return file_exists($destination);
         }
     }
 

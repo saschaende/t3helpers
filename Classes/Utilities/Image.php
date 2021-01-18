@@ -3,11 +3,12 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Image implements SingletonInterface
 {
 
-    public function thumbnal($source, $destination, $maxWidth = 200, $maxHeight = 200)
+    public function thumbnail($source, $destination, $maxWidth = 200, $maxHeight = 200)
     {
         // Get new dimensions
         list($width_orig, $height_orig) = getimagesize($source);
@@ -29,6 +30,8 @@ class Image implements SingletonInterface
 
         // Output
         imagejpeg($image_p, $destination, 90);
+
+        return file_exists($destination);
     }
 
 }
