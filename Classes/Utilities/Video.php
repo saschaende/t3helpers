@@ -10,7 +10,7 @@ class Video implements SingletonInterface
     public function thumbnail($source, $destination, $maxWidth = 200, $maxHeight = 200)
     {
         // Settings
-        $second             = 1;
+        $second             = 0;
 
         // FFmpeg Command to generate video thumbnail
         $cmd = sprintf(
