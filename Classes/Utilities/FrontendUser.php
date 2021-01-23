@@ -19,7 +19,7 @@ class FrontendUser implements SingletonInterface  {
      * @return bool
      */
     public function isLogged(){
-        return isset($GLOBALS['TSFE']) && $GLOBALS['TSFE']->loginUser;
+        return isset($GLOBALS['TSFE']) && $GLOBALS['TSFE']->fe_user->user;
     }
 
     /**
