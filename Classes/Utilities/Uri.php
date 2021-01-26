@@ -4,6 +4,7 @@ namespace SaschaEnde\T3helpers\Utilities;
 
 use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 
 /**
  * Class Uri
@@ -33,6 +34,36 @@ class Uri implements SingletonInterface {
             'forceAbsoluteUrl' => $forceAbsoluteUrl,
             'additionalParams' => '&' . http_build_query($additionalParameters),
         ]);
+    }
+
+    /**
+     * Get link for a restricted page (you have to prepend the host manually)
+     * @param $pid
+     * @param $extension
+     * @param $controller
+     * @param $action
+     * @param array $arguments
+     * @return string
+     */
+    public function getByActionForRestrictedPage($pid, $extension, $controller, $action, $arguments = [])
+    {
+
+        $arguments['controller'] = $controller;
+        $arguments['action'] = $action;
+
+        $params = [
+            $extension => $arguments,
+        ];
+
+        /** @var UriBuilder $uriBuilder */
+        $uriBuilder = t3h::injectClass(UriBuilder::class);
+
+        return $uriBuilder
+            ->reset()
+            ->setArguments($params)
+            ->setLinkAccessRestrictedPages(true)
+            ->setTargetPageUid($pid)
+            ->build();
     }
 
     /**
