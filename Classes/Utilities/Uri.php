@@ -37,30 +37,29 @@ class Uri implements SingletonInterface {
     }
 
     /**
-     * Get link for a restricted page (you have to prepend the host manually)
      * @param $pid
      * @param $extension
      * @param $controller
      * @param $action
      * @param array $arguments
+     * @param array $parameter
      * @return string
      */
-    public function getByActionForRestrictedPage($pid, $extension, $controller, $action, $arguments = [])
+    public function getByActionForRestrictedPage($pid, $extension, $controller, $action, $arguments = [], $parameter = [])
     {
 
         $arguments['controller'] = $controller;
         $arguments['action'] = $action;
 
-        $params = [
-            $extension => $arguments,
-        ];
+        $parameter[$extension] = $arguments;
+
 
         /** @var UriBuilder $uriBuilder */
         $uriBuilder = t3h::injectClass(UriBuilder::class);
 
         return $uriBuilder
             ->reset()
-            ->setArguments($params)
+            ->setArguments($parameter)
             ->setLinkAccessRestrictedPages(true)
             ->setTargetPageUid($pid)
             ->build();
