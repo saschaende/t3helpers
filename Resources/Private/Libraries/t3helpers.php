@@ -30,6 +30,7 @@ use SaschaEnde\T3helpers\Utilities\Template;
 use SaschaEnde\T3helpers\Utilities\Tsfe;
 use SaschaEnde\T3helpers\Utilities\Upload;
 use SaschaEnde\T3helpers\Utilities\Uri;
+use SaschaEnde\T3helpers\Utilities\Uuid;
 use SaschaEnde\T3helpers\Utilities\Video;
 use SaschaEnde\T3helpers\Utilities\Voucher;
 use SaschaEnde\T3helpers\Utilities\Website;
@@ -262,6 +263,13 @@ class t3h {
      */
     public static function Video(){
         return self::injectClass(Video::class);
+    }
+
+    /**
+     * @return Uuid
+     */
+    public static function Uuid(){
+        return self::injectClass(Uuid::class);
     }
 
     // ---------------------------------------------------------------------------------
