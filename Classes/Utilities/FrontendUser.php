@@ -81,7 +81,14 @@ class FrontendUser implements SingletonInterface  {
         $session_data = $GLOBALS['TSFE']->fe_user->fetchUserSession();
         $loginSuccess = $GLOBALS['TSFE']->fe_user->compareUident($user, $loginData);
 
-        setcookie('fe_typo_user', $session_data['ses_id'], time() + (86400 * 30), "/");
+        setcookie('fe_typo_user', $session_data['ses_id'], array (
+            'expires' => time() + (86400 * 30),
+            'path' => '/',
+            //'domain' => '.example.com', // leading dot for compatibility or use subdomain
+            'secure' => true,     // or false
+            'httponly' => true,    // or false
+            'samesite' => 'None' // None || Lax  || Strict
+        ));
     }
 
 }
