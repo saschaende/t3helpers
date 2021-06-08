@@ -3,10 +3,9 @@
 namespace SaschaEnde\T3helpers\Utilities;
 
 use t3h\t3h;
-use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class Csv implements SingletonInterface {
+class Csv
+{
 
     protected $file;
     protected $rules;
@@ -25,12 +24,14 @@ class Csv implements SingletonInterface {
     protected $enclosure = '"';
     protected $escape = "\\";
     protected $autoUTF = true;
+    protected $returnFields = [];
 
     /**
      * @param $file
      * @return $this
      */
-    public function setFile($file) {
+    public function setFile($file)
+    {
         $this->file = $file;
         return $this;
     }
@@ -39,18 +40,27 @@ class Csv implements SingletonInterface {
      * @param bool $autoUTF
      * @return $this
      */
-    public function setAutoUTF($autoUTF) {
+    public function setAutoUTF($autoUTF)
+    {
         $this->autoUTF = $autoUTF;
         return $this;
     }
 
+    /**
+     * @param array $returnFields
+     */
+    public function setReturnFields(array $returnFields): void
+    {
+        $this->returnFields = $returnFields;
+    }
 
     /**
      * Get parsed file
      * @param bool $object Set true, to return std objects
      * @return array|bool|null
      */
-    public function getFileParsed($object = false) {
+    public function getFileParsed($object = false)
+    {
         $fileParsed = $this->parseFile();
 
         if ($object) {
@@ -68,7 +78,9 @@ class Csv implements SingletonInterface {
                         continue;
                     }
                     // Daten hinzufügen
-                    $obj->{$this->rules[$i]['column']} = $row[$i];
+                    if (empty($this->returnFields) || in_array($this->rules[$i]['column'], $this->returnFields)) {
+                        $obj->{$this->rules[$i]['column']} = $row[$i];
+                    }
                 }
 
                 $res[] = $obj;
@@ -87,7 +99,8 @@ class Csv implements SingletonInterface {
      * @param string $escape
      * @return $this
      */
-    public function setFormatting($delimiter = ',', $enclosure = '"', $escape = "\\") {
+    public function setFormatting($delimiter = ',', $enclosure = '"', $escape = "\\")
+    {
         $this->delimiter = $delimiter;
         $this->enclosure = $enclosure;
         $this->escape = $escape;
@@ -102,7 +115,8 @@ class Csv implements SingletonInterface {
      * @param null $pos
      * @return $this|CsvInterface
      */
-    public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false, $pos = null) {
+    public function addRule($column, $regex = 'any', $option = '', $emptyAllowed = false, $pos = null)
+    {
 
         if ($this->patterns[$regex]) {
             $regex = $this->patterns[$regex][0];
@@ -132,7 +146,8 @@ class Csv implements SingletonInterface {
      * Check the csv against the rules
      * @return array
      */
-    public function check() {
+    public function check()
+    {
         $errors = [];
         $fileParsed = $this->getFileParsed();
 
@@ -160,7 +175,6 @@ class Csv implements SingletonInterface {
         return $errors;
     }
 
-
     /**
      * @return array|bool
      */
@@ -170,23 +184,25 @@ class Csv implements SingletonInterface {
             return FALSE;
         }
 
-        $handle = fopen($this->file, "r");
+        $data = [];
 
-        $rows = [];
+        if (($handle = fopen($this->file, 'r')) !== FALSE) {
 
-        while (($data = fgetcsv($handle, 0, $this->delimiter,$this->enclosure,$this->escape)) !== FALSE) {
+            while (($buffer = fgets($handle)) !== false) {
 
-            $cols = [];
-            foreach($data as $col){
-                $cols[] = trim(t3h::Data()->autoUTF($col));
+                if ($this->autoUTF) {
+                    $buffer = t3h::Data()->autoUTF($buffer);
+                }
+
+                $row = str_getcsv($buffer, $this->delimiter, $this->enclosure, $this->escape);
+                $row = array_map('trim', $row); // trim every column
+
+                $data[] = $row;
             }
 
-            $rows[] = $cols;
-
+            fclose($handle);
         }
-        fclose($handle);
-
-        return $rows;
+        return $data;
     }
 
 }
