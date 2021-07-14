@@ -2,7 +2,9 @@
 
 namespace SaschaEnde\T3helpers\Utilities;
 
+use t3h\t3h;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class Google implements SingletonInterface {
 
@@ -12,13 +14,13 @@ class Google implements SingletonInterface {
      * @return array|bool
      */
     public function getGeoCoordinates($googleApiKey, $address) {
-        $res = $this->file_get_contents_curl('https://maps.googleapis.com/maps/api/geocode/json?key=' . $googleApiKey . '&address=' . $address);
-        $res = json_decode($res);
-        if(isset($res->results[0]->geometry->location->lat)){
-            return [
-                'lat' => $res->results[0]->geometry->location->lat,
-                'lng' => $res->results[0]->geometry->location->lng,
-            ];
+        $res = t3h::Request()->setUrl('https://maps.googleapis.com/maps/api/geocode/json?key=' . $googleApiKey . '&address=' . urlencode($address))
+            ->setType('GET')
+            ->setJson(true)
+            ->request()
+            ->getResult();
+        if($res){
+            return $res;
         }else{
             return false;
         }
