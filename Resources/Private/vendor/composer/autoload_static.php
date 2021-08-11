@@ -23,6 +23,10 @@ class ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c
         array (
             'Pelago\\' => 7,
         ),
+        'C' => 
+        array (
+            'Curl\\' => 5,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -46,6 +50,14 @@ class ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c
         array (
             0 => __DIR__ . '/..' . '/pelago/emogrifier/src',
         ),
+        'Curl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+        ),
+    );
+
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -53,6 +65,7 @@ class ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitda3e34d3355fc2042fb295d1e34c794c::$classMap;
 
         }, null, ClassLoader::class);
     }
