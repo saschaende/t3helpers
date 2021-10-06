@@ -7,9 +7,9 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$composerAutoloadFile = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)
-    . 'Resources/Private/Libraries/t3helpers.php';
+(function () {
 
+$composerAutoloadFile = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('t3helpers').'Resources/Private/Libraries/t3helpers.php';
 require_once($composerAutoloadFile);
 
 
@@ -30,3 +30,5 @@ require_once($composerAutoloadFile);
     ]
 );
  * **/
+
+})();
