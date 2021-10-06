@@ -21,5 +21,4 @@ if (!defined('TYPO3_MODE')) {
 		// Add viewhelper namespace
 		$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['t3h'] = ['SaschaEnde\\T3helpers\\ViewHelpers'];
         }
-    }
 })();
