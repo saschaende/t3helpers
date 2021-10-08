@@ -11,7 +11,8 @@ use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
  * @link http://wissen.netzhaut.de/typo3/extensionentwicklung/typolink-realurl-in-scheduler-tasks/
  * @package SaschaEnde\T3helpers\Utilities
  */
-class Uri implements SingletonInterface {
+class Uri implements SingletonInterface
+{
 
     /**
      * Get a page link by PID
@@ -21,7 +22,8 @@ class Uri implements SingletonInterface {
      * @param array $additionalParameters
      * @return string
      */
-    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = [], $root_id = 0) {
+    public function getByPid($pid, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = [], $root_id = 0)
+    {
 
         if (TYPO3_MODE == 'BE') {
             t3h::Tsfe()->init($root_id);
@@ -37,29 +39,30 @@ class Uri implements SingletonInterface {
     }
 
     /**
+     * Get link for a restricted page
      * @param $pid
      * @param $extension
      * @param $controller
      * @param $action
      * @param array $arguments
-     * @param array $parameter
      * @return string
      */
-    public function getByActionForRestrictedPage($pid, $extension, $controller, $action, $arguments = [], $parameter = [])
+    public function getByActionForRestrictedPage($pid, $extension, $controller, $action, $arguments = [])
     {
 
         $arguments['controller'] = $controller;
         $arguments['action'] = $action;
 
-        $parameter[$extension] = $arguments;
-
+        $params = [
+            $extension => $arguments,
+        ];
 
         /** @var UriBuilder $uriBuilder */
         $uriBuilder = t3h::injectClass(UriBuilder::class);
 
         return $uriBuilder
             ->reset()
-            ->setArguments($parameter)
+            ->setArguments($params)
             ->setLinkAccessRestrictedPages(true)
             ->setTargetPageUid($pid)
             ->build();
@@ -77,7 +80,8 @@ class Uri implements SingletonInterface {
      * @param array $additionalParameters
      * @return string
      */
-    public function getByAction($pid, $extension, $controller, $action, $arguments = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = [], $root_id = 0) {
+    public function getByAction($pid, $extension, $controller, $action, $arguments = [], $typeNum = false, $useCacheHash = true, $forceAbsoluteUrl = true, $additionalParameters = [], $root_id = 0)
+    {
 
         if (TYPO3_MODE == 'BE') {
             t3h::Tsfe()->init($root_id);
@@ -94,7 +98,7 @@ class Uri implements SingletonInterface {
             $params['type'] = $typeNum;
         }
 
-        foreach ($additionalParameters as $key=>$value){
+        foreach ($additionalParameters as $key => $value) {
             $params[$key] = $value;
         }
 
@@ -110,8 +114,8 @@ class Uri implements SingletonInterface {
 
     function getSlug($text)
     {
-        $text = str_replace('-', ' ',$text);
-        $text = preg_replace('/\s+/', ' ',$text);
+        $text = str_replace('-', ' ', $text);
+        $text = preg_replace('/\s+/', ' ', $text);
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
         return strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $text));
     }
