@@ -27,7 +27,7 @@ class Data implements SingletonInterface {
         foreach ($object as $elm) {
             $array[] = [
                 'object' => $elm,
-                'sort' => $elm->$function()
+                'sort' => str_replace([' ','Š'],['','S'],strtoupper($elm->$function()))
             ];
         }
         $array = $this->sortArray($array, ['sort' => $ordering]);
@@ -362,4 +362,5 @@ class Data implements SingletonInterface {
         }
         return implode('', $pieces);
     }
+
 }
