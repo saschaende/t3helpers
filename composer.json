@@ -1,13 +1,21 @@
 {
   "name": "saschaende/t3helpers",
   "description": "Helpers like in LARAVEL: Simple and easy functions that make your TYPO3 life with extbase and extension development a little easier.",
-  "keywords": ["typo3", "helpers","extbase","functions","classes","framework","t3h"],
+  "keywords": [
+    "typo3",
+    "helpers",
+    "extbase",
+    "functions",
+    "classes",
+    "framework",
+    "t3h"
+  ],
   "homepage": "https://extensions.typo3.org/extension/t3helpers/",
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
   "require": {
     "typo3/cms-core": ">=11.5.0",
-    "php":">=7.4"
+    "php": ">=7.4"
   },
   "autoload": {
     "psr-4": {
@@ -28,7 +36,8 @@
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web"
+      "web-dir": ".Build/Web",
+      "extension-key": "t3helpers"
     }
   }
 }
