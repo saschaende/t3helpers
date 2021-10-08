@@ -19,6 +19,7 @@ use SaschaEnde\T3helpers\Utilities\Html5Patterns;
 use SaschaEnde\T3helpers\Utilities\Icons;
 use SaschaEnde\T3helpers\Utilities\Image;
 use SaschaEnde\T3helpers\Utilities\Injections;
+use SaschaEnde\T3helpers\Utilities\Intconv;
 use SaschaEnde\T3helpers\Utilities\Language;
 use SaschaEnde\T3helpers\Utilities\Mail;
 use SaschaEnde\T3helpers\Utilities\Page;
@@ -26,6 +27,7 @@ use SaschaEnde\T3helpers\Utilities\Password;
 use SaschaEnde\T3helpers\Utilities\Request;
 use SaschaEnde\T3helpers\Utilities\Session;
 use SaschaEnde\T3helpers\Utilities\Settings;
+use SaschaEnde\T3helpers\Utilities\Sftp;
 use SaschaEnde\T3helpers\Utilities\Template;
 use SaschaEnde\T3helpers\Utilities\Tsfe;
 use SaschaEnde\T3helpers\Utilities\Upload;
@@ -270,6 +272,20 @@ class t3h {
      */
     public static function Uuid(){
         return self::injectClass(Uuid::class);
+    }
+
+    /**
+     * @return Sftp
+     */
+    public static function Sftp(){
+        return self::injectClass(Sftp::class);
+    }
+
+    /**
+     * @return Intconv
+     */
+    public static function Intconv(){
+        return self::injectClass(Intconv::class);
     }
 
     // ---------------------------------------------------------------------------------
