@@ -5,6 +5,10 @@ Helpers for Extbase: Simple and easy functions that make your TYPO3 life with ex
 * **CMS**: TYPO3
 * **Type**: plugin
 
+# Information regarding TYPO3 11
+
+I am actually working on updating all functions to TYPO3 11. Please let me know, if you find anything or if you have any enhancements. Currently, not all functions may work as usual. Most of it is still tested with TYPO3 9.
+
 # Installation
 
 ## Composer
